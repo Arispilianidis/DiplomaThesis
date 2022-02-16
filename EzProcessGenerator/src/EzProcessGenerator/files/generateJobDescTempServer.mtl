@@ -1,0 +1,57 @@
+[comment encoding = UTF-8 /]
+[module generateJobDescTempServer('http://www.example.org/ezProcess')]
+
+
+[template public generateJobDescTempServer(anApp : App) post(trim())]
+
+[file ('Server/myapi/routes/JobDescTemp.js', false, 'UTF-8')]
+var express = require('express');
+var router = express.Router();
+const fs = require('fs')
+
+
+router.get('/', function (req, res, next) {
+
+    let param = req.query.processName
+    console.log(param)
+    let dataArray
+
+    if (fs.existsSync(__dirname + '\\' + param + ".json")) {
+
+        delete require.cache['['/]require.resolve(__dirname + '\\' + param + ".json")]
+        dataArray = require(__dirname + '\\' + param + ".json");
+        console.log("exists:");
+        console.log(dataArray);
+
+        res.json({
+            data: dataArray
+        })
+    } else {
+        console.log("DOES NOT exist:");
+        res.json({
+            data: ['['/]]
+        })
+    }
+    
+});
+
+router.post('/', function (req, res, next) {
+
+    let formData = req.body.formData
+    let processName = req.body.processName
+    console.log(formData)
+    console.log(processName)
+
+    fs.writeFileSync(__dirname + '\\' + processName + '.json', JSON.stringify(formData, null, 2), function writeJSON(err) {
+        if (err) return console.log(err);
+        console.log(JSON.stringify(formData));
+        res.sendStatus(200)
+    })
+
+});
+
+
+module.exports = router;
+
+[/file]
+[/template]

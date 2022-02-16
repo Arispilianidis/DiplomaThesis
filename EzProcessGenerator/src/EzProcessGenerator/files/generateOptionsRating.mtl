@@ -1,0 +1,92 @@
+[comment encoding = UTF-8 /]
+[module generateOptionsRating('http://www.example.org/ezProcess')]
+
+
+[template public generateOptionsRating(aScreening : Screening) post(trim())]
+
+[file ('Server/myapi/routes/'+aScreening.hasJobDescription.name+'OptionsRating.json', false, 'UTF-8')]
+
+['['/]
+[for (value : InitialValue | aScreening.hasJobDescription.hasPage.hasInitialvalue->select(v | v.oclIsKindOf(MultipleOptions))) separator (',\n')]
+	[getOption(value)/]
+[/for]
+[']'/]
+[/file]
+
+[/template]
+
+[template public getOption(value: InitialValue)]
+{
+	"name": "[value.name/]",
+	"options": [getOptions(value)/]
+}
+[/template]
+
+[template public getOptions(value : InitialValue) post(trim())]
+['['/]
+	[for (opt : Option | value.oclAsType(MultipleOptions).hasOption) separator (',\n')]
+		{
+		  "optionValue" : "[opt.optionValue/]",
+		  "setupAction": [getOptionSetup(opt)/],
+		  "optionRating" :  [getOptionRating(opt)/]
+		}
+	[/for]
+[']'/]
+[/template]
+
+[template public getOptionRating(opt : Option) post(trim())]
+['['/]
+	[for (optRating : OptionRating | opt.hasOptionRating) separator (',\n')]
+		[getWholeRating(optRating)/]
+	[/for]
+[']'/]
+[/template]
+
+[template public getOptionSetup(opt : Option) post(trim())]
+['['/]
+	[for (entry : String | opt.setupActions) separator (',\n')]
+		"[entry/]"
+	[/for]
+[']'/]
+[/template]
+
+[template public getWholeRating(optRating : OptionRating) post(trim())]
+{
+	"ID": [optRating.ID/],
+	"isAbout": [optRating.isAbout.ID/],
+	"tooltipArray": [getTooltipArray(optRating)/],
+	"thresholds": [getThresholds(optRating)/]
+	
+}
+[/template]
+
+[template public getTooltipArray(optRating : OptionRating) post(trim())]
+['['/]
+	[for (entry : String | optRating.tooltipArray) separator (',\n')]
+		"[entry/]"
+	[/for]
+[']'/]
+
+[/template]
+
+[template public getThresholds(optRating : OptionRating) post(trim())]
+['['/]
+	[for (optThresh : OptionThreshold | optRating.hasThreshold) separator (',\n')]
+		{
+			"min": [optThresh.min/],
+			"max": [optThresh.max/],
+			"text": [getText(optThresh)/]
+		}
+	[/for]
+[']'/]
+
+[/template]
+
+[template public getText(optThresh : OptionThreshold) post(trim())]
+['['/]
+	[for (entry : String | optThresh.text) separator (',\n')]
+		"[entry/]"
+	[/for]
+[']'/]
+
+[/template]

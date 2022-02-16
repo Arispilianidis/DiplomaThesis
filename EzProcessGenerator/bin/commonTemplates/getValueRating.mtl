@@ -1,0 +1,6 @@
+[comment encoding = UTF-8 /]
+[module getValueRating('http://www.example.org/ezProcess')]
+
+[query public valueHasRating(value : InitialValue) : Boolean =
+value.rating
+/]

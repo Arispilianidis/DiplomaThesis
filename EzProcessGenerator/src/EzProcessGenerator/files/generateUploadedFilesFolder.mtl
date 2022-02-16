@@ -1,0 +1,10 @@
+[comment encoding = UTF-8 /]
+[module generateUploadedFilesFolder('http://www.example.org/ezProcess')]
+
+
+[template public generateUploadedFilesFolder(anApp : App)]
+
+[file ('Server/myapi/public/uploadedFiles/NotNeeded.txt', false, 'UTF-8')]
+This file can be deleted. Its only purpose was to create the parent folder.
+[/file]
+[/template]

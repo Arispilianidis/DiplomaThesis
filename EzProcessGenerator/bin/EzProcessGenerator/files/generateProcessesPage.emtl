@@ -1,0 +1,491 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:mtl="http://www.eclipse.org/acceleo/mtl/3.0" xmlns:ocl.ecore="http://www.eclipse.org/ocl/1.1.0/Ecore">
+  <mtl:Module name="generateProcessesPage" nsURI="EzProcessGenerator::files::generateProcessesPage" startHeaderPosition="29" endHeaderPosition="592">
+    <input>
+      <takesTypesFrom href="http://www.example.org/ezProcess#/"/>
+    </input>
+    <ownedModuleElement xsi:type="mtl:Template" name="generateProcessesPage" visibility="Public">
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;"/>
+      <body xsi:type="mtl:FileBlock" openMode="OverWrite">
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="import React, { useState } from 'react'&#xA;import { useLocation } from 'react-router';&#xA;import { useNavigate } from 'react-router-dom';&#xA;import Candidates from './Candidates';&#xA;import CurrentDate from './components/CurrentDate';&#xA;import axios from 'axios'&#xA;import './css/Tables.css'&#xA;&#xA;&#xA;function Processes() {&#xA;&#xA;    const { state } = useLocation();&#xA;    const serverUserInfo = state"/>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="[0]">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;    const navigate = useNavigate();&#xA;&#xA;    const "/>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="[">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="candidates, setCandidates] = useState(null)&#xA;    const "/>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="[">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="error, setError] = useState(null);&#xA;    const "/>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="[">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="showCandidates, setShowCandidates] = useState(false)&#xA;    const "/>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="[">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="selectedCandidates, setSelectedCandidates] = useState(null)&#xA;    const "/>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="[">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="JobDescTempOfScrenningProcess, setJobDescTempOfScrenningProcess] = useState(null)&#xA;&#xA;    function goto(event) {&#xA;&#xA;        let processName = event.target.textContent&#xA;        navigate(&quot;/&quot; + processName, { state: "/>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="[">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="serverUserInfo, processName] })&#xA;    }&#xA;&#xA;    function createProcessDropdownMenu() {&#xA;&#xA;        return serverUserInfo.assignedProcesses.map((element) => {&#xA;            return &lt;li key={element} onClick={goto} style={{ cursor: 'pointer', marginLeft: 10, marginBottom: 10 }}>{element}&lt;/li>&#xA;        });&#xA;&#xA;    }&#xA;&#xA;    function getCandidates(event) {&#xA;&#xA;        setJobDescTempOfScrenningProcess(event.target.textContent) &#xA;&#xA;        axios.get(&quot;http://localhost:3000/JobDescTempCandidates&quot;, {&#xA;            params: { JobDescTempOfScrenningProcess: event.target.textContent },&#xA;            method: 'GET',&#xA;            headers: {&#xA;                'Access-Control-Allow-Origin': '*',&#xA;                'Content-Type': 'application/json',&#xA;            }&#xA;        })&#xA;            .then(response => {&#xA;                console.log(response.data.data)&#xA;                setCandidates(response.data.data)&#xA;            })&#xA;            .then(() => {&#xA;                setShowCandidates(true)&#xA;            })&#xA;            .catch(error => {&#xA;                console.log(&quot;Error at get Candidates => &quot; + error.message)&#xA;                setError(error)&#xA;            })&#xA;&#xA;    }&#xA;&#xA;    // Catch Rating value&#xA;    const handleCandidates = (flatRows) => {&#xA;        setSelectedCandidates(flatRows)&#xA;    }&#xA;&#xA;    function completeTask(accepted) {&#xA;        let link&#xA;        let emails = "/>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="[">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="]&#xA;        let original = "/>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="[">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="]&#xA;&#xA;        console.log(selectedCandidates)&#xA;        console.log(JobDescTempOfScrenningProcess)&#xA;&#xA;        if (selectedCandidates === undefined || selectedCandidates.length === 0) {&#xA;            // array empty or does not exist&#xA;            alert(&quot;No Candidates where selected. Please select one or more candidates before pressing Accept/Reject.&quot;)&#xA;            return&#xA;        }else{&#xA;&#xA;            selectedCandidates.forEach(element => {&#xA;&#xA;                emails.push(element.original.EMAIL)&#xA;                original.push(element.original)&#xA;            });&#xA;&#xA;        }&#xA;&#xA;        if (accepted) {&#xA;&#xA;            link = &quot;mailto:&quot; + emails"/>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="[">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="0] + &quot; &quot;&#xA;                + &quot;?cc=&quot; + emails.slice(1)&#xA;                + &quot;&amp;subject=&quot; + encodeURIComponent(&quot;Congratulations&quot;)&#xA;                + &quot;&amp;body=&quot; + encodeURIComponent(&quot;We would like to inform you that you have successfully passed the stage of the selection process.\n&quot;)&#xA;&#xA;        } else {&#xA;&#xA;            link = &quot;mailto:&quot; + emails"/>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="[">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="0] + &quot; &quot;&#xA;                + &quot;?cc=&quot; + emails.slice(1)&#xA;                + &quot;&amp;subject=&quot; + encodeURIComponent(&quot;Thank you for applying&quot;)&#xA;                + &quot;&amp;body=&quot; + encodeURIComponent(&quot;We would like to inform you that you you did not pass the stage of the selection process.\n&quot;)&#xA;&#xA;  &#x9;&#x9;&#xA;&#xA;&#x9;            axios.delete(&quot;http://localhost:3000/JobDescTempCandidates&quot;, {&#xA;&#x9;                params: {&#xA;&#x9;                    'selectedCandidates': original ,&#xA;&#x9;                    'processName': JobDescTempOfScrenningProcess&#xA;&#x9;                },&#xA;&#x9;                headers: {&#xA;&#x9;                    'Access-Control-Allow-Origin': '*',&#xA;&#x9;                    'Content-Type': 'application/json',&#xA;&#x9;                }&#xA;&#x9;            })&#xA;&#x9;                .catch(error => {&#xA;&#x9;                    console.log(&quot;Error at delete Candidates => &quot; + error.message)&#xA;&#x9;                    setError(error)&#xA;&#x9;                })&#xA;&#x9;&#x9;&#x9;}&#xA;&#xA;        &#xA;        window.location.href = link;&#xA;&#xA;    }&#xA;&#xA;    function createCandidatesDropdownMenu() {&#xA;&#xA;        let JobDescTempOfScrenningProcesses = "/>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="[">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;"/>
+        <body xsi:type="mtl:ForBlock">
+          <body xsi:type="mtl:IfBlock">
+            <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;&#x9;&#x9;&#x9;&#x9;&quot;"/>
+            <body xsi:type="ocl.ecore:PropertyCallExp">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+              <source xsi:type="ocl.ecore:VariableExp" name="process" referredVariable="/0/generateProcessesPage/%.1/%.25/process">
+                <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Process"/>
+              </source>
+              <referredProperty xsi:type="ecore:EAttribute" href="http://www.example.org/ezProcess#//Process/name"/>
+            </body>
+            <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&quot;,&#xA;"/>
+            <ifExpr xsi:type="ocl.ecore:OperationCallExp">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
+              <source xsi:type="ocl.ecore:VariableExp" name="process" referredVariable="/0/generateProcessesPage/%.1/%.25/process">
+                <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Process"/>
+              </source>
+              <argument xsi:type="ocl.ecore:TypeExp" eType="/24/JobDescription">
+                <referredType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//JobDescription"/>
+              </argument>
+              <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OclAny_Class/oclIsTypeOf"/>
+            </ifExpr>
+          </body>
+          <loopVariable name="process">
+            <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Process"/>
+          </loopVariable>
+          <iterSet xsi:type="ocl.ecore:PropertyCallExp" eType="/21/OrderedSet(Process)">
+            <source xsi:type="ocl.ecore:VariableExp" name="self" referredVariable="/22">
+              <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//App"/>
+            </source>
+            <referredProperty xsi:type="ecore:EReference" href="http://www.example.org/ezProcess#//App/hasProcess"/>
+          </iterSet>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="        ]&#xA;&#xA;        return JobDescTempOfScrenningProcesses.map((element) => {&#xA;            return &lt;li onClick={getCandidates} key={element} style={{ cursor: 'pointer', marginLeft: 10, marginBottom: 10 }}>{element}&lt;/li>&#xA;        });&#xA;&#xA;    }&#xA;&#xA;    function handleShow() {&#xA;        setShowCandidates(false)&#xA;    }&#xA;&#xA;&#xA;    if (error) {&#xA;        return &lt;pre> {JSON.stringify(error.message, null, 2)}&lt;/pre>&#xA;    }&#xA;&#xA;    return (&#xA;&#xA;        &lt;div className='TableContainer'>&#xA;            &lt;CurrentDate />&#xA;            &lt;div className=&quot;dropdown&quot;>&#xA;                &lt;button style={{ marginTop: '40px' }} className=&quot;btn btn-primary dropdown-toggle&quot; type=&quot;button&quot; data-toggle=&quot;dropdown&quot;> Create Process&#xA;                    &lt;span className=&quot;caret&quot;>&lt;/span>&lt;/button>&#xA;&#xA;                &lt;ul className=&quot;dropdown-menu&quot;>&#xA;                    {createProcessDropdownMenu()}&#xA;                &lt;/ul>&#xA;            &lt;/div>&#xA;            &lt;div className=&quot;dropdown&quot;>&#xA;                &lt;button onClick={handleShow} style={{ marginTop: '40px' }} className=&quot;btn btn-info btn-primary dropdown-toggle&quot; type=&quot;button&quot; data-toggle=&quot;dropdown&quot;> Show Screened Candidates&#xA;                    &lt;span className=&quot;caret&quot;>&lt;/span>&lt;/button>&#xA;&#xA;                &lt;ul className=&quot;dropdown-menu&quot;>&#xA;                    {createCandidatesDropdownMenu()}&#xA;                &lt;/ul>&#xA;            &lt;/div>&#xA;&#xA;            {showCandidates ?&#xA;                &lt;div>&#xA;                    &lt;Candidates candidates={candidates} handleCandidates={handleCandidates} />&#xA;                    &lt;button style={{ float: 'none', marginLeft: 0 }} className=&quot;btn_complete&quot; onClick={() => { completeTask(true) }}> Accept &lt;/button>&#xA;                    &lt;button style={{ float: 'none', }} className=&quot;btn_reject&quot; onClick={() => { completeTask(false) }}> Reject &lt;/button>&#xA;                &lt;/div>&#xA;                : &quot; &quot;}&#xA;        &lt;/div>&#xA;    )&#xA;}&#xA;&#xA;export default Processes&#xA;&#xA;"/>
+        <fileUrl xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="Output/src/Processes.js">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </fileUrl>
+        <charset xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="UTF-8">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </charset>
+      </body>
+      <parameter name="anApp">
+        <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//App"/>
+      </parameter>
+      <post xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/oclstdlib_String_Class/trim">
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <source xsi:type="ocl.ecore:VariableExp" name="self" referredVariable="/5">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </source>
+      </post>
+    </ownedModuleElement>
+  </mtl:Module>
+  <ecore:EPackage name="additions">
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_String_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+      </eAnnotations>
+      <eOperations name="trim">
+        <eAnnotations source="MTL non-standard"/>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+      </eOperations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Integer_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Real_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Real"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ecore_EObject_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+      </eAnnotations>
+      <eOperations name="generateProcessesPage">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL" references="/0/generateProcessesPage"/>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="anApp">
+          <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//App"/>
+        </eParameters>
+      </eOperations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_OclAny_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OclAny"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Collection(T)_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Collection(T)"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Sequence(T)_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Sequence(T)"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_OrderedSet(T)_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OrderedSet(T)"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ezProcess_App_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.example.org/ezProcess#//App"/>
+      </eAnnotations>
+    </eClassifiers>
+  </ecore:EPackage>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//App"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//App"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//App"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//App"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//App"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//App"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//App"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//App"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//App"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//App"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//App"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//App"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//App"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//App"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//App"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//App"/>
+  </ocl.ecore:Variable>
+  <ecore:EPackage name="collections">
+    <eClassifiers xsi:type="ocl.ecore:OrderedSetType" name="OrderedSet(Process)" instanceClassName="java.util.LinkedHashSet">
+      <elementType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Process"/>
+    </eClassifiers>
+  </ecore:EPackage>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//App"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Process"/>
+  </ocl.ecore:Variable>
+  <ecore:EPackage name="types">
+    <eClassifiers xsi:type="ocl.ecore:TypeType" name="JobDescription">
+      <referredType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//JobDescription"/>
+    </eClassifiers>
+  </ecore:EPackage>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Process"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Process"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//App"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="i">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </ocl.ecore:Variable>
+  <ecore:EAnnotation source="positions">
+    <eAnnotations source="positions.0" references="/0/generateProcessesPage">
+      <details key="start" value="98"/>
+      <details key="end" value="6460"/>
+      <details key="line" value="5"/>
+    </eAnnotations>
+    <eAnnotations source="positions.1" references="/0/generateProcessesPage/%">
+      <details key="start" value="164"/>
+      <details key="end" value="165"/>
+      <details key="line" value="6"/>
+    </eAnnotations>
+    <eAnnotations source="positions.2" references="/0/generateProcessesPage/%.1">
+      <details key="start" value="165"/>
+      <details key="end" value="6448"/>
+      <details key="line" value="7"/>
+    </eAnnotations>
+    <eAnnotations source="positions.3" references="/0/generateProcessesPage/%.1/%">
+      <details key="start" value="216"/>
+      <details key="end" value="586"/>
+      <details key="line" value="8"/>
+    </eAnnotations>
+    <eAnnotations source="positions.4" references="/0/generateProcessesPage/%.1/%.1">
+      <details key="start" value="587"/>
+      <details key="end" value="592"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.5" references="/0/generateProcessesPage/%.1/%.2">
+      <details key="start" value="594"/>
+      <details key="end" value="642"/>
+      <details key="line" value="21"/>
+    </eAnnotations>
+    <eAnnotations source="positions.6" references="/0/generateProcessesPage/%.1/%.3">
+      <details key="start" value="643"/>
+      <details key="end" value="646"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.7" references="/0/generateProcessesPage/%.1/%.4">
+      <details key="start" value="648"/>
+      <details key="end" value="702"/>
+      <details key="line" value="23"/>
+    </eAnnotations>
+    <eAnnotations source="positions.8" references="/0/generateProcessesPage/%.1/%.5">
+      <details key="start" value="703"/>
+      <details key="end" value="706"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.9" references="/0/generateProcessesPage/%.1/%.6">
+      <details key="start" value="708"/>
+      <details key="end" value="753"/>
+      <details key="line" value="24"/>
+    </eAnnotations>
+    <eAnnotations source="positions.10" references="/0/generateProcessesPage/%.1/%.7">
+      <details key="start" value="754"/>
+      <details key="end" value="757"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.11" references="/0/generateProcessesPage/%.1/%.8">
+      <details key="start" value="759"/>
+      <details key="end" value="822"/>
+      <details key="line" value="25"/>
+    </eAnnotations>
+    <eAnnotations source="positions.12" references="/0/generateProcessesPage/%.1/%.9">
+      <details key="start" value="823"/>
+      <details key="end" value="826"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.13" references="/0/generateProcessesPage/%.1/%.10">
+      <details key="start" value="828"/>
+      <details key="end" value="898"/>
+      <details key="line" value="26"/>
+    </eAnnotations>
+    <eAnnotations source="positions.14" references="/0/generateProcessesPage/%.1/%.11">
+      <details key="start" value="899"/>
+      <details key="end" value="902"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.15" references="/0/generateProcessesPage/%.1/%.12">
+      <details key="start" value="904"/>
+      <details key="end" value="1111"/>
+      <details key="line" value="27"/>
+    </eAnnotations>
+    <eAnnotations source="positions.16" references="/0/generateProcessesPage/%.1/%.13">
+      <details key="start" value="1112"/>
+      <details key="end" value="1115"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.17" references="/0/generateProcessesPage/%.1/%.14">
+      <details key="start" value="1117"/>
+      <details key="end" value="2431"/>
+      <details key="line" value="32"/>
+    </eAnnotations>
+    <eAnnotations source="positions.18" references="/0/generateProcessesPage/%.1/%.15">
+      <details key="start" value="2432"/>
+      <details key="end" value="2435"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.19" references="/0/generateProcessesPage/%.1/%.16">
+      <details key="start" value="2437"/>
+      <details key="end" value="2462"/>
+      <details key="line" value="76"/>
+    </eAnnotations>
+    <eAnnotations source="positions.20" references="/0/generateProcessesPage/%.1/%.17">
+      <details key="start" value="2463"/>
+      <details key="end" value="2466"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.21" references="/0/generateProcessesPage/%.1/%.18">
+      <details key="start" value="2468"/>
+      <details key="end" value="3088"/>
+      <details key="line" value="77"/>
+    </eAnnotations>
+    <eAnnotations source="positions.22" references="/0/generateProcessesPage/%.1/%.19">
+      <details key="start" value="3089"/>
+      <details key="end" value="3092"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.23" references="/0/generateProcessesPage/%.1/%.20">
+      <details key="start" value="3094"/>
+      <details key="end" value="3423"/>
+      <details key="line" value="98"/>
+    </eAnnotations>
+    <eAnnotations source="positions.24" references="/0/generateProcessesPage/%.1/%.21">
+      <details key="start" value="3424"/>
+      <details key="end" value="3427"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.25" references="/0/generateProcessesPage/%.1/%.22">
+      <details key="start" value="3429"/>
+      <details key="end" value="4455"/>
+      <details key="line" value="105"/>
+    </eAnnotations>
+    <eAnnotations source="positions.26" references="/0/generateProcessesPage/%.1/%.23">
+      <details key="start" value="4456"/>
+      <details key="end" value="4459"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.27" references="/0/generateProcessesPage/%.1/%.24">
+      <details key="start" value="4461"/>
+      <details key="end" value="4462"/>
+      <details key="line" value="136"/>
+    </eAnnotations>
+    <eAnnotations source="positions.28" references="/0/generateProcessesPage/%.1/%.25">
+      <details key="start" value="4465"/>
+      <details key="end" value="4605"/>
+      <details key="line" value="136"/>
+    </eAnnotations>
+    <eAnnotations source="positions.29" references="/0/generateProcessesPage/%.1/%.25/%">
+      <details key="start" value="4508"/>
+      <details key="end" value="4595"/>
+      <details key="line" value="137"/>
+    </eAnnotations>
+    <eAnnotations source="positions.30" references="/0/generateProcessesPage/%.1/%.25/%/%">
+      <details key="start" value="4562"/>
+      <details key="end" value="4568"/>
+      <details key="line" value="138"/>
+    </eAnnotations>
+    <eAnnotations source="positions.31" references="/0/generateProcessesPage/%.1/%.25/%/%.1">
+      <details key="start" value="4569"/>
+      <details key="end" value="4581"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.32" references="/0/generateProcessesPage/%.1/%.25/%/%.1/process">
+      <details key="start" value="4569"/>
+      <details key="end" value="4576"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.33" references="/0/generateProcessesPage/%.1/%.25/%/%.2">
+      <details key="start" value="4583"/>
+      <details key="end" value="4586"/>
+      <details key="line" value="138"/>
+    </eAnnotations>
+    <eAnnotations source="positions.34" references="/0/generateProcessesPage/%.1/%.25/%/%.3">
+      <details key="start" value="4512"/>
+      <details key="end" value="4560"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.35" references="/0/generateProcessesPage/%.1/%.25/%/%.3/process">
+      <details key="start" value="4513"/>
+      <details key="end" value="4520"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.36" references="/0/generateProcessesPage/%.1/%.25/%/%.3/%">
+      <details key="start" value="4533"/>
+      <details key="end" value="4558"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.37" references="/0/generateProcessesPage/%.1/%.25/process">
+      <details key="start" value="4471"/>
+      <details key="end" value="4488"/>
+      <details key="line" value="136"/>
+    </eAnnotations>
+    <eAnnotations source="positions.38" references="/0/generateProcessesPage/%.1/%.25/%.1">
+      <details key="start" value="4491"/>
+      <details key="end" value="4501"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.39" references="/0/generateProcessesPage/%.1/%.25/%.1/self">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.40" references="/0/generateProcessesPage/%.1/%.26">
+      <details key="start" value="4606"/>
+      <details key="end" value="6441"/>
+      <details key="line" value="141"/>
+    </eAnnotations>
+    <eAnnotations source="positions.41" references="/0/generateProcessesPage/%.1/%.27">
+      <details key="start" value="172"/>
+      <details key="end" value="197"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.42" references="/0/generateProcessesPage/%.1/%.28">
+      <details key="start" value="206"/>
+      <details key="end" value="213"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.43" references="/0/generateProcessesPage/anApp">
+      <details key="start" value="137"/>
+      <details key="end" value="148"/>
+      <details key="line" value="5"/>
+    </eAnnotations>
+    <eAnnotations source="positions.44" references="/0/generateProcessesPage/%.2">
+      <details key="start" value="155"/>
+      <details key="end" value="161"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.45" references="/0/generateProcessesPage/%.2/self">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+  </ecore:EAnnotation>
+</xmi:XMI>

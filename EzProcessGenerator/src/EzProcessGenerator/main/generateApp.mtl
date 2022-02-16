@@ -1,0 +1,103 @@
+[comment encoding = UTF-8 /]
+[module generateApp('http://www.example.org/ezProcess')]
+
+
+[import EzProcessGenerator::files::generateJobDesc/]
+[import EzProcessGenerator::files::generateLoginPage/]
+[import EzProcessGenerator::files::generateUsersDataJSON /]
+[import EzProcessGenerator::files::generateComponents /]
+[import EzProcessGenerator::files::generateScreening /]
+[import EzProcessGenerator::files::generateCSS /]
+[import EzProcessGenerator::files::generateOnboarding /]
+[import EzProcessGenerator::files::generateCandidates /]
+[import EzProcessGenerator::files::generateProcessesPage /]
+[import EzProcessGenerator::files::generateJobDescTempServer /]
+[import EzProcessGenerator::files::generateJobDescTempCandidates /]
+[import EzProcessGenerator::files::generateJobDescTempOptionsRating /]
+[import EzProcessGenerator::files::generateUploadeFiles /]
+[import EzProcessGenerator::files::generateUsers /]
+[import EzProcessGenerator::files::generateIndex /]
+[import EzProcessGenerator::files::generatePackage /]
+[import EzProcessGenerator::files::generatePackageLock /]
+[import EzProcessGenerator::files::generateServerPackage /]
+[import EzProcessGenerator::files::generateServerPackageLock /]
+[import EzProcessGenerator::files::generateIndexJS /]
+[import EzProcessGenerator::files::generateServerApp /]
+[import EzProcessGenerator::files::generateUploadedFilesFolder /]
+
+[template public generateApp(anApp : App) post(trim())]
+[comment @main/]
+
+[comment] Create the nessecary user data[/comment]
+[generateUsersDataJSON(anApp)/]
+
+[comment] Create the static components[/comment]
+[generateUsers(anApp)/]
+[generateUploadeFiles(anApp)/]
+[generateJobDescTempOptionsRating(anApp)/]
+[generateJobDescTempCandidates(anApp)/]
+[generateJobDescTempServer(anApp)/]
+[generateProcessesPage(anApp)/]
+[generateLoginPage(anApp)/]
+[generateCandidates(anApp)/]
+[generateComponents(anApp)/]
+[generateCSS(anApp)/]
+[generateIndex(anApp)/]
+[generatePackage(anApp)/]
+[generatePackageLock(anApp)/]
+[generateServerPackage(anApp)/]
+[generateServerPackageLock(anApp)/]
+[generateIndexJS(anApp)/]
+[generateServerApp(anApp)/]
+[generateUploadedFilesFolder(anApp)/]
+
+[comment] Create the necessary folders and files for each process in the APP[/comment]
+[for (process : Process | hasProcess)]
+	[if (process.oclIsTypeOf(JobDescription))]
+	 	[generateJobDesc(process.oclAsType(JobDescription))/]
+	[elseif (process.oclIsTypeOf(Screening))]
+		[generateScreening(process.oclAsType(Screening))/]
+	[elseif (process.oclIsTypeOf(Onboarding))]
+		[generateOnboarding(process.oclAsType(Onboarding))/]
+	[/if]
+[/for]
+[file ('Output/src/App.js', false, 'UTF-8')]
+
+import {Routes, Route } from "react-router-dom";
+import './css/App.css';
+import React from "react";
+import Login from "./Login";
+import Processes from "./Processes";
+
+[for (process : Process | hasProcess)]
+import [process.name/] from './[process.name + '/' + process.name/]';
+	[if (process.oclIsTypeOf(Onboarding))]
+					
+	[else]
+import [process.name + 'Final'/] from './[process.name + '/' + process.name + 'Final'/]';
+	[/if]
+[/for]
+
+function App() {
+  return (
+    <div>
+      <Routes>
+        <Route path="/" element={<Login />} />
+        <Route path="/Processes" element={<Processes/>} />
+		[for (process : Process | hasProcess)]
+				<Route path="/[process.name/]" element={< [process.name/]/>} />
+			[if (process.oclIsTypeOf(Onboarding))]
+				
+			[else]
+				<Route path="/[process.name + 'Final'/]"  element={<[process.name + 'Final'/]/>} />
+			[/if]
+		[/for]
+      </Routes>
+
+    </div>
+  );
+}
+
+export default App;
+[/file]
+[/template]

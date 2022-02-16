@@ -1,0 +1,21 @@
+[comment encoding = UTF-8 /]
+[module generateCSS('http://www.example.org/ezProcess')]
+
+[import css::generateAppCSS /]
+[import css::generateDatepicker /]
+[import css::generateJobdescTempCSS /]
+[import css::generateLogincCSS /]
+[import css::generateTablesCSS /]
+[import css::generateRatingCSS /]
+
+
+[template public generateCSS(anApp : App)]
+
+[generateAppCSS(anApp)/]
+[generateDatepicker(anApp)/]
+[generateJobdescTempCSS(anApp)/]
+[generateLogincCSS(anApp)/]
+[generateRatingCSS(anApp)/]
+[generateTablesCSS(anApp)/]
+
+[/template]

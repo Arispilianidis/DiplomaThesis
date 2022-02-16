@@ -1,0 +1,532 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:mtl="http://www.eclipse.org/acceleo/mtl/3.0" xmlns:ocl.ecore="http://www.eclipse.org/ocl/1.1.0/Ecore">
+  <mtl:Module name="generateComponents" nsURI="EzProcessGenerator::files::generateComponents" startHeaderPosition="29" endHeaderPosition="163">
+    <input>
+      <takesTypesFrom href="http://www.example.org/ezProcess#/"/>
+    </input>
+    <imports href="components/generateCheckBoxGroup.emtl#/0"/>
+    <imports href="components/generateCurrentDate.emtl#/0"/>
+    <imports href="components/generateDatePicker.emtl#/0"/>
+    <imports href="components/generateFormikControl.emtl#/0"/>
+    <imports href="components/generateInput.emtl#/0"/>
+    <imports href="components/generateProof.emtl#/0"/>
+    <imports href="components/generateRadiobuttons.emtl#/0"/>
+    <imports href="components/generateSelect.emtl#/0"/>
+    <imports href="components/generateTextarea.emtl#/0"/>
+    <imports href="components/generateTextError.emtl#/0"/>
+    <imports href="generateProcessColumns.emtl#/0"/>
+    <ownedModuleElement xsi:type="mtl:Template" name="generateComponents" visibility="Public">
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;"/>
+      <body xsi:type="mtl:TemplateInvocation">
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <definition href="components/generateCheckBoxGroup.emtl#/0/generateCheckBoxGroup"/>
+        <argument xsi:type="ocl.ecore:VariableExp" name="anApp" referredVariable="/0/generateComponents/anApp">
+          <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//App"/>
+        </argument>
+      </body>
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;"/>
+      <body xsi:type="mtl:TemplateInvocation">
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <definition href="components/generateCurrentDate.emtl#/0/generateCurrentDate"/>
+        <argument xsi:type="ocl.ecore:VariableExp" name="anApp" referredVariable="/0/generateComponents/anApp">
+          <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//App"/>
+        </argument>
+      </body>
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;"/>
+      <body xsi:type="mtl:TemplateInvocation">
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <definition href="components/generateDatePicker.emtl#/0/generateDatePicker"/>
+        <argument xsi:type="ocl.ecore:VariableExp" name="anApp" referredVariable="/0/generateComponents/anApp">
+          <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//App"/>
+        </argument>
+      </body>
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;"/>
+      <body xsi:type="mtl:TemplateInvocation">
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <definition href="components/generateFormikControl.emtl#/0/generateFormikControl"/>
+        <argument xsi:type="ocl.ecore:VariableExp" name="anApp" referredVariable="/0/generateComponents/anApp">
+          <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//App"/>
+        </argument>
+      </body>
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;"/>
+      <body xsi:type="mtl:TemplateInvocation">
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <definition href="components/generateInput.emtl#/0/generateInput"/>
+        <argument xsi:type="ocl.ecore:VariableExp" name="anApp" referredVariable="/0/generateComponents/anApp">
+          <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//App"/>
+        </argument>
+      </body>
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;"/>
+      <body xsi:type="mtl:TemplateInvocation">
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <definition href="components/generateProof.emtl#/0/generateProof"/>
+        <argument xsi:type="ocl.ecore:VariableExp" name="anApp" referredVariable="/0/generateComponents/anApp">
+          <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//App"/>
+        </argument>
+      </body>
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;"/>
+      <body xsi:type="mtl:TemplateInvocation">
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <definition href="components/generateRadiobuttons.emtl#/0/generateRadiobuttons"/>
+        <argument xsi:type="ocl.ecore:VariableExp" name="anApp" referredVariable="/0/generateComponents/anApp">
+          <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//App"/>
+        </argument>
+      </body>
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;"/>
+      <body xsi:type="mtl:TemplateInvocation">
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <definition href="components/generateSelect.emtl#/0/generateSelect"/>
+        <argument xsi:type="ocl.ecore:VariableExp" name="anApp" referredVariable="/0/generateComponents/anApp">
+          <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//App"/>
+        </argument>
+      </body>
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;"/>
+      <body xsi:type="mtl:TemplateInvocation">
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <definition href="components/generateTextarea.emtl#/0/generateTextarea"/>
+        <argument xsi:type="ocl.ecore:VariableExp" name="anApp" referredVariable="/0/generateComponents/anApp">
+          <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//App"/>
+        </argument>
+      </body>
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;"/>
+      <body xsi:type="mtl:TemplateInvocation">
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <definition href="components/generateTextError.emtl#/0/generateTextError"/>
+        <argument xsi:type="ocl.ecore:VariableExp" name="anApp" referredVariable="/0/generateComponents/anApp">
+          <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//App"/>
+        </argument>
+      </body>
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;"/>
+      <body xsi:type="mtl:TemplateInvocation">
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <definition href="generateProcessColumns.emtl#/0/generateProcessColumns"/>
+        <argument xsi:type="ocl.ecore:VariableExp" name="anApp" referredVariable="/0/generateComponents/anApp">
+          <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//App"/>
+        </argument>
+      </body>
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;"/>
+      <parameter name="anApp">
+        <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//App"/>
+      </parameter>
+    </ownedModuleElement>
+  </mtl:Module>
+  <ecore:EPackage name="additions">
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_String_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Integer_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Real_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Real"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ecore_EObject_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+      </eAnnotations>
+      <eOperations name="generateComponents">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL" references="/0/generateComponents"/>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="anApp">
+          <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//App"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="generateCheckBoxGroup">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="components/generateCheckBoxGroup.emtl#/0/generateCheckBoxGroup"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="anApp">
+          <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//App"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="generateCurrentDate">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="components/generateCurrentDate.emtl#/0/generateCurrentDate"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="anApp">
+          <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//App"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="generateDatePicker">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="components/generateDatePicker.emtl#/0/generateDatePicker"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="anApp">
+          <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//App"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="generateFormikControl">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="components/generateFormikControl.emtl#/0/generateFormikControl"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="anApp">
+          <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//App"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="generateInput">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="components/generateInput.emtl#/0/generateInput"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="anApp">
+          <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//App"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="generateProof">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="components/generateProof.emtl#/0/generateProof"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="anApp">
+          <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//App"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="generateRadiobuttons">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="components/generateRadiobuttons.emtl#/0/generateRadiobuttons"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="anApp">
+          <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//App"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="generateSelect">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="components/generateSelect.emtl#/0/generateSelect"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="anApp">
+          <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//App"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="generateTextarea">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="components/generateTextarea.emtl#/0/generateTextarea"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="anApp">
+          <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//App"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="generateTextError">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="components/generateTextError.emtl#/0/generateTextError"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="anApp">
+          <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//App"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="generateProcessColumns">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="generateProcessColumns.emtl#/0/generateProcessColumns"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="anOclAny">
+          <eType xsi:type="ocl.ecore:AnyType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OclAny"/>
+        </eParameters>
+      </eOperations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_OclAny_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OclAny"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Collection(T)_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Collection(T)"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Sequence(T)_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Sequence(T)"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_OrderedSet(T)_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OrderedSet(T)"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ezProcess_App_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.example.org/ezProcess#//App"/>
+      </eAnnotations>
+    </eClassifiers>
+  </ecore:EPackage>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//App"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//App"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//App"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//App"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//App"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//App"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//App"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//App"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//App"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//App"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//App"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//App"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//App"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </ocl.ecore:Variable>
+  <ecore:EAnnotation source="positions">
+    <eAnnotations source="positions.0" references="/0/generateComponents">
+      <details key="start" value="838"/>
+      <details key="end" value="1216"/>
+      <details key="line" value="17"/>
+    </eAnnotations>
+    <eAnnotations source="positions.1" references="/0/generateComponents/%">
+      <details key="start" value="888"/>
+      <details key="end" value="889"/>
+      <details key="line" value="18"/>
+    </eAnnotations>
+    <eAnnotations source="positions.2" references="/0/generateComponents/%.1">
+      <details key="start" value="890"/>
+      <details key="end" value="918"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.3" references="/0/generateComponents/%.1/anApp">
+      <details key="start" value="912"/>
+      <details key="end" value="917"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.4" references="/0/generateComponents/%.2">
+      <details key="start" value="920"/>
+      <details key="end" value="921"/>
+      <details key="line" value="20"/>
+    </eAnnotations>
+    <eAnnotations source="positions.5" references="/0/generateComponents/%.3">
+      <details key="start" value="922"/>
+      <details key="end" value="948"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.6" references="/0/generateComponents/%.3/anApp">
+      <details key="start" value="942"/>
+      <details key="end" value="947"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.7" references="/0/generateComponents/%.4">
+      <details key="start" value="950"/>
+      <details key="end" value="951"/>
+      <details key="line" value="21"/>
+    </eAnnotations>
+    <eAnnotations source="positions.8" references="/0/generateComponents/%.5">
+      <details key="start" value="952"/>
+      <details key="end" value="977"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.9" references="/0/generateComponents/%.5/anApp">
+      <details key="start" value="971"/>
+      <details key="end" value="976"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.10" references="/0/generateComponents/%.6">
+      <details key="start" value="979"/>
+      <details key="end" value="980"/>
+      <details key="line" value="22"/>
+    </eAnnotations>
+    <eAnnotations source="positions.11" references="/0/generateComponents/%.7">
+      <details key="start" value="981"/>
+      <details key="end" value="1009"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.12" references="/0/generateComponents/%.7/anApp">
+      <details key="start" value="1003"/>
+      <details key="end" value="1008"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.13" references="/0/generateComponents/%.8">
+      <details key="start" value="1011"/>
+      <details key="end" value="1012"/>
+      <details key="line" value="23"/>
+    </eAnnotations>
+    <eAnnotations source="positions.14" references="/0/generateComponents/%.9">
+      <details key="start" value="1013"/>
+      <details key="end" value="1033"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.15" references="/0/generateComponents/%.9/anApp">
+      <details key="start" value="1027"/>
+      <details key="end" value="1032"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.16" references="/0/generateComponents/%.10">
+      <details key="start" value="1035"/>
+      <details key="end" value="1036"/>
+      <details key="line" value="24"/>
+    </eAnnotations>
+    <eAnnotations source="positions.17" references="/0/generateComponents/%.11">
+      <details key="start" value="1037"/>
+      <details key="end" value="1057"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.18" references="/0/generateComponents/%.11/anApp">
+      <details key="start" value="1051"/>
+      <details key="end" value="1056"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.19" references="/0/generateComponents/%.12">
+      <details key="start" value="1059"/>
+      <details key="end" value="1060"/>
+      <details key="line" value="25"/>
+    </eAnnotations>
+    <eAnnotations source="positions.20" references="/0/generateComponents/%.13">
+      <details key="start" value="1061"/>
+      <details key="end" value="1088"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.21" references="/0/generateComponents/%.13/anApp">
+      <details key="start" value="1082"/>
+      <details key="end" value="1087"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.22" references="/0/generateComponents/%.14">
+      <details key="start" value="1090"/>
+      <details key="end" value="1091"/>
+      <details key="line" value="26"/>
+    </eAnnotations>
+    <eAnnotations source="positions.23" references="/0/generateComponents/%.15">
+      <details key="start" value="1092"/>
+      <details key="end" value="1113"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.24" references="/0/generateComponents/%.15/anApp">
+      <details key="start" value="1107"/>
+      <details key="end" value="1112"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.25" references="/0/generateComponents/%.16">
+      <details key="start" value="1115"/>
+      <details key="end" value="1116"/>
+      <details key="line" value="27"/>
+    </eAnnotations>
+    <eAnnotations source="positions.26" references="/0/generateComponents/%.17">
+      <details key="start" value="1117"/>
+      <details key="end" value="1140"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.27" references="/0/generateComponents/%.17/anApp">
+      <details key="start" value="1134"/>
+      <details key="end" value="1139"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.28" references="/0/generateComponents/%.18">
+      <details key="start" value="1142"/>
+      <details key="end" value="1143"/>
+      <details key="line" value="28"/>
+    </eAnnotations>
+    <eAnnotations source="positions.29" references="/0/generateComponents/%.19">
+      <details key="start" value="1144"/>
+      <details key="end" value="1168"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.30" references="/0/generateComponents/%.19/anApp">
+      <details key="start" value="1162"/>
+      <details key="end" value="1167"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.31" references="/0/generateComponents/%.20">
+      <details key="start" value="1170"/>
+      <details key="end" value="1171"/>
+      <details key="line" value="29"/>
+    </eAnnotations>
+    <eAnnotations source="positions.32" references="/0/generateComponents/%.21">
+      <details key="start" value="1172"/>
+      <details key="end" value="1201"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.33" references="/0/generateComponents/%.21/anApp">
+      <details key="start" value="1195"/>
+      <details key="end" value="1200"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.34" references="/0/generateComponents/%.22">
+      <details key="start" value="1203"/>
+      <details key="end" value="1204"/>
+      <details key="line" value="30"/>
+    </eAnnotations>
+    <eAnnotations source="positions.35" references="/0/generateComponents/anApp">
+      <details key="start" value="874"/>
+      <details key="end" value="885"/>
+      <details key="line" value="17"/>
+    </eAnnotations>
+  </ecore:EAnnotation>
+</xmi:XMI>

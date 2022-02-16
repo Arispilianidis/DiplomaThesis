@@ -1,0 +1,90 @@
+[comment encoding = UTF-8 /]
+[module generateScreeningFinal('http://www.example.org/ezProcess')]
+
+
+[template public generateScreeningFinal(aScreening : Screening)]
+
+[file ('Output/src/'+aScreening.name + '/'+ aScreening.name+'Final.js', false, 'UTF-8')]
+import React from 'react'
+import { useLocation } from 'react-router';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+
+function [aScreening.name/]Final() {
+
+    const navigate = useNavigate();
+    let { state } = useLocation();
+    const ratingsMap = state['[0]'/]
+	const serverUserInfo = state['[1]'/]
+    const formValues  = state['[2]'/]
+
+
+ 	//Update user's info since he completed the process
+    function completeTask() {
+
+        let processName = "[aScreening.hasJobDescription.name/]"
+
+        const {
+            FIRST_NAME,
+            LAST_NAME,
+            EMAIL
+        } = formValues
+
+        const candidateInfo = {
+            FIRST_NAME,
+            LAST_NAME,
+            EMAIL,
+            Score: averageRating()
+        }
+
+        console.log(candidateInfo);
+		let ratingMap = ['['/]Object.fromEntries(ratingsMap)]
+
+        axios.post("http://localhost:3000/JobDescTempCandidates", { candidateInfo, processName, ratingMap }, {
+            headers: {
+                'Access-Control-Allow-Origin': '*',
+                'Content-Type': 'application/json',
+            }
+        })
+            .catch(error => {
+                console.log("Error at post Candidates => " + error.message)
+            })
+
+        navigate("/Processes", { state: ['['/]serverUserInfo] });
+
+	}
+
+
+
+    function averageRating() {
+
+        let sum = 0;
+        ratingsMap.forEach((v) => {
+            sum += v;
+        });
+
+        return (sum / (ratingsMap.size)).toPrecision(3)
+    }
+
+
+    return (
+        <div style={{ width: "50%", margin: "auto", maxWidth: 650, minWidth: 500 }}>
+            <h1>Screening Overview</h1><br />
+            <hr></hr><br />
+
+            <div style={{ backgroundColor: 'white', wordWrap: 'break-word' }}>
+
+                This candidate's overall score is : {averageRating()} / 100 
+
+            </div>
+
+            <button className="btn_complete" onClick={() => { completeTask() }}>Complete Task</button>
+           
+        </div>
+
+    )
+}
+
+export default [aScreening.name/]Final
+[/file]
+[/template]

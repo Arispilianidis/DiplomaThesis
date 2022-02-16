@@ -1,0 +1,55 @@
+[comment encoding = UTF-8 /]
+[module generateTablesCSS('http://www.example.org/ezProcess')]
+
+
+[template public generateTablesCSS(anApp : App)]
+
+[file ('Output/src/css/Tables.css', false, 'UTF-8')]
+
+table {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    background-color:aliceblue;
+
+  }
+  
+  table td, table th {
+    border: 1.2px solid #ddd;
+    padding: 8px;
+    text-align: center;
+  }
+
+  button{
+    cursor: pointer;
+    font-size: 13px;
+  }
+  
+  table tr:nth-child(even){background-color: #f2f2f2;}
+  
+  table tr:hover {
+      background-color: #ddd;
+    }
+  
+  table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: center;
+    background-color: #04AA6D;
+    color: white;
+  }
+
+  .TableContainer {
+      display: block;
+      background-color:#11529D;
+      margin: 40px auto;
+      font-family: Arial, Helvetica, sans-serif;
+      padding: 40px;
+      padding-left: 20px;
+      width: 90%;
+      min-width: 600px;
+      max-width: 600px;
+
+  }
+
+[/file]
+[/template]

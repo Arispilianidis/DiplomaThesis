@@ -1,0 +1,30 @@
+[comment encoding = UTF-8 /]
+[module generateUsers('http://www.example.org/ezProcess')]
+
+
+[template public generateUsers(anApp : App)]
+
+[file ('Server/myapi/routes/users.js', false, 'UTF-8')]
+var express = require('express');
+var router = express.Router();
+const { writeFile } = require('fs')
+
+//Read from file when the server starts so the data are always up to date
+var dataArray = require('./UsersData.json');
+
+
+/* GET users listing. */
+router.get('/', function (req, res, next) {
+
+  let param = JSON.parse(req.query.loginValues)
+  const serverUserInfo = dataArray.find( person => ((person.username.toLowerCase() === param.username.toLowerCase()) && (person.password.toLowerCase() === param.password.toLowerCase())) );
+
+  res.json({
+    data: serverUserInfo
+  })
+});
+
+module.exports = router;
+
+[/file]
+[/template]

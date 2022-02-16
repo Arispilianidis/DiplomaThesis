@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:mtl="http://www.eclipse.org/acceleo/mtl/3.0" xmlns:ocl.ecore="http://www.eclipse.org/ocl/1.1.0/Ecore">
+  <mtl:Module name="generateLoginPage" nsURI="EzProcessGenerator::files::generateLoginPage" startHeaderPosition="29" endHeaderPosition="1372">
+    <input>
+      <takesTypesFrom href="http://www.example.org/ezProcess#/"/>
+    </input>
+    <ownedModuleElement xsi:type="mtl:Template" name="generateLoginPage" visibility="Public">
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;"/>
+      <body xsi:type="mtl:FileBlock" openMode="OverWrite">
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="import React from 'react';&#xA;import { useNavigate } from 'react-router-dom';&#xA;import { Formik, Form } from 'formik'&#xA;import * as Yup from 'yup'&#xA;import FormikControl from './components/FormikControl'&#xA;import axios from 'axios';&#xA;import './css/Login.css';&#xA;&#xA;const workersURL = &quot;http://localhost:3000/users&quot;&#xA;&#xA;function Login() {&#xA;&#xA;    const navigate = useNavigate();&#xA;&#xA;    const initialValues = {&#xA;        username: '',&#xA;        password: '',&#xA;    }&#xA;&#xA;    const validationSchema = Yup.object({&#xA;        username: Yup.string().required('Required'),&#xA;        password: Yup.string().required('Required'),&#xA;    })&#xA;&#xA;    const onSubmit = loginValues => {&#xA;&#xA;        console.log('Form data', loginValues)&#xA;&#xA;        axios.get(workersURL, {&#xA;            params: { loginValues },&#xA;            method: 'GET',&#xA;            headers: {&#xA;                'Access-Control-Allow-Origin': '*',&#xA;                'Content-Type': 'application/json',&#xA;            }&#xA;        })&#xA;            .then(response => {&#xA;&#xA;                if (response.data.data !== undefined) {&#xA;&#xA;                    alert(&quot;Welcome &quot; + loginValues.username)&#xA;                    setTimeout(function () {&#xA;                        navigate(&quot;/Processes&quot;, { state: "/>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="[">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="response.data.data] });&#xA;                    }, 500);&#xA;                }&#xA;                else {&#xA;                    alert(&quot;You dont have access to this page&quot;)&#xA;                }&#xA;&#xA;            })&#xA;            .catch(error => console.log(&quot;Error at get users &quot; + error.message))&#xA;&#xA;    }&#xA;&#xA;    return (&#xA;        &lt;div className=&quot;flexBoxes&quot;>&#xA;&#xA;            &lt;Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit}>&#xA;                {&#xA;                    formik => &lt;Form className=&quot;form-container&quot;>&#xA;                        &lt;div className=&quot;imgcontainer&quot;>&#xA;                            &lt;img src=&quot;https://www.w3schools.com/howto/img_avatar2.png&quot; alt=&quot;Avatar&quot; />&#xA;                        &lt;/div>&#xA;                        &lt;FormikControl control='input' type='text' label='Username' name='username' placeholder=&quot;Enter Username&quot; />&#xA;                        &lt;FormikControl control='input' type='text' label='Password' name='password' placeholder=&quot;Enter Password&quot; />&#xA;                        &lt;button type='submit' disabled={!formik.isValid}> Submit&lt;/button>&#xA;                    &lt;/Form>&#xA;                }&#xA;            &lt;/Formik>&#xA;&#xA;        &lt;/div>&#xA;    )&#xA;&#xA;}&#xA;&#xA;export default Login&#xA;&#xA;"/>
+        <fileUrl xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="Output/src/Login.js">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </fileUrl>
+        <charset xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="UTF-8">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </charset>
+      </body>
+      <parameter name="anApp">
+        <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//App"/>
+      </parameter>
+    </ownedModuleElement>
+  </mtl:Module>
+  <ecore:EPackage name="additions">
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_String_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Integer_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Real_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Real"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ecore_EObject_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+      </eAnnotations>
+      <eOperations name="generateLoginPage">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL" references="/0/generateLoginPage"/>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="anApp">
+          <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//App"/>
+        </eParameters>
+      </eOperations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_OclAny_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OclAny"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Collection(T)_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Collection(T)"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Sequence(T)_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Sequence(T)"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_OrderedSet(T)_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OrderedSet(T)"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ezProcess_App_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.example.org/ezProcess#//App"/>
+      </eAnnotations>
+    </eClassifiers>
+  </ecore:EPackage>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//App"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//App"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//App"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//App"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//App"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </ocl.ecore:Variable>
+  <ecore:EAnnotation source="positions">
+    <eAnnotations source="positions.0" references="/0/generateLoginPage">
+      <details key="start" value="94"/>
+      <details key="end" value="2570"/>
+      <details key="line" value="5"/>
+    </eAnnotations>
+    <eAnnotations source="positions.1" references="/0/generateLoginPage/%">
+      <details key="start" value="143"/>
+      <details key="end" value="144"/>
+      <details key="line" value="6"/>
+    </eAnnotations>
+    <eAnnotations source="positions.2" references="/0/generateLoginPage/%.1">
+      <details key="start" value="144"/>
+      <details key="end" value="2558"/>
+      <details key="line" value="7"/>
+    </eAnnotations>
+    <eAnnotations source="positions.3" references="/0/generateLoginPage/%.1/%">
+      <details key="start" value="191"/>
+      <details key="end" value="1368"/>
+      <details key="line" value="8"/>
+    </eAnnotations>
+    <eAnnotations source="positions.4" references="/0/generateLoginPage/%.1/%.1">
+      <details key="start" value="1369"/>
+      <details key="end" value="1372"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.5" references="/0/generateLoginPage/%.1/%.2">
+      <details key="start" value="1374"/>
+      <details key="end" value="2551"/>
+      <details key="line" value="50"/>
+    </eAnnotations>
+    <eAnnotations source="positions.6" references="/0/generateLoginPage/%.1/%.3">
+      <details key="start" value="151"/>
+      <details key="end" value="172"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.7" references="/0/generateLoginPage/%.1/%.4">
+      <details key="start" value="181"/>
+      <details key="end" value="188"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.8" references="/0/generateLoginPage/anApp">
+      <details key="start" value="129"/>
+      <details key="end" value="140"/>
+      <details key="line" value="5"/>
+    </eAnnotations>
+  </ecore:EAnnotation>
+</xmi:XMI>

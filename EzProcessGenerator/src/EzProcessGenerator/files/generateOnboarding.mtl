@@ -1,0 +1,182 @@
+[comment encoding = UTF-8 /]
+[module generateOnboarding('http://www.example.org/ezProcess')]
+
+[import EzProcessGenerator::files::generateOnboardingPage /]
+[import commonTemplates::getInitialValueType /]
+[import commonTemplates::getValidationSchema /]
+
+[template public generateOnboarding(anOnboarding : Onboarding) post(trim())]
+
+[file ('Output/src/'+anOnboarding.name + '/'+ anOnboarding.name+'.js', false, 'UTF-8')]
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useLocation } from 'react-router';
+import * as Yup from 'yup'
+import axios from 'axios'
+[for (page : Page | hasPage)]
+import [anOnboarding.name + i /] from './[anOnboarding.name + i /]'
+[generateOnboardingPage(page,anOnboarding.name,i)/][/for]
+
+
+function [anOnboarding.name/]() {
+
+  let { state } = useLocation();
+  let serverUserInfo = state[ '[0]' /] 
+  //let processName = state[ '[1]' /] 
+
+  const navigate = useNavigate();
+  const ['[step, setStep]'/]= useState(0);
+  const ['[initialValues, setInitialValues]'/] = useState({
+ [for (page : Page | hasPage)]
+ [for (value: InitialValue | page.hasInitialvalue)]
+ 	[getInitialValueType(value)/]
+[/for]
+ [for (task : OnboardingTask | hasOnboardingTask)]
+	[if (task.oclIsTypeOf(OnboardingSetupTask))]
+	[task.name/][getInitialValueType(task.oclAsType(OnboardingSetupTask).isAbout)/]
+	[elseif (task.oclIsTypeOf(OnboardingTrainingTask))]
+	[task.name/][getInitialValueType(task.oclAsType(OnboardingTrainingTask).isAbout.isAbout)/]
+	[/if]
+ [/for]
+[/for]
+  })
+
+  function postProof(imagefileName) {
+
+    var uploadsPostURL = "http://localhost:3000/uploadeFiles"
+
+    var formData = new FormData();
+    var imagefile = document.getElementById(imagefileName)
+    console.log(imagefile)
+    formData.append("file", imagefile.files['[0]'/]);
+    axios.post(uploadsPostURL, formData, {
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Content-Type':'multipart/form-data',
+      }
+    })
+    .catch(error => console.log("Error at postProof => " + error.message))
+
+  }
+
+ [for (page : Page | hasPage)]
+  const validationSchema[i/] = Yup.object({
+    [getValidationSchema(page)/]
+  })
+[/for]
+
+  function handleCandidate(formValues) {
+
+    let currentCandidate = candidates.find(c => (c.FIRST_NAME.toLowerCase() === formValues.FIRST_NAME.toLowerCase()) && (c.LAST_NAME.toLowerCase() === formValues.LAST_NAME.toLowerCase()) && (c.EMAIL.toLowerCase() === formValues.EMAIL.toLowerCase()))
+    console.log(currentCandidate)
+
+    if(currentCandidate === undefined){
+      return false
+    }
+    else{
+      setCandidateInfo(currentCandidate)
+      return true
+    }
+  }
+
+  const ['['/]candidateInfo, setCandidateInfo] = useState(null);
+  const ['['/]candidates, setCandidates] = useState(null)
+  const ['['/]optionsRating, setOptionsRating] = useState(null);
+  const ['['/]answers, setAnswers] = useState(null);
+
+  useEffect(() => {
+
+    axios.get("http://localhost:3000/JobDescTempCandidates", {
+      params: { JobDescTempOfScrenningProcess: "[anOnboarding.hasScreening.hasJobDescription.name/]" },
+      method: 'GET',
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Content-Type': 'application/json',
+      }
+    })
+      .then(response => {
+        console.log(response.data.data)
+        setCandidates(response.data.data)
+      })
+      .catch(error => {
+        console.log("Error at get Candidates => " + error.message)
+      })
+
+    axios.get("http://localhost:3000/JobDescTempOptionsRating", {
+      params: { processName: "[anOnboarding.hasScreening.hasJobDescription.name/]" },
+      method: 'GET',
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Content-Type': 'application/json',
+      }
+    })
+      .then(response => {
+        console.log(response.data.data)
+        setOptionsRating(response.data.data)
+
+      })
+      .catch(error => console.log("Error at get Job Description Options Rating " + error.message))
+
+      axios.get("http://localhost:3000/JobDescTemp", {
+        params: { processName: "[anOnboarding.hasScreening.hasJobDescription.name/]" },
+          method: 'GET',
+          headers: {
+              'Access-Control-Allow-Origin': '*',
+              'Content-Type': 'application/json',
+          }
+      })
+       .then(response => {
+            setAnswers(response.data.data)
+        })
+          .catch(error => {
+            alert("You need to complete a Job Description Task first")
+            console.log("Error at get Job Description Questions " + error.message)
+        })
+
+  }, ['['/]])
+
+  // Proceed to next step
+  const onSubmit = (formValues, final) => {
+
+    setInitialValues((prev) => ({ ...prev, ...formValues }))
+
+    if (final) {
+      console.log("Form submitted", formValues)
+
+      navigate("/Processes", { state: ['['/]serverUserInfo] });
+    }
+    else{
+      setStep(step => step + 1)
+    }
+
+  }
+
+
+
+  // Proceed to prev step
+  function prevStep() {
+    setStep(step => step - 1)
+  }
+
+  const pages = ['['/]
+[for (page : Page | hasPage) before ('\n')]
+	[if (page.first)]
+		<[anOnboarding.name + i/] initialValues={initialValues} validationSchema={validationSchema[i/]} onSubmit={onSubmit} postProof={postProof} handleCandidate={handleCandidate}/>,
+	[else]
+		<[anOnboarding.name + i/] prevStep={prevStep} initialValues={initialValues} validationSchema={validationSchema[i/]} onSubmit={onSubmit} postProof={postProof} candidateInfo={candidateInfo} optionsRating={optionsRating} answers={answers}/>,
+	[/if]
+[/for]
+	[']'/]
+
+  return (
+    <div>
+      { pages['[step]'/] }
+    </div>
+  );
+
+}
+
+export default [anOnboarding.name/];
+
+[/file]
+[/template]

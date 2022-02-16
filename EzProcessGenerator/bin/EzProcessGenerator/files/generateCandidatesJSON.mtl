@@ -1,0 +1,11 @@
+[comment encoding = UTF-8 /]
+[module generateCandidatesJSON('http://www.example.org/ezProcess')]
+
+
+[template public generateCandidatesJSON(aScreening : Screening) post(trim())]
+
+[file ('Server/myapi/routes/'+aScreening.hasJobDescription.name+'Candidates.json', false, 'UTF-8')]
+['['/]
+]
+[/file]
+[/template]

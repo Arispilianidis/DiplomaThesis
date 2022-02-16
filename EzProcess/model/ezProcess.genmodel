@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel"
+    modelDirectory="/EzProcess/src-gen" creationIcons="false" editDirectory="/EzProcess.edit/src-gen"
+    editorDirectory="/EzProcess.editor/src-gen" modelPluginID="EzProcess" modelName="EzProcess"
+    rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container" codeFormatting="true"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="5.0" copyrightFields="false"
+    operationReflection="true" importOrganizing="true">
+  <foreignModel>ezProcess.ecore</foreignModel>
+  <testsDirectory xsi:nil="true"/>
+  <genPackages prefix="EzProcess" disposableProviderFactory="true" ecorePackage="ezProcess.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="ezProcess.ecore#//CandidateFieldType">
+      <genEnumLiterals ecoreEnumLiteral="ezProcess.ecore#//CandidateFieldType/FIRST_NAME"/>
+      <genEnumLiterals ecoreEnumLiteral="ezProcess.ecore#//CandidateFieldType/LAST_NAME"/>
+    </genEnums>
+    <genClasses ecoreClass="ezProcess.ecore#//App">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ezProcess.ecore#//App/hasEmployee"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ezProcess.ecore#//App/hasProcess"/>
+    </genClasses>
+    <genClasses ecoreClass="ezProcess.ecore#//Employee">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ezProcess.ecore#//Employee/firstName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ezProcess.ecore#//Employee/lastName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ezProcess.ecore#//Employee/email"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ezProcess.ecore#//Employee/userName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ezProcess.ecore#//Employee/password"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ezProcess.ecore#//Employee/id"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ezProcess.ecore#//Employee/assignedProcess"/>
+    </genClasses>
+    <genClasses ecoreClass="ezProcess.ecore#//Process">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ezProcess.ecore#//Process/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ezProcess.ecore#//Process/hasPage"/>
+    </genClasses>
+    <genClasses ecoreClass="ezProcess.ecore#//JobDescription"/>
+    <genClasses ecoreClass="ezProcess.ecore#//Screening">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ezProcess.ecore#//Screening/hasJobDescription"/>
+    </genClasses>
+    <genClasses ecoreClass="ezProcess.ecore#//Onboarding">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ezProcess.ecore#//Onboarding/hasScreening"/>
+    </genClasses>
+    <genClasses ecoreClass="ezProcess.ecore#//Page">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ezProcess.ecore#//Page/final"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ezProcess.ecore#//Page/first"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ezProcess.ecore#//Page/header"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ezProcess.ecore#//Page/description"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ezProcess.ecore#//Page/hasInitialvalue"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ezProcess.ecore#//Page/hasQuestion"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ezProcess.ecore#//Page/hasOnboardingTask"/>
+    </genClasses>
+    <genClasses ecoreClass="ezProcess.ecore#//InitialValue">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ezProcess.ecore#//InitialValue/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ezProcess.ecore#//InitialValue/required"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ezProcess.ecore#//InitialValue/Proof"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ezProcess.ecore#//InitialValue/label"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ezProcess.ecore#//InitialValue/rating"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ezProcess.ecore#//InitialValue/hasRating"/>
+    </genClasses>
+    <genClasses ecoreClass="ezProcess.ecore#//FreeTextArea">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ezProcess.ecore#//FreeTextArea/placeholder"/>
+    </genClasses>
+    <genClasses ecoreClass="ezProcess.ecore#//InputField"/>
+    <genClasses ecoreClass="ezProcess.ecore#//CandidateTextField">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ezProcess.ecore#//CandidateTextField/candidateField"/>
+    </genClasses>
+    <genClasses ecoreClass="ezProcess.ecore#//MultipleOptions">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ezProcess.ecore#//MultipleOptions/optionVarName"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ezProcess.ecore#//MultipleOptions/hasOption"/>
+    </genClasses>
+    <genClasses ecoreClass="ezProcess.ecore#//SingleChoiceFromList"/>
+    <genClasses ecoreClass="ezProcess.ecore#//MultipleChoiceFromList"/>
+    <genClasses ecoreClass="ezProcess.ecore#//SingleChoiceFromDropDownList"/>
+    <genClasses ecoreClass="ezProcess.ecore#//Option">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ezProcess.ecore#//Option/optionValue"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ezProcess.ecore#//Option/optionLabel"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ezProcess.ecore#//Option/hasOptionRating"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ezProcess.ecore#//Option/setupActions"/>
+    </genClasses>
+    <genClasses ecoreClass="ezProcess.ecore#//OptionRating">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ezProcess.ecore#//OptionRating/tooltipArray"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ezProcess.ecore#//OptionRating/ID"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ezProcess.ecore#//OptionRating/hasThreshold"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ezProcess.ecore#//OptionRating/isAbout"/>
+    </genClasses>
+    <genClasses ecoreClass="ezProcess.ecore#//OptionThreshold">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ezProcess.ecore#//OptionThreshold/min"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ezProcess.ecore#//OptionThreshold/max"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ezProcess.ecore#//OptionThreshold/text"/>
+    </genClasses>
+    <genClasses ecoreClass="ezProcess.ecore#//Question">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ezProcess.ecore#//Question/question"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ezProcess.ecore#//Question/isAbout"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ezProcess.ecore#//Question/ID"/>
+    </genClasses>
+    <genClasses ecoreClass="ezProcess.ecore#//OnboardingTrainingTask">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ezProcess.ecore#//OnboardingTrainingTask/isAbout"/>
+    </genClasses>
+    <genClasses ecoreClass="ezProcess.ecore#//OnboardingSetupTask">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ezProcess.ecore#//OnboardingSetupTask/isAbout"/>
+    </genClasses>
+    <genClasses ecoreClass="ezProcess.ecore#//OnboardingTask">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ezProcess.ecore#//OnboardingTask/label"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ezProcess.ecore#//OnboardingTask/name"/>
+    </genClasses>
+    <genClasses ecoreClass="ezProcess.ecore#//TextField">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ezProcess.ecore#//TextField/placeholder"/>
+    </genClasses>
+    <genClasses ecoreClass="ezProcess.ecore#//NumberField">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ezProcess.ecore#//NumberField/min"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ezProcess.ecore#//NumberField/max"/>
+    </genClasses>
+    <genClasses ecoreClass="ezProcess.ecore#//Date"/>
+    <genClasses ecoreClass="ezProcess.ecore#//EmailField">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ezProcess.ecore#//EmailField/placeholder"/>
+    </genClasses>
+    <genClasses ecoreClass="ezProcess.ecore#//FileField"/>
+    <genClasses ecoreClass="ezProcess.ecore#//Rating">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ezProcess.ecore#//Rating/tooltipArray"/>
+    </genClasses>
+    <genClasses ecoreClass="ezProcess.ecore#//CandidateEmailField"/>
+  </genPackages>
+</genmodel:GenModel>

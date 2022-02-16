@@ -1,0 +1,15 @@
+[comment encoding = UTF-8 /]
+[module getValueOptionsArray('http://www.example.org/ezProcess')]
+
+
+[template public getValueOptionsArray(page: Page)]
+[for (value : InitialValue | hasInitialvalue)]
+[if (value.oclIsKindOf(MultipleOptions))]
+  const [value.oclAsType(MultipleOptions).optionVarName/] = ['['/]
+		[for (value.oclAsType(MultipleOptions).hasOption)]
+    {key: '[value.oclAsType(MultipleOptions).hasOption.optionLabel->at(i)/]', value: '[value.oclAsType(MultipleOptions).hasOption.optionValue->at(i)/]'},
+		[/for]
+  [']'/]
+[/if]
+[/for]
+[/template]

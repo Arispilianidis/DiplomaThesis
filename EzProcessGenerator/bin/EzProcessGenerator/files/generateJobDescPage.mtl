@@ -1,0 +1,74 @@
+[comment encoding = UTF-8 /]
+[module generateJobDescPage('http://www.example.org/ezProcess')]
+
+[import commonTemplates::getFormikControlField /]
+[import commonTemplates::getValueOptionsArray /]
+
+[template public generateJobDescPage(page : Page, processName: String, id : Integer) post(trim())]
+[file ('Output/src/'+processName+'/'+processName + id+'.js', false, 'UTF-8')]
+import React from 'react'
+import FormikControl from '../components/FormikControl'
+import { Formik, Form } from 'formik'
+[if (page.hasInitialvalue->select(v| v.Proof)->size()>0)]
+import Proof, {getImageName} from '../components/Proof'
+[elseif (page.hasInitialvalue->select(v| v.Proof)->size() = 0 and page.hasInitialvalue->select(v | v.oclIsTypeOf(FileField))->size() > 0)]
+import {getImageName} from '../components/Proof'
+[/if]
+
+
+
+function [processName+id/](props) {
+
+  const handleSumbit = (values) => {
+	[if (page.final)]
+    props.onSubmit(values, true)
+	[else]
+    props.onSubmit(values, false)
+	[/if]
+  }
+
+[getValueOptionsArray(page)/]
+
+
+[if (not(page.first))]
+  const { prevStep } = props
+[/if]
+
+ return (
+
+    <Formik initialValues={props.initialValues} validationSchema={props.validationSchema} onSubmit={handleSumbit} >
+      {
+
+        formik => <Form id="regForm">
+          <h1> [processName/] Overview </h1>
+          <span>
+
+            <h3> [page.header/]</h3>
+
+            <p> [page.description/]</p>
+
+			[for ( value : InitialValue | hasInitialvalue) separator ('\n')]
+				[getFormikControlField(value)/]
+			[/for]
+
+
+			
+            <button type="submit"> Next</button>
+			[if (not(page.first))]
+						<button type="button" className="PrevBtn" onClick={prevStep}> Back</button>
+			[/if]
+
+          </span>
+
+        </Form>
+      }
+
+    </Formik >
+  )
+}
+
+export default [processName+id/]
+
+[/file]
+[/template]
+

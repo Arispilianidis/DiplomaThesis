@@ -1,0 +1,18 @@
+[comment encoding = UTF-8 /]
+[module generateDatepicker('http://www.example.org/ezProcess')]
+
+
+[template public generateDatepicker(anApp : App)]
+
+[file ('Output/src/css/Datepicker.css', false, 'UTF-8')]
+
+.react-datepicker-wrapper,
+.react-datepicker__input-container,
+.react-datepicker__input-container input {
+  display: inline;
+  width: 90%;
+  margin-left: 0.5px;
+}
+
+[/file]
+[/template]

@@ -1,0 +1,1219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:mtl="http://www.eclipse.org/acceleo/mtl/3.0" xmlns:ocl.ecore="http://www.eclipse.org/ocl/1.1.0/Ecore">
+  <mtl:Module name="generateJobDesc" nsURI="EzProcessGenerator::files::generateJobDesc" startHeaderPosition="29" endHeaderPosition="146">
+    <input>
+      <takesTypesFrom href="http://www.example.org/ezProcess#/"/>
+    </input>
+    <imports href="generateJobDescPage.emtl#/0"/>
+    <imports href="../../commonTemplates/getInitialValueType.emtl#/0"/>
+    <imports href="../../commonTemplates/getValidationSchema.emtl#/0"/>
+    <imports href="generateJobDescFinal.emtl#/0"/>
+    <ownedModuleElement xsi:type="mtl:Template" name="generateJobDesc" visibility="Public">
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;"/>
+      <body xsi:type="mtl:FileBlock" openMode="OverWrite">
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="import React, { useState } from 'react';&#xA;import * as Yup from 'yup'&#xA;import { useNavigate } from 'react-router-dom';&#xA;import { useLocation } from 'react-router';&#xA;import axios from 'axios'&#xA;import '../css/JobDescTemp.css';&#xA;"/>
+        <body xsi:type="mtl:TemplateInvocation">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <definition href="generateJobDescFinal.emtl#/0/generateJobDescFinal"/>
+          <argument xsi:type="ocl.ecore:VariableExp" name="aJobDescriptionTemplate" referredVariable="/0/generateJobDesc/aJobDescriptionTemplate">
+            <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//JobDescription"/>
+          </argument>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;"/>
+        <body xsi:type="mtl:ForBlock">
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="import "/>
+          <body xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/oclstdlib_String_Class/+">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            <source xsi:type="ocl.ecore:PropertyCallExp">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+              <source xsi:type="ocl.ecore:VariableExp" name="aJobDescriptionTemplate" referredVariable="/0/generateJobDesc/aJobDescriptionTemplate">
+                <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//JobDescription"/>
+              </source>
+              <referredProperty xsi:type="ecore:EAttribute" href="http://www.example.org/ezProcess#//Process/name"/>
+            </source>
+            <argument xsi:type="ocl.ecore:VariableExp" name="i" referredVariable="/17">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+            </argument>
+          </body>
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=" from './"/>
+          <body xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/oclstdlib_String_Class/+">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            <source xsi:type="ocl.ecore:PropertyCallExp">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+              <source xsi:type="ocl.ecore:VariableExp" name="aJobDescriptionTemplate" referredVariable="/0/generateJobDesc/aJobDescriptionTemplate">
+                <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//JobDescription"/>
+              </source>
+              <referredProperty xsi:type="ecore:EAttribute" href="http://www.example.org/ezProcess#//Process/name"/>
+            </source>
+            <argument xsi:type="ocl.ecore:VariableExp" name="i" referredVariable="/17">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+            </argument>
+          </body>
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="'&#xA;"/>
+          <body xsi:type="mtl:TemplateInvocation">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            <definition href="generateJobDescPage.emtl#/0/generateJobDescPage"/>
+            <argument xsi:type="ocl.ecore:VariableExp" name="page" referredVariable="/0/generateJobDesc/%.1/%.3/page">
+              <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Page"/>
+            </argument>
+            <argument xsi:type="ocl.ecore:PropertyCallExp">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+              <source xsi:type="ocl.ecore:VariableExp" name="aJobDescriptionTemplate" referredVariable="/0/generateJobDesc/aJobDescriptionTemplate">
+                <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//JobDescription"/>
+              </source>
+              <referredProperty xsi:type="ecore:EAttribute" href="http://www.example.org/ezProcess#//Process/name"/>
+            </argument>
+            <argument xsi:type="ocl.ecore:VariableExp" name="i" referredVariable="/17">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+            </argument>
+          </body>
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;"/>
+          <loopVariable name="page">
+            <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Page"/>
+          </loopVariable>
+          <iterSet xsi:type="ocl.ecore:PropertyCallExp" eType="/10/OrderedSet(Page)">
+            <source xsi:type="ocl.ecore:VariableExp" name="self" referredVariable="/11">
+              <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//JobDescription"/>
+            </source>
+            <referredProperty xsi:type="ecore:EReference" href="http://www.example.org/ezProcess#//Process/hasPage"/>
+          </iterSet>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;&#xA;&#xA;function "/>
+        <body xsi:type="ocl.ecore:PropertyCallExp">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <source xsi:type="ocl.ecore:VariableExp" name="aJobDescriptionTemplate" referredVariable="/0/generateJobDesc/aJobDescriptionTemplate">
+            <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//JobDescription"/>
+          </source>
+          <referredProperty xsi:type="ecore:EAttribute" href="http://www.example.org/ezProcess#//Process/name"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="() {&#xA;&#xA;  let { state } = useLocation();&#xA;  let serverUserInfo = state"/>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="[0]">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=" &#xA;  let processName = state"/>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="[1]">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=" &#xA;&#xA;  const navigate = useNavigate();&#xA;  const "/>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="[step, setStep]">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="= useState(0);&#xA;  const "/>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="[initialValues, setInitialValues]">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=" = useState({&#xA;"/>
+        <body xsi:type="mtl:ForBlock">
+          <body xsi:type="mtl:ForBlock">
+            <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=" &#x9;"/>
+            <body xsi:type="mtl:TemplateInvocation">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+              <definition href="../../commonTemplates/getInitialValueType.emtl#/0/getInitialValueType"/>
+              <argument xsi:type="ocl.ecore:VariableExp" name="value" referredVariable="/0/generateJobDesc/%.1/%.15/%/value">
+                <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//InitialValue"/>
+              </argument>
+            </body>
+            <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;"/>
+            <loopVariable name="value">
+              <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//InitialValue"/>
+            </loopVariable>
+            <iterSet xsi:type="ocl.ecore:PropertyCallExp" eType="/10/OrderedSet(InitialValue)">
+              <source xsi:type="ocl.ecore:VariableExp" name="page" referredVariable="/0/generateJobDesc/%.1/%.15/page">
+                <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Page"/>
+              </source>
+              <referredProperty xsi:type="ecore:EReference" href="http://www.example.org/ezProcess#//Page/hasInitialvalue"/>
+            </iterSet>
+          </body>
+          <loopVariable name="page">
+            <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Page"/>
+          </loopVariable>
+          <iterSet xsi:type="ocl.ecore:PropertyCallExp" eType="/10/OrderedSet(Page)">
+            <source xsi:type="ocl.ecore:VariableExp" name="self" referredVariable="/23">
+              <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//JobDescription"/>
+            </source>
+            <referredProperty xsi:type="ecore:EReference" href="http://www.example.org/ezProcess#//Process/hasPage"/>
+          </iterSet>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="  })&#xA;&#xA;&#xA;  function postProof(imagefileName) {&#xA;&#xA;    var uploadsPostURL = &quot;http://localhost:3000/uploadeFiles&quot;&#xA;&#xA;    var formData = new FormData();&#xA;    var imagefile = document.getElementById(imagefileName)&#xA;    console.log(imagefile)&#xA;    formData.append(&quot;file&quot;, imagefile.files"/>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="[0]">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=");&#xA;    axios.post(uploadsPostURL, formData, {&#xA;      headers: {&#xA;        'Access-Control-Allow-Origin': '*',&#xA;        'Content-Type':'multipart/form-data',&#xA;      }&#xA;    })&#xA;    .catch(error => console.log(&quot;Error at postProof => &quot; + error.message))&#xA;&#xA;  }&#xA;&#xA;"/>
+        <body xsi:type="mtl:ForBlock">
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="  const validationSchema"/>
+          <body xsi:type="ocl.ecore:VariableExp" name="i" referredVariable="/38">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+          </body>
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=" = Yup.object({&#xA;    "/>
+          <body xsi:type="mtl:TemplateInvocation">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            <definition href="../../commonTemplates/getValidationSchema.emtl#/0/getValidationSchema"/>
+            <argument xsi:type="ocl.ecore:VariableExp" name="page" referredVariable="/0/generateJobDesc/%.1/%.19/page">
+              <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Page"/>
+            </argument>
+          </body>
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;  })&#xA;&#xA;"/>
+          <loopVariable name="page">
+            <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Page"/>
+          </loopVariable>
+          <iterSet xsi:type="ocl.ecore:PropertyCallExp" eType="/10/OrderedSet(Page)">
+            <source xsi:type="ocl.ecore:VariableExp" name="self" referredVariable="/33">
+              <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//JobDescription"/>
+            </source>
+            <referredProperty xsi:type="ecore:EReference" href="http://www.example.org/ezProcess#//Process/hasPage"/>
+          </iterSet>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;  // Proceed to next step&#xA;  const onSubmit = (formValues, final) => {&#xA;&#xA;    setInitialValues((prev) => ({ ...prev, ...formValues }))&#xA;&#xA;    if (final) {&#xA;      console.log(&quot;Form submitted&quot;, formValues)&#xA;&#xA;      navigate(&quot;/"/>
+        <body xsi:type="ocl.ecore:PropertyCallExp">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <source xsi:type="ocl.ecore:VariableExp" name="aJobDescriptionTemplate" referredVariable="/0/generateJobDesc/aJobDescriptionTemplate">
+            <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//JobDescription"/>
+          </source>
+          <referredProperty xsi:type="ecore:EAttribute" href="http://www.example.org/ezProcess#//Process/name"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="Final&quot;, {state: "/>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="[formValues,serverUserInfo,processName]">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="});&#xA;    }&#xA;    else{&#xA;      setStep(step => step + 1)&#xA;    }&#xA;&#xA;  }&#xA;&#xA;  // Proceed to prev step&#xA;  function prevStep() {&#xA;    setStep(step => step - 1)&#xA;  }&#xA;&#xA;  const pages = "/>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="[">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;"/>
+        <body xsi:type="mtl:ForBlock">
+          <body xsi:type="mtl:IfBlock">
+            <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;&#x9;&lt;"/>
+            <body xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/oclstdlib_String_Class/+">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+              <source xsi:type="ocl.ecore:PropertyCallExp">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                <source xsi:type="ocl.ecore:VariableExp" name="aJobDescriptionTemplate" referredVariable="/0/generateJobDesc/aJobDescriptionTemplate">
+                  <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//JobDescription"/>
+                </source>
+                <referredProperty xsi:type="ecore:EAttribute" href="http://www.example.org/ezProcess#//Process/name"/>
+              </source>
+              <argument xsi:type="ocl.ecore:VariableExp" name="i" referredVariable="/51">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+              </argument>
+            </body>
+            <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=" initialValues={initialValues} validationSchema={validationSchema"/>
+            <body xsi:type="ocl.ecore:VariableExp" name="i" referredVariable="/51">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+            </body>
+            <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="} onSubmit={onSubmit} postProof={postProof} />,&#xA;"/>
+            <ifExpr xsi:type="ocl.ecore:PropertyCallExp">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
+              <source xsi:type="ocl.ecore:VariableExp" name="page" referredVariable="/0/generateJobDesc/%.1/%.27/page">
+                <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Page"/>
+              </source>
+              <referredProperty xsi:type="ecore:EAttribute" href="http://www.example.org/ezProcess#//Page/first"/>
+            </ifExpr>
+            <else>
+              <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;&#x9;&lt;"/>
+              <body xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/oclstdlib_String_Class/+">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                <source xsi:type="ocl.ecore:PropertyCallExp">
+                  <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                  <source xsi:type="ocl.ecore:VariableExp" name="aJobDescriptionTemplate" referredVariable="/0/generateJobDesc/aJobDescriptionTemplate">
+                    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//JobDescription"/>
+                  </source>
+                  <referredProperty xsi:type="ecore:EAttribute" href="http://www.example.org/ezProcess#//Process/name"/>
+                </source>
+                <argument xsi:type="ocl.ecore:VariableExp" name="i" referredVariable="/51">
+                  <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+                </argument>
+              </body>
+              <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=" prevStep={prevStep} initialValues={initialValues} validationSchema={validationSchema"/>
+              <body xsi:type="ocl.ecore:VariableExp" name="i" referredVariable="/51">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+              </body>
+              <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="} onSubmit={onSubmit} postProof={postProof} />,&#xA;"/>
+            </else>
+          </body>
+          <loopVariable name="page">
+            <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Page"/>
+          </loopVariable>
+          <iterSet xsi:type="ocl.ecore:PropertyCallExp" eType="/10/OrderedSet(Page)">
+            <source xsi:type="ocl.ecore:VariableExp" name="self" referredVariable="/42">
+              <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//JobDescription"/>
+            </source>
+            <referredProperty xsi:type="ecore:EReference" href="http://www.example.org/ezProcess#//Process/hasPage"/>
+          </iterSet>
+          <before xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          </before>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;"/>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="]">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;&#xA;  return (&#xA;    &lt;div>&#xA;      { pages"/>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="[step]">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=" }&#xA;    &lt;/div>&#xA;  );&#xA;&#xA;}&#xA;&#xA;export default "/>
+        <body xsi:type="ocl.ecore:PropertyCallExp">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <source xsi:type="ocl.ecore:VariableExp" name="aJobDescriptionTemplate" referredVariable="/0/generateJobDesc/aJobDescriptionTemplate">
+            <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//JobDescription"/>
+          </source>
+          <referredProperty xsi:type="ecore:EAttribute" href="http://www.example.org/ezProcess#//Process/name"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=";&#xA;"/>
+        <fileUrl xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/oclstdlib_String_Class/+">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <source xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/oclstdlib_String_Class/+">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            <source xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/oclstdlib_String_Class/+">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+              <source xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/oclstdlib_String_Class/+">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                <source xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="Output/src/">
+                  <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                </source>
+                <argument xsi:type="ocl.ecore:PropertyCallExp">
+                  <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                  <source xsi:type="ocl.ecore:VariableExp" name="aJobDescriptionTemplate" referredVariable="/0/generateJobDesc/aJobDescriptionTemplate">
+                    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//JobDescription"/>
+                  </source>
+                  <referredProperty xsi:type="ecore:EAttribute" href="http://www.example.org/ezProcess#//Process/name"/>
+                </argument>
+              </source>
+              <argument xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="/">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+              </argument>
+            </source>
+            <argument xsi:type="ocl.ecore:PropertyCallExp">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+              <source xsi:type="ocl.ecore:VariableExp" name="aJobDescriptionTemplate" referredVariable="/0/generateJobDesc/aJobDescriptionTemplate">
+                <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//JobDescription"/>
+              </source>
+              <referredProperty xsi:type="ecore:EAttribute" href="http://www.example.org/ezProcess#//Process/name"/>
+            </argument>
+          </source>
+          <argument xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=".js">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          </argument>
+        </fileUrl>
+        <charset xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="UTF-8">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </charset>
+      </body>
+      <parameter name="aJobDescriptionTemplate">
+        <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//JobDescription"/>
+      </parameter>
+      <post xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/oclstdlib_String_Class/trim">
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <source xsi:type="ocl.ecore:VariableExp" name="self" referredVariable="/5">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </source>
+      </post>
+    </ownedModuleElement>
+  </mtl:Module>
+  <ecore:EPackage name="additions">
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_String_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+      </eAnnotations>
+      <eOperations name="trim">
+        <eAnnotations source="MTL non-standard"/>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+      </eOperations>
+      <eOperations name="+">
+        <eAnnotations source="MTL non-standard"/>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="other">
+          <eType xsi:type="ocl.ecore:AnyType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OclAny"/>
+        </eParameters>
+      </eOperations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Integer_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Real_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Real"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ecore_EObject_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+      </eAnnotations>
+      <eOperations name="generateJobDesc">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL" references="/0/generateJobDesc"/>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="aJobDescriptionTemplate">
+          <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//JobDescription"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="generateJobDescPage">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="generateJobDescPage.emtl#/0/generateJobDescPage"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="page">
+          <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Page"/>
+        </eParameters>
+        <eParameters name="processName">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </eParameters>
+        <eParameters name="id">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="getInitialValueType">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="../../commonTemplates/getInitialValueType.emtl#/0/getInitialValueType"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="value">
+          <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//InitialValue"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="getValidationSchema">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="../../commonTemplates/getValidationSchema.emtl#/0/getValidationSchema"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="page">
+          <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Page"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="generateJobDescFinal">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="generateJobDescFinal.emtl#/0/generateJobDescFinal"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="aJobDescriptionTemplate">
+          <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//JobDescription"/>
+        </eParameters>
+      </eOperations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_OclAny_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OclAny"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Collection(T)_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Collection(T)"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Sequence(T)_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Sequence(T)"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_OrderedSet(T)_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OrderedSet(T)"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ezProcess_JobDescription_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.example.org/ezProcess#//JobDescription"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ezProcess_Page_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.example.org/ezProcess#//Page"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ezProcess_InitialValue_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.example.org/ezProcess#//InitialValue"/>
+      </eAnnotations>
+    </eClassifiers>
+  </ecore:EPackage>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//JobDescription"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//JobDescription"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//JobDescription"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//JobDescription"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//JobDescription"/>
+  </ocl.ecore:Variable>
+  <ecore:EPackage name="collections">
+    <eClassifiers xsi:type="ocl.ecore:OrderedSetType" name="OrderedSet(Page)" instanceClassName="java.util.LinkedHashSet">
+      <elementType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Page"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ocl.ecore:OrderedSetType" name="OrderedSet(InitialValue)" instanceClassName="java.util.LinkedHashSet">
+      <elementType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//InitialValue"/>
+    </eClassifiers>
+  </ecore:EPackage>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//JobDescription"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Page"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Page"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Page"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Page"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//JobDescription"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="i">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//JobDescription"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//JobDescription"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//JobDescription"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//JobDescription"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//JobDescription"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//JobDescription"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Page"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Page"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//InitialValue"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//InitialValue"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Page"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="i">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//JobDescription"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="i">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//JobDescription"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//JobDescription"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Page"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Page"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Page"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//JobDescription"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="i">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//JobDescription"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//JobDescription"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//JobDescription"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//JobDescription"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//JobDescription"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Page"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Page"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Page"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Page"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Page"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Page"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//JobDescription"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="i">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//JobDescription"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//JobDescription"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//JobDescription"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </ocl.ecore:Variable>
+  <ecore:EAnnotation source="positions">
+    <eAnnotations source="positions.0" references="/0/generateJobDesc">
+      <details key="start" value="306"/>
+      <details key="end" value="3077"/>
+      <details key="line" value="10"/>
+    </eAnnotations>
+    <eAnnotations source="positions.1" references="/0/generateJobDesc/%">
+      <details key="start" value="395"/>
+      <details key="end" value="396"/>
+      <details key="line" value="11"/>
+    </eAnnotations>
+    <eAnnotations source="positions.2" references="/0/generateJobDesc/%.1">
+      <details key="start" value="396"/>
+      <details key="end" value="3065"/>
+      <details key="line" value="12"/>
+    </eAnnotations>
+    <eAnnotations source="positions.3" references="/0/generateJobDesc/%.1/%">
+      <details key="start" value="506"/>
+      <details key="end" value="725"/>
+      <details key="line" value="13"/>
+    </eAnnotations>
+    <eAnnotations source="positions.4" references="/0/generateJobDesc/%.1/%.1">
+      <details key="start" value="726"/>
+      <details key="end" value="771"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.5" references="/0/generateJobDesc/%.1/%.1/aJobDescriptionTemplate">
+      <details key="start" value="747"/>
+      <details key="end" value="770"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.6" references="/0/generateJobDesc/%.1/%.2">
+      <details key="start" value="773"/>
+      <details key="end" value="774"/>
+      <details key="line" value="20"/>
+    </eAnnotations>
+    <eAnnotations source="positions.7" references="/0/generateJobDesc/%.1/%.3">
+      <details key="start" value="774"/>
+      <details key="end" value="960"/>
+      <details key="line" value="20"/>
+    </eAnnotations>
+    <eAnnotations source="positions.8" references="/0/generateJobDesc/%.1/%.3/%">
+      <details key="start" value="804"/>
+      <details key="end" value="811"/>
+      <details key="line" value="21"/>
+    </eAnnotations>
+    <eAnnotations source="positions.9" references="/0/generateJobDesc/%.1/%.3/%.1">
+      <details key="start" value="812"/>
+      <details key="end" value="844"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.10" references="/0/generateJobDesc/%.1/%.3/%.1/%">
+      <details key="start" value="812"/>
+      <details key="end" value="840"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.11" references="/0/generateJobDesc/%.1/%.3/%.1/%/aJobDescriptionTemplate">
+      <details key="start" value="812"/>
+      <details key="end" value="835"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.12" references="/0/generateJobDesc/%.1/%.3/%.1/i">
+      <details key="start" value="843"/>
+      <details key="end" value="844"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.13" references="/0/generateJobDesc/%.1/%.3/%.2">
+      <details key="start" value="847"/>
+      <details key="end" value="856"/>
+      <details key="line" value="21"/>
+    </eAnnotations>
+    <eAnnotations source="positions.14" references="/0/generateJobDesc/%.1/%.3/%.3">
+      <details key="start" value="857"/>
+      <details key="end" value="889"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.15" references="/0/generateJobDesc/%.1/%.3/%.3/%">
+      <details key="start" value="857"/>
+      <details key="end" value="885"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.16" references="/0/generateJobDesc/%.1/%.3/%.3/%/aJobDescriptionTemplate">
+      <details key="start" value="857"/>
+      <details key="end" value="880"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.17" references="/0/generateJobDesc/%.1/%.3/%.3/i">
+      <details key="start" value="888"/>
+      <details key="end" value="889"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.18" references="/0/generateJobDesc/%.1/%.3/%.4">
+      <details key="start" value="892"/>
+      <details key="end" value="894"/>
+      <details key="line" value="21"/>
+    </eAnnotations>
+    <eAnnotations source="positions.19" references="/0/generateJobDesc/%.1/%.3/%.5">
+      <details key="start" value="895"/>
+      <details key="end" value="951"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.20" references="/0/generateJobDesc/%.1/%.3/%.5/page">
+      <details key="start" value="915"/>
+      <details key="end" value="919"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.21" references="/0/generateJobDesc/%.1/%.3/%.5/%">
+      <details key="start" value="920"/>
+      <details key="end" value="948"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.22" references="/0/generateJobDesc/%.1/%.3/%.5/%/aJobDescriptionTemplate">
+      <details key="start" value="920"/>
+      <details key="end" value="943"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.23" references="/0/generateJobDesc/%.1/%.3/%.5/i">
+      <details key="start" value="949"/>
+      <details key="end" value="950"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.24" references="/0/generateJobDesc/%.1/%.3/%.6">
+      <details key="start" value="953"/>
+      <details key="end" value="954"/>
+      <details key="line" value="23"/>
+    </eAnnotations>
+    <eAnnotations source="positions.25" references="/0/generateJobDesc/%.1/%.3/page">
+      <details key="start" value="780"/>
+      <details key="end" value="791"/>
+      <details key="line" value="20"/>
+    </eAnnotations>
+    <eAnnotations source="positions.26" references="/0/generateJobDesc/%.1/%.3/%.7">
+      <details key="start" value="794"/>
+      <details key="end" value="801"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.27" references="/0/generateJobDesc/%.1/%.3/%.7/self">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.28" references="/0/generateJobDesc/%.1/%.4">
+      <details key="start" value="961"/>
+      <details key="end" value="973"/>
+      <details key="line" value="24"/>
+    </eAnnotations>
+    <eAnnotations source="positions.29" references="/0/generateJobDesc/%.1/%.5">
+      <details key="start" value="974"/>
+      <details key="end" value="1002"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.30" references="/0/generateJobDesc/%.1/%.5/aJobDescriptionTemplate">
+      <details key="start" value="974"/>
+      <details key="end" value="997"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.31" references="/0/generateJobDesc/%.1/%.6">
+      <details key="start" value="1004"/>
+      <details key="end" value="1071"/>
+      <details key="line" value="27"/>
+    </eAnnotations>
+    <eAnnotations source="positions.32" references="/0/generateJobDesc/%.1/%.7">
+      <details key="start" value="1073"/>
+      <details key="end" value="1078"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.33" references="/0/generateJobDesc/%.1/%.8">
+      <details key="start" value="1081"/>
+      <details key="end" value="1108"/>
+      <details key="line" value="30"/>
+    </eAnnotations>
+    <eAnnotations source="positions.34" references="/0/generateJobDesc/%.1/%.9">
+      <details key="start" value="1110"/>
+      <details key="end" value="1115"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.35" references="/0/generateJobDesc/%.1/%.10">
+      <details key="start" value="1118"/>
+      <details key="end" value="1163"/>
+      <details key="line" value="31"/>
+    </eAnnotations>
+    <eAnnotations source="positions.36" references="/0/generateJobDesc/%.1/%.11">
+      <details key="start" value="1164"/>
+      <details key="end" value="1181"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.37" references="/0/generateJobDesc/%.1/%.12">
+      <details key="start" value="1183"/>
+      <details key="end" value="1206"/>
+      <details key="line" value="34"/>
+    </eAnnotations>
+    <eAnnotations source="positions.38" references="/0/generateJobDesc/%.1/%.13">
+      <details key="start" value="1207"/>
+      <details key="end" value="1242"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.39" references="/0/generateJobDesc/%.1/%.14">
+      <details key="start" value="1244"/>
+      <details key="end" value="1258"/>
+      <details key="line" value="35"/>
+    </eAnnotations>
+    <eAnnotations source="positions.40" references="/0/generateJobDesc/%.1/%.15">
+      <details key="start" value="1259"/>
+      <details key="end" value="1386"/>
+      <details key="line" value="36"/>
+    </eAnnotations>
+    <eAnnotations source="positions.41" references="/0/generateJobDesc/%.1/%.15/%">
+      <details key="start" value="1290"/>
+      <details key="end" value="1379"/>
+      <details key="line" value="37"/>
+    </eAnnotations>
+    <eAnnotations source="positions.42" references="/0/generateJobDesc/%.1/%.15/%/%">
+      <details key="start" value="1341"/>
+      <details key="end" value="1343"/>
+      <details key="line" value="38"/>
+    </eAnnotations>
+    <eAnnotations source="positions.43" references="/0/generateJobDesc/%.1/%.15/%/%.1">
+      <details key="start" value="1344"/>
+      <details key="end" value="1370"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.44" references="/0/generateJobDesc/%.1/%.15/%/%.1/value">
+      <details key="start" value="1364"/>
+      <details key="end" value="1369"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.45" references="/0/generateJobDesc/%.1/%.15/%/%.2">
+      <details key="start" value="1372"/>
+      <details key="end" value="1373"/>
+      <details key="line" value="39"/>
+    </eAnnotations>
+    <eAnnotations source="positions.46" references="/0/generateJobDesc/%.1/%.15/%/value">
+      <details key="start" value="1296"/>
+      <details key="end" value="1315"/>
+      <details key="line" value="37"/>
+    </eAnnotations>
+    <eAnnotations source="positions.47" references="/0/generateJobDesc/%.1/%.15/%/%.3">
+      <details key="start" value="1318"/>
+      <details key="end" value="1338"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.48" references="/0/generateJobDesc/%.1/%.15/%/%.3/page">
+      <details key="start" value="1318"/>
+      <details key="end" value="1322"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.49" references="/0/generateJobDesc/%.1/%.15/page">
+      <details key="start" value="1265"/>
+      <details key="end" value="1276"/>
+      <details key="line" value="36"/>
+    </eAnnotations>
+    <eAnnotations source="positions.50" references="/0/generateJobDesc/%.1/%.15/%.1">
+      <details key="start" value="1279"/>
+      <details key="end" value="1286"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.51" references="/0/generateJobDesc/%.1/%.15/%.1/self">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.52" references="/0/generateJobDesc/%.1/%.16">
+      <details key="start" value="1387"/>
+      <details key="end" value="1660"/>
+      <details key="line" value="41"/>
+    </eAnnotations>
+    <eAnnotations source="positions.53" references="/0/generateJobDesc/%.1/%.17">
+      <details key="start" value="1661"/>
+      <details key="end" value="1666"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.54" references="/0/generateJobDesc/%.1/%.18">
+      <details key="start" value="1668"/>
+      <details key="end" value="1917"/>
+      <details key="line" value="51"/>
+    </eAnnotations>
+    <eAnnotations source="positions.55" references="/0/generateJobDesc/%.1/%.19">
+      <details key="start" value="1918"/>
+      <details key="end" value="2037"/>
+      <details key="line" value="62"/>
+    </eAnnotations>
+    <eAnnotations source="positions.56" references="/0/generateJobDesc/%.1/%.19/%">
+      <details key="start" value="1948"/>
+      <details key="end" value="1972"/>
+      <details key="line" value="63"/>
+    </eAnnotations>
+    <eAnnotations source="positions.57" references="/0/generateJobDesc/%.1/%.19/i">
+      <details key="start" value="1973"/>
+      <details key="end" value="1974"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.58" references="/0/generateJobDesc/%.1/%.19/%.1">
+      <details key="start" value="1976"/>
+      <details key="end" value="1996"/>
+      <details key="line" value="63"/>
+    </eAnnotations>
+    <eAnnotations source="positions.59" references="/0/generateJobDesc/%.1/%.19/%.2">
+      <details key="start" value="1997"/>
+      <details key="end" value="2022"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.60" references="/0/generateJobDesc/%.1/%.19/%.2/page">
+      <details key="start" value="2017"/>
+      <details key="end" value="2021"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.61" references="/0/generateJobDesc/%.1/%.19/%.3">
+      <details key="start" value="2024"/>
+      <details key="end" value="2031"/>
+      <details key="line" value="65"/>
+    </eAnnotations>
+    <eAnnotations source="positions.62" references="/0/generateJobDesc/%.1/%.19/page">
+      <details key="start" value="1924"/>
+      <details key="end" value="1935"/>
+      <details key="line" value="62"/>
+    </eAnnotations>
+    <eAnnotations source="positions.63" references="/0/generateJobDesc/%.1/%.19/%.4">
+      <details key="start" value="1938"/>
+      <details key="end" value="1945"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.64" references="/0/generateJobDesc/%.1/%.19/%.4/self">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.65" references="/0/generateJobDesc/%.1/%.20">
+      <details key="start" value="2038"/>
+      <details key="end" value="2255"/>
+      <details key="line" value="68"/>
+    </eAnnotations>
+    <eAnnotations source="positions.66" references="/0/generateJobDesc/%.1/%.21">
+      <details key="start" value="2256"/>
+      <details key="end" value="2284"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.67" references="/0/generateJobDesc/%.1/%.21/aJobDescriptionTemplate">
+      <details key="start" value="2256"/>
+      <details key="end" value="2279"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.68" references="/0/generateJobDesc/%.1/%.22">
+      <details key="start" value="2286"/>
+      <details key="end" value="2302"/>
+      <details key="line" value="77"/>
+    </eAnnotations>
+    <eAnnotations source="positions.69" references="/0/generateJobDesc/%.1/%.23">
+      <details key="start" value="2303"/>
+      <details key="end" value="2344"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.70" references="/0/generateJobDesc/%.1/%.24">
+      <details key="start" value="2346"/>
+      <details key="end" value="2511"/>
+      <details key="line" value="77"/>
+    </eAnnotations>
+    <eAnnotations source="positions.71" references="/0/generateJobDesc/%.1/%.25">
+      <details key="start" value="2512"/>
+      <details key="end" value="2515"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.72" references="/0/generateJobDesc/%.1/%.26">
+      <details key="start" value="2517"/>
+      <details key="end" value="2518"/>
+      <details key="line" value="91"/>
+    </eAnnotations>
+    <eAnnotations source="positions.73" references="/0/generateJobDesc/%.1/%.27">
+      <details key="start" value="2518"/>
+      <details key="end" value="2932"/>
+      <details key="line" value="91"/>
+    </eAnnotations>
+    <eAnnotations source="positions.74" references="/0/generateJobDesc/%.1/%.27/%">
+      <details key="start" value="2563"/>
+      <details key="end" value="2925"/>
+      <details key="line" value="92"/>
+    </eAnnotations>
+    <eAnnotations source="positions.75" references="/0/generateJobDesc/%.1/%.27/%/%">
+      <details key="start" value="2581"/>
+      <details key="end" value="2584"/>
+      <details key="line" value="93"/>
+    </eAnnotations>
+    <eAnnotations source="positions.76" references="/0/generateJobDesc/%.1/%.27/%/%.1">
+      <details key="start" value="2585"/>
+      <details key="end" value="2617"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.77" references="/0/generateJobDesc/%.1/%.27/%/%.1/%">
+      <details key="start" value="2585"/>
+      <details key="end" value="2613"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.78" references="/0/generateJobDesc/%.1/%.27/%/%.1/%/aJobDescriptionTemplate">
+      <details key="start" value="2585"/>
+      <details key="end" value="2608"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.79" references="/0/generateJobDesc/%.1/%.27/%/%.1/i">
+      <details key="start" value="2616"/>
+      <details key="end" value="2617"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.80" references="/0/generateJobDesc/%.1/%.27/%/%.2">
+      <details key="start" value="2619"/>
+      <details key="end" value="2684"/>
+      <details key="line" value="93"/>
+    </eAnnotations>
+    <eAnnotations source="positions.81" references="/0/generateJobDesc/%.1/%.27/%/i">
+      <details key="start" value="2685"/>
+      <details key="end" value="2686"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.82" references="/0/generateJobDesc/%.1/%.27/%/%.3">
+      <details key="start" value="2688"/>
+      <details key="end" value="2736"/>
+      <details key="line" value="93"/>
+    </eAnnotations>
+    <eAnnotations source="positions.83" references="/0/generateJobDesc/%.1/%.27/%/%.4">
+      <details key="start" value="2567"/>
+      <details key="end" value="2579"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.84" references="/0/generateJobDesc/%.1/%.27/%/%.4/page">
+      <details key="start" value="2568"/>
+      <details key="end" value="2572"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.85" references="/0/generateJobDesc/%.1/%.27/%/%.5">
+      <details key="start" value="2737"/>
+      <details key="end" value="2920"/>
+      <details key="line" value="94"/>
+    </eAnnotations>
+    <eAnnotations source="positions.86" references="/0/generateJobDesc/%.1/%.27/%/%.5/%">
+      <details key="start" value="2744"/>
+      <details key="end" value="2747"/>
+      <details key="line" value="95"/>
+    </eAnnotations>
+    <eAnnotations source="positions.87" references="/0/generateJobDesc/%.1/%.27/%/%.5/%.1">
+      <details key="start" value="2748"/>
+      <details key="end" value="2780"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.88" references="/0/generateJobDesc/%.1/%.27/%/%.5/%.1/%">
+      <details key="start" value="2748"/>
+      <details key="end" value="2776"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.89" references="/0/generateJobDesc/%.1/%.27/%/%.5/%.1/%/aJobDescriptionTemplate">
+      <details key="start" value="2748"/>
+      <details key="end" value="2771"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.90" references="/0/generateJobDesc/%.1/%.27/%/%.5/%.1/i">
+      <details key="start" value="2779"/>
+      <details key="end" value="2780"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.91" references="/0/generateJobDesc/%.1/%.27/%/%.5/%.2">
+      <details key="start" value="2782"/>
+      <details key="end" value="2867"/>
+      <details key="line" value="95"/>
+    </eAnnotations>
+    <eAnnotations source="positions.92" references="/0/generateJobDesc/%.1/%.27/%/%.5/i">
+      <details key="start" value="2868"/>
+      <details key="end" value="2869"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.93" references="/0/generateJobDesc/%.1/%.27/%/%.5/%.3">
+      <details key="start" value="2871"/>
+      <details key="end" value="2919"/>
+      <details key="line" value="95"/>
+    </eAnnotations>
+    <eAnnotations source="positions.94" references="/0/generateJobDesc/%.1/%.27/page">
+      <details key="start" value="2524"/>
+      <details key="end" value="2535"/>
+      <details key="line" value="91"/>
+    </eAnnotations>
+    <eAnnotations source="positions.95" references="/0/generateJobDesc/%.1/%.27/%.1">
+      <details key="start" value="2538"/>
+      <details key="end" value="2545"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.96" references="/0/generateJobDesc/%.1/%.27/%.1/self">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.97" references="/0/generateJobDesc/%.1/%.27/%.2">
+      <details key="start" value="2555"/>
+      <details key="end" value="2559"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.98" references="/0/generateJobDesc/%.1/%.28">
+      <details key="start" value="2933"/>
+      <details key="end" value="2934"/>
+      <details key="line" value="98"/>
+    </eAnnotations>
+    <eAnnotations source="positions.99" references="/0/generateJobDesc/%.1/%.29">
+      <details key="start" value="2935"/>
+      <details key="end" value="2938"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.100" references="/0/generateJobDesc/%.1/%.30">
+      <details key="start" value="2940"/>
+      <details key="end" value="2976"/>
+      <details key="line" value="99"/>
+    </eAnnotations>
+    <eAnnotations source="positions.101" references="/0/generateJobDesc/%.1/%.31">
+      <details key="start" value="2977"/>
+      <details key="end" value="2985"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.102" references="/0/generateJobDesc/%.1/%.32">
+      <details key="start" value="2987"/>
+      <details key="end" value="3025"/>
+      <details key="line" value="102"/>
+    </eAnnotations>
+    <eAnnotations source="positions.103" references="/0/generateJobDesc/%.1/%.33">
+      <details key="start" value="3026"/>
+      <details key="end" value="3054"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.104" references="/0/generateJobDesc/%.1/%.33/aJobDescriptionTemplate">
+      <details key="start" value="3026"/>
+      <details key="end" value="3049"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.105" references="/0/generateJobDesc/%.1/%.34">
+      <details key="start" value="3056"/>
+      <details key="end" value="3058"/>
+      <details key="line" value="108"/>
+    </eAnnotations>
+    <eAnnotations source="positions.106" references="/0/generateJobDesc/%.1/%.35">
+      <details key="start" value="403"/>
+      <details key="end" value="487"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.107" references="/0/generateJobDesc/%.1/%.35/%">
+      <details key="start" value="403"/>
+      <details key="end" value="481"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.108" references="/0/generateJobDesc/%.1/%.35/%/%">
+      <details key="start" value="403"/>
+      <details key="end" value="451"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.109" references="/0/generateJobDesc/%.1/%.35/%/%/%">
+      <details key="start" value="403"/>
+      <details key="end" value="445"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.110" references="/0/generateJobDesc/%.1/%.35/%/%/%/%">
+      <details key="start" value="403"/>
+      <details key="end" value="416"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.111" references="/0/generateJobDesc/%.1/%.35/%/%/%/%.1">
+      <details key="start" value="417"/>
+      <details key="end" value="445"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.112" references="/0/generateJobDesc/%.1/%.35/%/%/%/%.1/aJobDescriptionTemplate">
+      <details key="start" value="417"/>
+      <details key="end" value="440"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.113" references="/0/generateJobDesc/%.1/%.35/%/%/%.1">
+      <details key="start" value="448"/>
+      <details key="end" value="451"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.114" references="/0/generateJobDesc/%.1/%.35/%/%.1">
+      <details key="start" value="453"/>
+      <details key="end" value="481"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.115" references="/0/generateJobDesc/%.1/%.35/%/%.1/aJobDescriptionTemplate">
+      <details key="start" value="453"/>
+      <details key="end" value="476"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.116" references="/0/generateJobDesc/%.1/%.35/%.1">
+      <details key="start" value="482"/>
+      <details key="end" value="487"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.117" references="/0/generateJobDesc/%.1/%.36">
+      <details key="start" value="496"/>
+      <details key="end" value="503"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.118" references="/0/generateJobDesc/aJobDescriptionTemplate">
+      <details key="start" value="339"/>
+      <details key="end" value="379"/>
+      <details key="line" value="10"/>
+    </eAnnotations>
+    <eAnnotations source="positions.119" references="/0/generateJobDesc/%.2">
+      <details key="start" value="386"/>
+      <details key="end" value="392"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.120" references="/0/generateJobDesc/%.2/self">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+  </ecore:EAnnotation>
+</xmi:XMI>

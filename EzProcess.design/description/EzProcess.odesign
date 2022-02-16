@@ -1,0 +1,530 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:validation="http://www.eclipse.org/sirius/description/validation/1.1.0" name="EzProcess" version="12.0.0.2017041100">
+  <ownedViewpoints name="App" modelFileExtension="ezprocess">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="App Diagram" domainClass="ezProcess::App">
+      <metamodel href="http://www.example.org/ezProcess#/"/>
+      <validationSet>
+        <ownedRules xsi:type="validation:SemanticValidationRule" name="QuestionOnlyInScreening" level="ERROR" message="You can only use Questions when you are working on a Screening Process" targetClass="ezProcess::Question">
+          <audits auditExpression="aql: self.eContainer(ezProcess::Process).oclIsTypeOf(ezProcess::Screening)"/>
+        </ownedRules>
+        <ownedRules xsi:type="validation:SemanticValidationRule" name="RatingOnlyInScreening" level="ERROR" message="You can only use Rating when you are working on a Screening Process" targetClass="ezProcess::Rating">
+          <audits auditExpression="aql: self.eContainer(ezProcess::Process).oclIsTypeOf(ezProcess::Screening)"/>
+        </ownedRules>
+        <ownedRules xsi:type="validation:SemanticValidationRule" name="OptionRatingOnlyInJobDescription" level="ERROR" message="You can only use OptionRating when you are working on a Job Description Process" targetClass="ezProcess::OptionRating">
+          <audits auditExpression="aql: self.eContainer(ezProcess::Process).oclIsTypeOf(ezProcess::JobDescription)"/>
+        </ownedRules>
+        <ownedRules xsi:type="validation:SemanticValidationRule" name="NoCandidateTextFieldsInJobDescription" level="ERROR" message="You can not use Candidate Text Field when you are working on a Job Description Process." targetClass="ezProcess::CandidateTextField">
+          <audits auditExpression="aql: not self.eContainer(ezProcess::Process).oclIsTypeOf(ezProcess::JobDescription)"/>
+        </ownedRules>
+        <ownedRules xsi:type="validation:SemanticValidationRule" name="NoCandidateEmailFieldsInJobDescription" level="ERROR" message="You can not use Candidate Email Field when you are working on a Job Description Process." targetClass="ezProcess::CandidateEmailField">
+          <audits auditExpression="aql: not self.eContainer(ezProcess::Process).oclIsTypeOf(ezProcess::JobDescription)"/>
+        </ownedRules>
+        <ownedRules xsi:type="validation:SemanticValidationRule" name="NoRatingOnCandidateTextFields" level="ERROR" message="You can not use Rating on a Candidate Text Field" targetClass="ezProcess::CandidateTextField">
+          <audits auditExpression="aql: self.hasRating->size()=0"/>
+        </ownedRules>
+        <ownedRules xsi:type="validation:SemanticValidationRule" name="NoRatingOnCandidateEmailFields" level="ERROR" message="You can not use Rating on a Candidate EmailField" targetClass="ezProcess::CandidateEmailField">
+          <audits auditExpression="aql: self.hasRating->size()=0"/>
+        </ownedRules>
+        <ownedRules xsi:type="validation:SemanticValidationRule" name="FreeTextRating" level="ERROR" message="If rating=true in a Free Text Area then you need to assign a Rating component." targetClass="ezProcess::FreeTextArea">
+          <audits auditExpression="service: freeTextRating()"/>
+        </ownedRules>
+        <ownedRules xsi:type="validation:SemanticValidationRule" name="InputFieldRating" level="ERROR" message="If rating=true in an Input Field then you need to assign a Rating component." targetClass="ezProcess::InputField">
+          <audits auditExpression="service: freeInputRating()"/>
+        </ownedRules>
+        <ownedRules xsi:type="validation:SemanticValidationRule" name="OnboardingTrainingTasksOnlyInOnboarding" level="ERROR" message="You can only use Onboarding Training Task when you are working on an Onboarding Process" targetClass="ezProcess::OnboardingTrainingTask">
+          <audits auditExpression="aql: self.eContainer(ezProcess::Process).oclIsTypeOf(ezProcess::Onboarding)"/>
+        </ownedRules>
+        <ownedRules xsi:type="validation:SemanticValidationRule" name="OnboardingSetupTasksOnlyInOnboarding" level="ERROR" message="You can only use Onboarding Setup Task when you are working on an Onboarding Process" targetClass="ezProcess::OnboardingSetupTask">
+          <audits auditExpression="aql: self.eContainer(ezProcess::Process).oclIsTypeOf(ezProcess::Onboarding)"/>
+        </ownedRules>
+        <ownedRules xsi:type="validation:SemanticValidationRule" name="NoSpaceAtProcessNames" level="ERROR" message="The name property of a Process should not contain empty spaces." targetClass="ezProcess::Process">
+          <audits auditExpression="aql: not( self.name.trim().contains(' '))"/>
+        </ownedRules>
+        <ownedRules xsi:type="validation:SemanticValidationRule" name="NoSpaceAtValueFieldNames" level="ERROR" message="The name property of a Value Field should not contain empty spaces." targetClass="ezProcess::InitialValue">
+          <audits auditExpression="aql: not( self.name.trim().contains(' '))"/>
+        </ownedRules>
+        <ownedRules xsi:type="validation:SemanticValidationRule" name="NoSpaceAtOnboardingTaskNames" level="ERROR" message="The name property of a Value Field should not contain empty spaces." targetClass="ezProcess::OnboardingTask">
+          <audits auditExpression="aql: not( self.name.trim().contains(' '))"/>
+        </ownedRules>
+        <ownedRules xsi:type="validation:SemanticValidationRule" name="UniqueProcessNameValues" level="ERROR" message="The name property of a Value Field should be unique." targetClass="ezProcess::InitialValue">
+          <audits auditExpression="aql: self.eContainer(ezProcess::Process).eAllContents()->filter(ezProcess::InitialValue)->select(v | v.name = self.name)->size() = 1"/>
+        </ownedRules>
+        <ownedRules xsi:type="validation:SemanticValidationRule" name="UniqueOptionVarNameValues" level="ERROR" message="The optionVarName property of a Value Field should be unique." targetClass="ezProcess::MultipleOptions">
+          <audits auditExpression="aql: self.eContainer(ezProcess::Process).eAllContents()->filter(ezProcess::MultipleOptions)->select(v | v.optionVarName = self.optionVarName)->size() = 1"/>
+        </ownedRules>
+        <ownedRules xsi:type="validation:SemanticValidationRule" name="NoSpaceAtOptionVarNameFields" level="ERROR" message="The Option Var Name property of a Value Field should not contain empty spaces." targetClass="ezProcess::MultipleOptions">
+          <audits auditExpression="aql: not( self.name.trim().contains(' '))"/>
+        </ownedRules>
+        <ownedRules xsi:type="validation:SemanticValidationRule" name="OnlyOneFirstPageAtEachProcess" level="ERROR" message="There must be one Page per Process which has first property equal to true." targetClass="ezProcess::Page">
+          <audits auditExpression="aql: self.eContainer(ezProcess::Process).eAllContents(ezProcess::Page)->select(p | p.first)->size()=1"/>
+        </ownedRules>
+        <ownedRules xsi:type="validation:SemanticValidationRule" name="OnlyOneFinalPageAtEachProcess" level="ERROR" message="There must be one Page per Process which has final property equal to true." targetClass="ezProcess::Page">
+          <audits auditExpression="aql: self.eContainer(ezProcess::Process).eAllContents(ezProcess::Page)->select(p | p.final)->size()=1"/>
+        </ownedRules>
+        <ownedRules xsi:type="validation:SemanticValidationRule" name="NoFirstAndFinal" level="ERROR" message="There can not be a Page with the properties first and final equal to true at the same time." targetClass="ezProcess::Page">
+          <audits auditExpression="aql: self.eContainer(ezProcess::Process).eAllContents(ezProcess::Page)->select(p | p.final and p.first)->size()= 0"/>
+        </ownedRules>
+        <ownedRules xsi:type="validation:SemanticValidationRule" name="UniqueEmployeeIDs" level="ERROR" message="The id property of an Employee should be unique." targetClass="ezProcess::Employee">
+          <audits auditExpression="aql: self.eContainer(ezProcess::App).eAllContents()->filter(ezProcess::Employee)->select(v | v.id = self.id)->size() = 1"/>
+        </ownedRules>
+        <ownedRules xsi:type="validation:SemanticValidationRule" name="UniqueQuestionIDs" level="ERROR" message="The ID property of a Question should be unique." targetClass="ezProcess::Question">
+          <audits auditExpression="aql: self.eContainer(ezProcess::Process).eAllContents()->filter(ezProcess::Question)->select(v | v.ID= self.ID)->size() = 1"/>
+        </ownedRules>
+        <ownedRules xsi:type="validation:SemanticValidationRule" name="UniqueOptionRatingIDs" level="ERROR" message="The id property of an Option Rating should be unique." targetClass="ezProcess::OptionRating">
+          <audits auditExpression="aql: self.eContainer(ezProcess::Process).eAllContents()->filter(ezProcess::OptionRating)->select(v | v.ID= self.ID)->size() = 1"/>
+        </ownedRules>
+        <ownedRules xsi:type="validation:SemanticValidationRule" name="PositiveEmployeeIDs" level="ERROR" message="The id property of an Employee should be positive." targetClass="ezProcess::Employee">
+          <audits auditExpression="aql: self.id >= 0"/>
+        </ownedRules>
+        <ownedRules xsi:type="validation:SemanticValidationRule" name="PositiveQuestionIDs" level="ERROR" message="The ID property of an Question should be positive." targetClass="ezProcess::Question">
+          <audits auditExpression="aql: self.ID >= 0"/>
+        </ownedRules>
+        <ownedRules xsi:type="validation:SemanticValidationRule" name="PositiveOptionRatingIDs" level="ERROR" message="The ID property of an Option Rating should be positive." targetClass="ezProcess::OptionRating">
+          <audits auditExpression="aql: self.ID >= 0"/>
+        </ownedRules>
+        <ownedRules xsi:type="validation:SemanticValidationRule" name="QuestionIsAboutValueFromJobDescription" level="ERROR" message="The isAbout property of a Question must refer to a Value Field from a Job Description Process." targetClass="ezProcess::Question">
+          <audits auditExpression="aql: self.isAbout.eContainer(ezProcess::Process).oclIsTypeOf(ezProcess::JobDescription)"/>
+        </ownedRules>
+        <ownedRules xsi:type="validation:SemanticValidationRule" name="OnboardingSetupIsAboutValueFromJobDescription" level="ERROR" message="The isAbout property of an Onboarding Setup Task must refer to a Value Field from a Job Description Process." targetClass="ezProcess::OnboardingSetupTask">
+          <audits auditExpression="aql: self.isAbout.eContainer(ezProcess::Process).oclIsTypeOf(ezProcess::JobDescription)"/>
+        </ownedRules>
+        <ownedRules xsi:type="validation:SemanticValidationRule" name="UniqueQuestionAtOptionRatingAtSameOption" level="ERROR" message="The property isAbout of Option Rating components, at the same Option component, should not refer to the same Question ID." targetClass="ezProcess::OptionRating">
+          <audits auditExpression="aql: self.eContainer().eAllContents(ezProcess::OptionRating)->select(o | o.isAbout = self.isAbout)->size()=1"/>
+        </ownedRules>
+        <ownedRules xsi:type="validation:SemanticValidationRule" name="OptionRatingSizeEqualsOptionSize" level="ERROR" message="If a Question refers to a Value Field, then each option of the Value Field should contain an Option Rating about that Question." targetClass="ezProcess::Question">
+          <audits auditExpression="aql: self.isAbout.hasOption.hasOptionRating->select(o | o.isAbout.ID=self.ID)->size() = self.isAbout.hasOption->size()"/>
+        </ownedRules>
+        <ownedRules xsi:type="validation:SemanticValidationRule" name="FirstPageOfScreeningContainsCandidateInfo" level="ERROR" message="The first page of the Screening process should contain all Candidate Info (First Name, Last Name and Email)" targetClass="ezProcess::Screening">
+          <audits auditExpression="aql: self.hasPage->select(p | p.first).hasInitialvalue->select(v | v.oclIsKindOf(ezProcess::CandidateTextField)).candidateField.toString()->includesAll(Sequence{'FIRST_NAME','LAST_NAME')}) and self.hasPage->select(p | p.first).hasInitialvalue->select(v | v.oclIsKindOf(ezProcess::CandidateEmailField))->size()= 1"/>
+        </ownedRules>
+        <ownedRules xsi:type="validation:SemanticValidationRule" name="FirstPageOfOnBoardingContainsCandidateInfo" level="ERROR" message="The first page of the Onboarding process should contain all Candidate Info (First Name, Last Name and Email)" targetClass="ezProcess::Onboarding">
+          <audits auditExpression="aql: self.hasPage->select(p | p.first).hasInitialvalue->select(v | v.oclIsKindOf(ezProcess::CandidateTextField)).candidateField.toString()->includesAll(Sequence{'FIRST_NAME','LAST_NAME')}) and self.hasPage->select(p | p.first).hasInitialvalue->select(v | v.oclIsKindOf(ezProcess::CandidateEmailField))-> size()= 1"/>
+        </ownedRules>
+        <ownedRules xsi:type="validation:SemanticValidationRule" name="WarningHasRatingWithoutPropertyRatingTrue" level="WARNING" message="You assigned a Rating component but the rating property of the value is false." targetClass="ezProcess::InitialValue">
+          <audits auditExpression="aql: if self.rating=false and self.hasRating->size()>0 then false else true endif"/>
+          <fixes name="RatingTrue">
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self">
+                <subModelOperations xsi:type="tool:SetValue" featureName="rating" valueExpression="true"/>
+              </firstModelOperations>
+            </initialOperation>
+          </fixes>
+        </ownedRules>
+        <ownedRules xsi:type="validation:SemanticValidationRule" name="UniqueOnboardingTaskNames" level="ERROR" message="The name property of an OnboardingTask should be unique." targetClass="ezProcess::OnboardingTask">
+          <audits auditExpression="aql: self.eContainer(ezProcess::Process).eAllContents()->filter(ezProcess::OnboardingTask)->select(v | v.name = self.name)->size() = 1"/>
+        </ownedRules>
+      </validationSet>
+      <defaultLayer name="Default">
+        <nodeMappings name="EmployeeNode" label="Employee" semanticCandidatesExpression="feature:hasEmployee" domainClass="ezProcess::Employee">
+          <style xsi:type="style:WorkspaceImageDescription" labelSize="12" showIcon="false" labelExpression="aql: self.firstName + ' ' + self.lastName" sizeComputationExpression="5" resizeKind="NSEW" workspacePath="/EzProcess.design/icons/Person.jpg">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          </style>
+        </nodeMappings>
+        <edgeMappings name="OnboardingHasScreeningEdge" sourceMapping="//@ownedViewpoints[name='App']/@ownedRepresentations[name='App%20Diagram']/@defaultLayer/@containerMappings[name='OnboardingContainer']" targetMapping="//@ownedViewpoints[name='App']/@ownedRepresentations[name='App%20Diagram']/@defaultLayer/@containerMappings[name='ScreeningContainer']" targetFinderExpression="aql: self.hasScreening">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_orange']"/>
+            <centerLabelStyleDescription labelSize="12" labelExpression="hasScreening">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="ScreeningHasJobDescdge" sourceMapping="//@ownedViewpoints[name='App']/@ownedRepresentations[name='App%20Diagram']/@defaultLayer/@containerMappings[name='ScreeningContainer']" targetMapping="//@ownedViewpoints[name='App']/@ownedRepresentations[name='App%20Diagram']/@defaultLayer/@containerMappings[name='JobDescriptionContainer']" targetFinderExpression="aql: self.hasJobDescription">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_orange']"/>
+            <centerLabelStyleDescription labelSize="12" labelExpression="hasJobDescription">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="EmployeeHasProcessEdge" sourceMapping="//@ownedViewpoints[name='App']/@ownedRepresentations[name='App%20Diagram']/@defaultLayer/@nodeMappings[name='EmployeeNode']" targetMapping="//@ownedViewpoints[name='App']/@ownedRepresentations[name='App%20Diagram']/@defaultLayer/@containerMappings[name='ScreeningContainer'] //@ownedViewpoints[name='App']/@ownedRepresentations[name='App%20Diagram']/@defaultLayer/@containerMappings[name='OnboardingContainer'] //@ownedViewpoints[name='App']/@ownedRepresentations[name='App%20Diagram']/@defaultLayer/@containerMappings[name='JobDescriptionContainer']" targetFinderExpression="aql: self.assignedProcess">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
+            <centerLabelStyleDescription labelSize="12" labelExpression="Assgined Process">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <containerMappings name="JobDescriptionContainer" label="Job Description" semanticCandidatesExpression="feature:eAllContents" domainClass="ezProcess::JobDescription" childrenPresentation="HorizontalStack">
+          <subContainerMappings name="PageContainer" semanticCandidatesExpression="feature:hasPage" domainClass="ezProcess::Page">
+            <subNodeMappings name="DateNode" label="Date Field" semanticCandidatesExpression="feature:hasInitialvalue" domainClass="ezProcess::Date">
+              <style xsi:type="style:WorkspaceImageDescription" labelSize="12" showIcon="false" labelExpression="feature:label" labelAlignment="RIGHT" sizeComputationExpression="4" resizeKind="NSEW" workspacePath="/EzProcess.design/icons/date.png">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              </style>
+            </subNodeMappings>
+            <subNodeMappings name="NumberNode" label="Number Field" semanticCandidatesExpression="feature:hasInitialvalue" domainClass="ezProcess::NumberField">
+              <borderedNodeMappings name="RatingNode" label="Star Rating" semanticCandidatesExpression="feature:hasRating" domainClass="ezProcess::Rating">
+                <style xsi:type="style:WorkspaceImageDescription" labelSize="12" showIcon="false" labelExpression="" resizeKind="NSEW" workspacePath="/EzProcess.design/icons/Rating.jpg">
+                  <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                </style>
+              </borderedNodeMappings>
+              <style xsi:type="style:WorkspaceImageDescription" labelSize="12" showIcon="false" labelExpression="feature:label" sizeComputationExpression="5" resizeKind="NSEW" workspacePath="/EzProcess.design/icons/Number.png">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              </style>
+            </subNodeMappings>
+            <subNodeMappings name="FreeTextAreaNode" label="Free Text Area" semanticCandidatesExpression="feature:hasInitialvalue" domainClass="ezProcess::FreeTextArea" reusedBorderedNodeMappings="//@ownedViewpoints[name='App']/@ownedRepresentations[name='App%20Diagram']/@defaultLayer/@containerMappings[name='JobDescriptionContainer']/@subContainerMappings[name='PageContainer']/@subNodeMappings[name='NumberNode']/@borderedNodeMappings[name='RatingNode']">
+              <style xsi:type="style:WorkspaceImageDescription" labelSize="12" showIcon="false" labelExpression="feature:label" labelAlignment="RIGHT" sizeComputationExpression="5" resizeKind="NSEW" workspacePath="/EzProcess.design/icons/TextArea.png">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              </style>
+            </subNodeMappings>
+            <subNodeMappings name="TextFieldNode" label="Text Field" semanticCandidatesExpression="feature:hasInitialvalue" domainClass="ezProcess::TextField" reusedBorderedNodeMappings="//@ownedViewpoints[name='App']/@ownedRepresentations[name='App%20Diagram']/@defaultLayer/@containerMappings[name='JobDescriptionContainer']/@subContainerMappings[name='PageContainer']/@subNodeMappings[name='NumberNode']/@borderedNodeMappings[name='RatingNode']">
+              <style xsi:type="style:WorkspaceImageDescription" labelSize="12" showIcon="false" labelExpression="feature:label" sizeComputationExpression="5" resizeKind="NSEW" workspacePath="/EzProcess.design/icons/textfield.png">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              </style>
+              <conditionnalStyles predicateExpression="aql: self.oclIsTypeOf(ezProcess::CandidateTextField)">
+                <style xsi:type="style:WorkspaceImageDescription" labelSize="12" showIcon="false" labelExpression="feature:label" sizeComputationExpression="-1" resizeKind="NSEW" workspacePath="/EzProcess.design/icons/CandTextField.png">
+                  <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                </style>
+              </conditionnalStyles>
+            </subNodeMappings>
+            <subNodeMappings name="EmailNode" label="Email Field" semanticCandidatesExpression="feature:hasInitialvalue" domainClass="ezProcess::EmailField">
+              <style xsi:type="style:WorkspaceImageDescription" labelSize="12" showIcon="false" labelExpression="feature:label" labelAlignment="RIGHT" sizeComputationExpression="5" resizeKind="NSEW" workspacePath="/EzProcess.design/icons/Email.jpg">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              </style>
+              <conditionnalStyles predicateExpression="aql: self.oclIsTypeOf(ezProcess::CandidateEmailField)">
+                <style xsi:type="style:WorkspaceImageDescription" labelSize="12" showIcon="false" labelExpression="feature:label" sizeComputationExpression="-1" resizeKind="NSEW" workspacePath="/EzProcess.design/icons/CandEmail.png">
+                  <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                </style>
+              </conditionnalStyles>
+            </subNodeMappings>
+            <subNodeMappings name="FileNode" label="File Field" semanticCandidatesExpression="feature:hasInitialvalue" domainClass="ezProcess::FileField" reusedBorderedNodeMappings="//@ownedViewpoints[name='App']/@ownedRepresentations[name='App%20Diagram']/@defaultLayer/@containerMappings[name='JobDescriptionContainer']/@subContainerMappings[name='PageContainer']/@subNodeMappings[name='NumberNode']/@borderedNodeMappings[name='RatingNode']">
+              <style xsi:type="style:WorkspaceImageDescription" labelSize="12" showIcon="false" labelExpression="feature:label" labelAlignment="RIGHT" sizeComputationExpression="4" resizeKind="NSEW" workspacePath="/EzProcess.design/icons/FileField.png">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              </style>
+            </subNodeMappings>
+            <subNodeMappings name="QuestionNode" label="Question Field" semanticCandidatesExpression="feature:hasQuestion" domainClass="ezProcess::Question">
+              <style xsi:type="style:WorkspaceImageDescription" labelSize="12" showIcon="false" labelExpression="aql: 'id ' + self.ID + ' : ' + self.question " labelAlignment="RIGHT" sizeComputationExpression="4" resizeKind="NSEW" workspacePath="/EzProcess.design/icons/Question.jpg">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              </style>
+            </subNodeMappings>
+            <subNodeMappings name="ONBSetupNode" label="Onboarding Setup Task" semanticCandidatesExpression="feature:hasOnboardingTask" domainClass="ezProcess::OnboardingSetupTask">
+              <style xsi:type="style:WorkspaceImageDescription" labelSize="12" showIcon="false" labelExpression="feature:label" labelAlignment="RIGHT" sizeComputationExpression="4" resizeKind="NSEW" workspacePath="/EzProcess.design/icons/SetupTask.jpg">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              </style>
+            </subNodeMappings>
+            <subNodeMappings name="ONBTrainingNode" label="Onboarding Training Task" semanticCandidatesExpression="feature:hasOnboardingTask" domainClass="ezProcess::OnboardingTrainingTask">
+              <style xsi:type="style:WorkspaceImageDescription" labelSize="12" showIcon="false" labelExpression="feature:label" labelAlignment="RIGHT" sizeComputationExpression="4" resizeKind="NSEW" workspacePath="/EzProcess.design/icons/Training.jpg">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              </style>
+            </subNodeMappings>
+            <subContainerMappings name="RadioButtonContainer" label="Single Choice From List" semanticCandidatesExpression="feature:hasInitialvalue" domainClass="ezProcess::SingleChoiceFromList" reusedBorderedNodeMappings="//@ownedViewpoints[name='App']/@ownedRepresentations[name='App%20Diagram']/@defaultLayer/@containerMappings[name='JobDescriptionContainer']/@subContainerMappings[name='PageContainer']/@subNodeMappings[name='NumberNode']/@borderedNodeMappings[name='RatingNode']" childrenPresentation="HorizontalStack">
+              <subContainerMappings name="OptionContainer" label="Option" semanticCandidatesExpression="aql: self.hasOption" domainClass="ezProcess::Option">
+                <subNodeMappings name="OptionRatingNode" label="Option Rating" semanticCandidatesExpression="aql:self.hasOptionRating" domainClass="ezProcess::OptionRating">
+                  <borderedNodeMappings name="OptionThreshold" label="Option Threshold" semanticCandidatesExpression="aql: self.hasThreshold" domainClass="ezProcess::OptionThreshold">
+                    <style xsi:type="style:SquareDescription" borderLineStyle="dash" labelSize="12" showIcon="false" labelExpression="aql: '[' + self.min + ', '  + self.max + ']'" labelPosition="node" resizeKind="NSEW">
+                      <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                      <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                      <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+                    </style>
+                  </borderedNodeMappings>
+                  <style xsi:type="style:WorkspaceImageDescription" labelSize="12" labelExpression="aql: self.tooltipArray->size()" sizeComputationExpression="-1" resizeKind="NSEW" workspacePath="/EzProcess.design/icons/star.jpg">
+                    <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                    <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  </style>
+                </subNodeMappings>
+                <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="12" labelExpression="feature:optionLabel" iconPath="/EzProcess.design/icons/Option.jpg">
+                  <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+                  <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+                </style>
+              </subContainerMappings>
+              <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="12" labelExpression="feature:label" iconPath="/EzProcess.design/icons/radioButton.png" widthComputationExpression="25" heightComputationExpression="10" backgroundStyle="Liquid">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+                <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+              </style>
+            </subContainerMappings>
+            <subContainerMappings name="MultipleChoiceContainer" label="Multiple Choice From List" semanticCandidatesExpression="feature:eAllContents" domainClass="ezProcess::MultipleChoiceFromList" reusedBorderedNodeMappings="//@ownedViewpoints[name='App']/@ownedRepresentations[name='App%20Diagram']/@defaultLayer/@containerMappings[name='JobDescriptionContainer']/@subContainerMappings[name='PageContainer']/@subNodeMappings[name='NumberNode']/@borderedNodeMappings[name='RatingNode']" reusedContainerMappings="//@ownedViewpoints[name='App']/@ownedRepresentations[name='App%20Diagram']/@defaultLayer/@containerMappings[name='JobDescriptionContainer']/@subContainerMappings[name='PageContainer']/@subContainerMappings[name='RadioButtonContainer']/@subContainerMappings[name='OptionContainer']" childrenPresentation="HorizontalStack">
+              <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="12" labelExpression="feature:label" iconPath="/EzProcess.design/icons/OutcomeList.png" widthComputationExpression="25" heightComputationExpression="10" backgroundStyle="Liquid">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+                <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+              </style>
+            </subContainerMappings>
+            <subContainerMappings name="DropDownContainer" label="Single Choice From Dropdown list" semanticCandidatesExpression="feature:hasInitialvalue" domainClass="ezProcess::SingleChoiceFromDropDownList" reusedBorderedNodeMappings="//@ownedViewpoints[name='App']/@ownedRepresentations[name='App%20Diagram']/@defaultLayer/@containerMappings[name='JobDescriptionContainer']/@subContainerMappings[name='PageContainer']/@subNodeMappings[name='NumberNode']/@borderedNodeMappings[name='RatingNode']" reusedContainerMappings="//@ownedViewpoints[name='App']/@ownedRepresentations[name='App%20Diagram']/@defaultLayer/@containerMappings[name='JobDescriptionContainer']/@subContainerMappings[name='PageContainer']/@subContainerMappings[name='RadioButtonContainer']/@subContainerMappings[name='OptionContainer']" childrenPresentation="HorizontalStack">
+              <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="12" labelExpression="feature:label" iconPath="/EzProcess.design/icons/dropdown.png" widthComputationExpression="25" heightComputationExpression="10" backgroundStyle="Liquid">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+                <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+              </style>
+            </subContainerMappings>
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="12" labelExpression="feature:header" iconPath="/EzProcess.design/icons/Page.jpg" backgroundStyle="Liquid">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_chocolate']"/>
+            </style>
+          </subContainerMappings>
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="12" iconPath="/EzProcess.design/icons/JobDesc.png">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelFormat>bold</labelFormat>
+            <labelFormat>underline</labelFormat>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+          </style>
+        </containerMappings>
+        <containerMappings name="ScreeningContainer" label="Screening" semanticCandidatesExpression="feature:eAllContents" domainClass="ezProcess::Screening" reusedContainerMappings="//@ownedViewpoints[name='App']/@ownedRepresentations[name='App%20Diagram']/@defaultLayer/@containerMappings[name='JobDescriptionContainer']/@subContainerMappings[name='PageContainer']" childrenPresentation="HorizontalStack">
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="12" iconPath="/EzProcess.design/icons/Candidate.png">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelFormat>bold</labelFormat>
+            <labelFormat>underline</labelFormat>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+          </style>
+        </containerMappings>
+        <containerMappings name="OnboardingContainer" label="Onboarding" semanticCandidatesExpression="feature:eAllContents" domainClass="ezProcess::Onboarding" reusedContainerMappings="//@ownedViewpoints[name='App']/@ownedRepresentations[name='App%20Diagram']/@defaultLayer/@containerMappings[name='JobDescriptionContainer']/@subContainerMappings[name='PageContainer']" childrenPresentation="HorizontalStack">
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="12" iconPath="/EzProcess.design/icons/Employee.png">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelFormat>bold</labelFormat>
+            <labelFormat>underline</labelFormat>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+          </style>
+        </containerMappings>
+        <toolSections name="CommonTools">
+          <ownedTools xsi:type="tool_1:NodeCreationDescription" name="createEmployee" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='App']/@ownedRepresentations[name='App%20Diagram']/@defaultLayer/@nodeMappings[name='EmployeeNode']" iconPath="/EzProcess.design/icons/Person.jpg">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="ezProcess::Employee" referenceName="hasEmployee">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="id" valueExpression="aql: container.hasEmployee->size()"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:ContainerCreationDescription" name="createPage" forceRefresh="true" containerMappings="//@ownedViewpoints[name='App']/@ownedRepresentations[name='App%20Diagram']/@defaultLayer/@containerMappings[name='JobDescriptionContainer']/@subContainerMappings[name='PageContainer']" iconPath="/EzProcess.design/icons/Page.jpg">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="ezProcess::Page" referenceName="hasPage"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:NodeCreationDescription" name="createDate" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='App']/@ownedRepresentations[name='App%20Diagram']/@defaultLayer/@containerMappings[name='JobDescriptionContainer']/@subContainerMappings[name='PageContainer']/@subNodeMappings[name='DateNode']" iconPath="/EzProcess.design/icons/date.png">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="ezProcess::Date" referenceName="hasInitialvalue">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql: 'date' + container.eContainer().hasPage.hasInitialvalue->select(v | v.oclIsTypeOf(ezProcess::Date))->size()"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:NodeCreationDescription" name="createNumberField" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='App']/@ownedRepresentations[name='App%20Diagram']/@defaultLayer/@containerMappings[name='JobDescriptionContainer']/@subContainerMappings[name='PageContainer']/@subNodeMappings[name='NumberNode']" iconPath="/EzProcess.design/icons/Number.png">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="ezProcess::NumberField" referenceName="hasInitialvalue">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql: 'number' + container.eContainer().hasPage.hasInitialvalue->select(v | v.oclIsTypeOf(ezProcess::NumberField))->size()"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:NodeCreationDescription" name="createFreeTextArea" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='App']/@ownedRepresentations[name='App%20Diagram']/@defaultLayer/@containerMappings[name='JobDescriptionContainer']/@subContainerMappings[name='PageContainer']/@subNodeMappings[name='FreeTextAreaNode']" iconPath="/EzProcess.design/icons/TextArea.png">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="ezProcess::FreeTextArea" referenceName="hasInitialvalue">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql: 'textarea' + container.eContainer().hasPage.hasInitialvalue->select(v | v.oclIsTypeOf(ezProcess::FreeTextArea))->size()"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:NodeCreationDescription" name="createTextField" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='App']/@ownedRepresentations[name='App%20Diagram']/@defaultLayer/@containerMappings[name='JobDescriptionContainer']/@subContainerMappings[name='PageContainer']/@subNodeMappings[name='TextFieldNode']" iconPath="/EzProcess.design/icons/textfield.png">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="ezProcess::TextField" referenceName="hasInitialvalue">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql: 'text' + container.eContainer().hasPage.hasInitialvalue->select(v | v.oclIsTypeOf(ezProcess::TextField))->size()"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:NodeCreationDescription" name="createEmailField" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='App']/@ownedRepresentations[name='App%20Diagram']/@defaultLayer/@containerMappings[name='JobDescriptionContainer']/@subContainerMappings[name='PageContainer']/@subNodeMappings[name='EmailNode']" iconPath="/EzProcess.design/icons/Email.jpg">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="ezProcess::EmailField" referenceName="hasInitialvalue">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql: 'email' + container.eContainer().hasPage.hasInitialvalue->select(v | v.oclIsTypeOf(ezProcess::EmailField))->size()"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:NodeCreationDescription" name="createFileField" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='App']/@ownedRepresentations[name='App%20Diagram']/@defaultLayer/@containerMappings[name='JobDescriptionContainer']/@subContainerMappings[name='PageContainer']/@subNodeMappings[name='FileNode']" iconPath="/EzProcess.design/icons/FileField.png">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="ezProcess::FileField" referenceName="hasInitialvalue">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql: 'file' + container.eContainer().hasPage.hasInitialvalue->select(v | v.oclIsTypeOf(ezProcess::FileField))->size()"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:ContainerCreationDescription" name="createSingleChoiceFromList" forceRefresh="true" containerMappings="//@ownedViewpoints[name='App']/@ownedRepresentations[name='App%20Diagram']/@defaultLayer/@containerMappings[name='JobDescriptionContainer']/@subContainerMappings[name='PageContainer']/@subContainerMappings[name='RadioButtonContainer']" iconPath="/EzProcess.design/icons/radioButton.png">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="ezProcess::SingleChoiceFromList" referenceName="hasInitialvalue">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql: 'radio' + container.eContainer().hasPage.hasInitialvalue->select(v | v.oclIsTypeOf(ezProcess::SingleChoiceFromList))->size()"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="optionVarName" valueExpression="aql: 'radioOptions' + container.eContainer().hasPage.hasInitialvalue->select(v | v.oclIsTypeOf(ezProcess::SingleChoiceFromList))->size()"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:ContainerCreationDescription" name="createSingleChoiceFromDropDownList" forceRefresh="true" containerMappings="//@ownedViewpoints[name='App']/@ownedRepresentations[name='App%20Diagram']/@defaultLayer/@containerMappings[name='JobDescriptionContainer']/@subContainerMappings[name='PageContainer']/@subContainerMappings[name='DropDownContainer']" iconPath="/EzProcess.design/icons/dropdown.png">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="ezProcess::SingleChoiceFromDropDownList" referenceName="hasInitialvalue">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql: 'dropdown' + container.eContainer().hasPage.hasInitialvalue->select(v | v.oclIsTypeOf(ezProcess::SingleChoiceFromDropDownList))->size()"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="optionVarName" valueExpression="aql: 'dropdownOptions' + container.eContainer().hasPage.hasInitialvalue->select(v | v.oclIsTypeOf(ezProcess::SingleChoiceFromDropDownList))->size()"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:ContainerCreationDescription" name="createMultipleChoiceFromList" forceRefresh="true" containerMappings="//@ownedViewpoints[name='App']/@ownedRepresentations[name='App%20Diagram']/@defaultLayer/@containerMappings[name='JobDescriptionContainer']/@subContainerMappings[name='PageContainer']/@subContainerMappings[name='MultipleChoiceContainer']" iconPath="/EzProcess.design/icons/OutcomeList.png">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="ezProcess::MultipleChoiceFromList" referenceName="hasInitialvalue">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql: 'checkbox' + container.eContainer().hasPage.hasInitialvalue->select(v | v.oclIsTypeOf(ezProcess::MultipleChoiceFromList))->size()"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="optionVarName" valueExpression="aql: 'checkboxOptions' + container.eContainer().hasPage.hasInitialvalue->select(v | v.oclIsTypeOf(ezProcess::MultipleChoiceFromList))->size()"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:ContainerCreationDescription" name="createOption" forceRefresh="true" containerMappings="//@ownedViewpoints[name='App']/@ownedRepresentations[name='App%20Diagram']/@defaultLayer/@containerMappings[name='JobDescriptionContainer']/@subContainerMappings[name='PageContainer']/@subContainerMappings[name='RadioButtonContainer']/@subContainerMappings[name='OptionContainer']" iconPath="/EzProcess.design/icons/Option.jpg">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="ezProcess::Option" referenceName="hasOption"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+        <toolSections name="Screening">
+          <ownedTools xsi:type="tool_1:NodeCreationDescription" name="createCandidateTextField" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='App']/@ownedRepresentations[name='App%20Diagram']/@defaultLayer/@containerMappings[name='JobDescriptionContainer']/@subContainerMappings[name='PageContainer']/@subNodeMappings[name='TextFieldNode']" iconPath="/EzProcess.design/icons/CandTextField.png">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="ezProcess::CandidateTextField" referenceName="hasInitialvalue">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql: 'candidateText' + container.eContainer().hasPage.hasInitialvalue->select(v | v.oclIsTypeOf(ezProcess::CandidateTextField))->size()"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:NodeCreationDescription" name="createCandidateEmailField" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='App']/@ownedRepresentations[name='App%20Diagram']/@defaultLayer/@containerMappings[name='JobDescriptionContainer']/@subContainerMappings[name='PageContainer']/@subNodeMappings[name='EmailNode']" iconPath="/EzProcess.design/icons/CandEmail.png">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="ezProcess::CandidateEmailField" referenceName="hasInitialvalue">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql: 'candidateEmail' + container.eContainer().hasPage.hasInitialvalue->select(v | v.oclIsTypeOf(ezProcess::CandidateEmailField))->size()"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:NodeCreationDescription" name="createQuestion" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='App']/@ownedRepresentations[name='App%20Diagram']/@defaultLayer/@containerMappings[name='JobDescriptionContainer']/@subContainerMappings[name='PageContainer']/@subNodeMappings[name='QuestionNode']" iconPath="/EzProcess.design/icons/Question.jpg">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="ezProcess::Question" referenceName="hasQuestion">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="ID" valueExpression="aql: container.eContainer().hasPage.hasQuestion->size()"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:NodeCreationDescription" name="create Star Rating" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='App']/@ownedRepresentations[name='App%20Diagram']/@defaultLayer/@containerMappings[name='JobDescriptionContainer']/@subContainerMappings[name='PageContainer']/@subNodeMappings[name='NumberNode']/@borderedNodeMappings[name='RatingNode']" iconPath="/EzProcess.design/icons/Rating.jpg">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var: container">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="ezProcess::Rating" referenceName="hasRating"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+        <toolSections name="Onboarding" reusedTools="//@ownedViewpoints[name='App']/@ownedRepresentations[name='App%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='createCandidateEmailField'] //@ownedViewpoints[name='App']/@ownedRepresentations[name='App%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='createCandidateTextField']">
+          <ownedTools xsi:type="tool_1:NodeCreationDescription" name="createOnboardingSetupTask" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='App']/@ownedRepresentations[name='App%20Diagram']/@defaultLayer/@containerMappings[name='JobDescriptionContainer']/@subContainerMappings[name='PageContainer']/@subNodeMappings[name='ONBSetupNode']" iconPath="/EzProcess.design/icons/SetupTask.jpg">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="ezProcess::OnboardingSetupTask" referenceName="hasOnboardingTask">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql: 'setup' + container.eContainer().hasPage.hasOnboardingTask->select(v | v.oclIsTypeOf(ezProcess::OnboardingSetupTask))->size()"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:NodeCreationDescription" name="createOnboardingTrainingTask" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='App']/@ownedRepresentations[name='App%20Diagram']/@defaultLayer/@containerMappings[name='JobDescriptionContainer']/@subContainerMappings[name='PageContainer']/@subNodeMappings[name='ONBTrainingNode']" iconPath="/EzProcess.design/icons/Training.jpg">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="ezProcess::OnboardingTrainingTask" referenceName="hasOnboardingTask">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql: 'training' + container.eContainer().hasPage.hasOnboardingTask->select(v | v.oclIsTypeOf(ezProcess::OnboardingTrainingTask))->size()"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+        <toolSections name="Job Description">
+          <ownedTools xsi:type="tool_1:NodeCreationDescription" name="createOptionRating" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='App']/@ownedRepresentations[name='App%20Diagram']/@defaultLayer/@containerMappings[name='JobDescriptionContainer']/@subContainerMappings[name='PageContainer']/@subContainerMappings[name='RadioButtonContainer']/@subContainerMappings[name='OptionContainer']/@subNodeMappings[name='OptionRatingNode']" iconPath="/EzProcess.design/icons/star.jpg">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="ezProcess::OptionRating" referenceName="hasOptionRating">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="ID" valueExpression="aql: container.eContainer().hasOption.hasOptionRating->size()"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:NodeCreationDescription" name="createOptionThreshold" label="createOptionRatingThreshold" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='App']/@ownedRepresentations[name='App%20Diagram']/@defaultLayer/@containerMappings[name='JobDescriptionContainer']/@subContainerMappings[name='PageContainer']/@subContainerMappings[name='RadioButtonContainer']/@subContainerMappings[name='OptionContainer']/@subNodeMappings[name='OptionRatingNode']/@borderedNodeMappings[name='OptionThreshold']" iconPath="/EzProcess.design/icons/Threshold.png">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="ezProcess::OptionThreshold" referenceName="hasThreshold"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+      </defaultLayer>
+    </ownedRepresentations>
+    <ownedJavaExtensions qualifiedClassName="EzProcess.design.Services"/>
+  </ownedViewpoints>
+</description:Group>

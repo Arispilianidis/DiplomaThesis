@@ -1,0 +1,243 @@
+[comment encoding = UTF-8 /]
+[module generateScreeningPage('http://www.example.org/ezProcess')]
+
+[import commonTemplates::getFormikControlField /]
+[import commonTemplates::getValueOptionsArray /]
+[import commonTemplates::getValueRating /]
+
+[template public generateScreeningPage(page : Page, processName: String, id : Integer) post(trim())]
+[file ('Output/src/'+processName+'/'+processName + id+'.js', false, 'UTF-8')]
+import React from 'react'
+import FormikControl from '../components/FormikControl'
+import { Formik, Form } from 'formik'
+[if (page.hasInitialvalue->select(v| v.Proof)->size()>0)]
+import Proof, {getImageName} from '../components/Proof'
+[elseif (page.hasInitialvalue->select(v| v.Proof)->size() = 0 and page.hasInitialvalue->select(v | v.oclIsTypeOf(FileField))->size() > 0)]
+import {getImageName} from '../components/Proof'
+[/if]
+[if (page.hasInitialvalue->select(v| v.rating)->size()> 0 or page.hasQuestion->size() > 0)]
+import Rating from 'react-rating-tooltip'
+[/if]
+import '../css/Rating.css'
+[if (page.hasQuestion->size() > 0 )]
+import {useState, useEffect } from 'react'
+import axios from 'axios'
+
+const JobDescTempQuestionsURL = "http://localhost:3000/JobDescTemp"
+const JobDescTempOptionsRatingURL = "http://localhost:3000/JobDescTempOptionsRating"
+[for (q : Question | hasQuestion)]
+const [q.isAbout.name + 'Questions'+q.ID/] = ['['/]
+	[for (question : String | q.question)]
+	"[question/] ",
+	[/for]
+]
+[/for]
+
+function toArray(aVar){
+
+  if(typeof(aVar)==='string'){
+    aVar = ['[aVar]'/]
+  }
+  return aVar
+}
+[/if]
+
+function [processName+id/](props) {
+
+
+  const handleSumbit = (values) => {
+[if (page.final)]
+	props.onSubmit(values, true)
+[else]
+	props.onSubmit(values, false)
+[/if]
+  }
+
+[getValueOptionsArray(page)/]
+
+[if (page.hasQuestion->size() > 0 )]
+  const ['[answers, setAnswers]'/] = useState(null);
+  const ['[optionsRating, setOptionsRating]'/] = useState(null);
+
+
+  useEffect(() => {
+	let isMounted = true;
+
+	axios.get(JobDescTempOptionsRatingURL, {
+		params: { processName: "[page.eContainer(Screening).hasJobDescription.name/]" },
+		method: 'GET',
+		headers: {
+			'Access-Control-Allow-Origin': '*',
+			'Content-Type': 'application/json',
+		}
+	})
+	.then(response => {
+		if (isMounted) {
+			console.log(response.data.data)
+			setOptionsRating(response.data.data)
+		}
+	})
+		.catch(error => console.log("Error at get Job Description Options Rating " + error.message))
+
+	axios.get(JobDescTempQuestionsURL, {
+		params: { processName: "[page.eContainer(Screening).hasJobDescription.name/]" },
+	    method: 'GET',
+	    headers: {
+	        'Access-Control-Allow-Origin': '*',
+	        'Content-Type': 'application/json',
+	    }
+	})
+	 .then(response => {
+  		if (isMounted) {
+	      setAnswers(response.data.data)
+		}
+	  })
+	    .catch(error => {
+				alert("You need to complete a Job Description Task first")
+				console.log("Error at get Job Description Questions " + error.message)
+		})
+
+		return () => { isMounted = false };
+  }, ['[props]'/])
+
+  if (answers == null || answers.length === 0) {
+        return null
+    }
+
+
+
+
+	function getQuestions(answersItem, Item, QId, QArray, FormikArray) {
+
+        return toArray(answersItem).map((element, index) => {
+			let myOption = optionsRating.find(o => o.name === Item).options.find(v => v.optionValue === element).optionRating.find(r => r.isAbout === QId)
+            return (
+				<div key={index} style={{margin:0}}>
+                <FormikControl control='textarea' label={QArray+ element} 	name={`${FormikArray}['[${index}]'/]`} required placeholder="Enter text here" />
+				<Rating
+					max={myOption.tooltipArray.length}
+					disabled={false}
+					counterPosition={"left"}
+					textPosition={"right"}
+					tooltipContent={myOption.tooltipArray}
+					ratingValue={myOption.tooltipArray}
+					onChange={(rate) => { props.handleRating(rate/myOption.tooltipArray.length * 100, element + `Rating${QId}`) }}
+					ActiveComponent={
+						<i className="fa fa-star starStyle"  />
+					}
+					InActiveComponent={
+						<i className="fa fa-star-o starStyle" />
+					}
+				/>
+				</div>
+	            );
+        })
+    }
+
+[/if]
+
+
+[if (not(page.first))]
+  const { prevStep } = props
+[/if]
+
+
+ return (
+
+    <Formik initialValues={props.initialValues} validationSchema={props.validationSchema} onSubmit={handleSumbit} >
+      {
+
+        formik => <Form id="regForm">
+          <h1> [processName/] Overview </h1>
+          <span>
+
+            <h3> [page.header/]</h3>
+
+            <p> [page.description/]</p>
+
+			[for ( value : InitialValue | hasInitialvalue)]
+			[getFormikControlField(value)/]
+				[if (valueHasRating(value))]
+			<Rating
+				[if (value.oclIsTypeOf(MultipleChoiceFromList))]
+
+					[if (value.hasRating->size() > 0 )]
+				max = {[value.hasRating.tooltipArray->size()/]}
+				tooltipContent={[getWithRatingTooltip(value)/]}
+				ratingValue={[getWithRatingTooltip(value)/]}
+				onChange={(rate) => { props.handleRating(rate/[value.hasRating.tooltipArray->size()/] * 100, '[value.name+'Rating'/]') }}
+					[else]
+				max = {[value.oclAsType(MultipleChoiceFromList).hasOption->size()/]}
+				tooltipContent={[getTooltip(value)/]}
+				ratingValue={[getTooltip(value)/]}
+				onChange={(rate) => { props.handleRating(rate/[value.oclAsType(MultipleChoiceFromList).hasOption->size()/] * 100, '[value.name+'Rating'/]') }}
+					[/if]
+				[elseif (value.oclIsTypeOf(FreeTextArea)._or( value.oclIsKindOf(InputField)))]
+				max = {[value.hasRating.tooltipArray->size()/]}
+				tooltipContent={[getWithRatingTooltip(value)/]}
+				ratingValue={[getWithRatingTooltip(value)/]}
+				onChange={(rate) => { props.handleRating(rate/[value.hasRating.tooltipArray->size()/] * 100, '[value.name+'Rating'/]') }}
+				[else]
+
+					[if (value.hasRating->size() > 0 )]
+				max = {[value.hasRating.tooltipArray->size()/]}
+				tooltipContent={[getWithRatingTooltip(value)/]}
+				ratingValue={[getWithRatingTooltip(value)/]}
+				onChange={(rate) => { props.handleRating(rate/[value.hasRating.tooltipArray->size()/] * 100, '[value.name+'Rating'/]') }}
+					[else]
+				max = {1}
+				tooltipContent={['['/]"Perfect" ]}
+				ratingValue={['['/]"Perfect" ]}
+				onChange={(rate) => { props.handleRating(rate * 100, '[value.name+'Rating'/]') }}
+					[/if]
+				[/if]
+				disabled={false}
+				counterPosition={"left"}
+				textPosition={"right"}
+				ActiveComponent={
+					<i className="fa fa-star starStyle"  />
+				}
+				InActiveComponent={
+					<i className="fa fa-star-o starStyle" />
+				}
+             	/>
+				[/if]
+			[/for]
+
+			[if (page.hasQuestion->size() > 0)]
+			[for (q : Question | hasQuestion)]
+			{getQuestions(answers.[q.isAbout.name/],"[q.isAbout.name/]", [q.ID/], [q.isAbout.name + 'Questions' + q.ID/], "[q.isAbout.name + 'Answer'+ q.ID/]")}
+			[/for]
+			[/if]
+
+            <button type="submit"> Next</button>
+			[if (not(page.first))]
+						<button type="button" className="PrevBtn" onClick={prevStep}> Back</button>
+			[/if]
+
+          </span>
+
+        </Form>
+      }
+
+    </Formik >
+
+  )
+}
+
+export default [processName+id/]
+
+[/file]
+[/template]
+
+
+[template public getTooltip(value : InitialValue) post(trim())]
+	['['/] [for (opt : Option  | value.oclAsType(MultipleChoiceFromList).hasOption) separator (',')]
+		"[i/]"
+	[/for] ]
+[/template]
+
+[template public getWithRatingTooltip(value : InitialValue) post(trim())]
+	['['/][for (value.hasRating.tooltipArray) separator (',')] "[value.hasRating.tooltipArray->at(i)/]"[/for] ]
+[/template]
+

@@ -1,0 +1,143 @@
+[comment encoding = UTF-8 /]
+[module generateScreening('http://www.example.org/ezProcess')]
+
+[import EzProcessGenerator::files::generateScreeningPage /]
+[import commonTemplates::getInitialValueType /]
+[import commonTemplates::getValidationSchema /]
+[import EzProcessGenerator::files::generateScreeningFinal /]
+[import commonTemplates::getValueRating /]
+[import EzProcessGenerator::files::generateOptionsRating /]
+[import EzProcessGenerator::files::generateCandidatesJSON /]
+
+[template public generateScreening(aScreening : Screening) post(trim())]
+
+[file ('Output/src/'+aScreening.name + '/'+ aScreening.name+'.js', false, 'UTF-8')]
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useLocation } from 'react-router';
+import * as Yup from 'yup'
+import axios from 'axios'
+[for (page : Page | hasPage)]
+import [aScreening.name + i /] from './[aScreening.name + i /]'
+[generateScreeningPage(page,aScreening.name,i)/][/for]
+
+
+
+var ratingsMap
+[generateScreeningFinal(aScreening)/]
+[generateOptionsRating(aScreening)/]
+[generateCandidatesJSON(aScreening)/]
+
+function [aScreening.name/]() {
+
+  let { state } = useLocation();
+  let serverUserInfo = state[ '[0]' /] 
+  let processName = state[ '[1]' /] 
+
+  // Catch Rating value
+  const handleRating = (rate, name) => {
+    ratingsMap.set(name, rate)
+	console.log(ratingsMap)
+  }
+
+  const navigate = useNavigate();
+  const ['[step, setStep]'/] = useState(0);
+  const ['[initialValues, setInitialValues]'/] = useState({
+ [for (page : Page | hasPage)]
+ [for (value: InitialValue | hasInitialvalue)]
+ 	[getInitialValueType(value)/]
+ [/for]
+ [for (q : Question | hasQuestion)]
+ 	[q.isAbout.name+'Answer'+q.ID/]: ['['/][getNumberOfAnswers(q)/][']'/],
+ [/for]
+ [/for]
+  })
+
+  useEffect(() => {
+
+    if(step===0){
+		ratingsMap = new Map(['['/]
+		[for (page : Page | hasPage)]
+			[for (value : InitialValue | hasInitialvalue)]
+				[if (valueHasRating(value))]
+		  ['["' + value.name + 'Rating", 0],'/]
+				[/if]
+			[/for]
+		[/for]
+		]);
+    }
+     
+  }, ['['/]step]); 
+
+  function postProof(imagefileName) {
+
+    var uploadsPostURL = "http://localhost:3000/uploadeFiles"
+
+    var formData = new FormData();
+    var imagefile = document.getElementById(imagefileName)
+    console.log(imagefile)
+    formData.append("file", imagefile.files['[0]'/]);
+    axios.post(uploadsPostURL, formData, {
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Content-Type': 'multipart/form-data',
+      }
+    })
+      .catch(error => console.log("Error at postProof => " + error.message))
+  }
+
+ [for (page : Page | hasPage)]
+  const validationSchema[i/] = Yup.object({
+    [getValidationSchema(page)/]
+  })
+
+[/for]
+
+  // Proceed to next step
+  const onSubmit = (formValues, final) => {
+
+    setInitialValues((prev) => ({ ...prev, ...formValues }))
+
+    if (final) {
+      console.log("Form submitted", formValues)
+      console.log(ratingsMap)
+      navigate("/" + processName + "Final", { state: ['[ratingsMap, serverUserInfo, formValues]'/] });
+    }
+    else {
+      setStep(step => step + 1)
+    }
+
+  }
+
+  // Proceed to prev step
+  function prevStep() {
+    setStep(step => step - 1)
+  }
+
+  const pages = ['['/]
+[for (page : Page | hasPage) before ('\n')]
+[if (page.first)]
+    <[aScreening.name + i/] initialValues={initialValues} validationSchema={validationSchema[i/]} onSubmit={onSubmit} postProof={postProof} handleRating={handleRating}/>,
+[else]
+	 <[aScreening.name + i/] prevStep={prevStep} initialValues={initialValues} validationSchema={validationSchema[i/]} onSubmit={onSubmit} postProof={postProof} handleRating={handleRating} />,
+[/if]
+[/for]
+	[']'/]
+
+  return (
+    <div>
+      {pages['[step]'/]}
+    </div>
+  )
+}
+
+export default [aScreening.name/]
+[/file]
+[/template]
+
+
+[template public getNumberOfAnswers(q : Question) post(trim()) ]
+[for (q.isAbout.hasOption) separator (', ') after (', ""') ]
+""[/for]
+[/template]
+

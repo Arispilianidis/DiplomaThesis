@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project default="generateApp" name="EzProcessGenerator">
+    <property name="ECLIPSE_HOME" value="C:/Users/user/Desktop/eclipse"/>
+    <property name="ECLIPSE_WORKSPACE" value="../.."/>
+
+    <!-- The classpath with only the dependencies used by the project -->
+    <path id="EzProcessGenerator.libraryclasspath">
+        <pathelement location="${ECLIPSE_WORKSPACE}/EzProcessGenerator/bin"/>
+        <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.core.runtime_3.22.0.v20210506-1025.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.osgi_3.16.300.v20210525-1715.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.equinox.servletbridge.extensionbundle_1.2.0.v20100503.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.osgi.compatibility.state_1.2.400.v20210401-1438.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.equinox.common_3.15.0.v20210518-0604.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.core.jobs_3.11.0.v20210420-1453.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.equinox.registry_3.10.200.v20210503-1606.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.equinox.preferences_3.8.200.v20210212-1143.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.core.contenttype_3.7.1000.v20210409-1722.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.equinox.app_1.5.100.v20210212-1143.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.emf.ecore_2.24.0.v20210405-0628.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.emf.common_2.22.0.v20210319-0732.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.emf.ecore.xmi_2.16.0.v20190528-0725.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.ocl_3.15.0.v20200309-0848.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/plugins/lpg.runtime.java_2.0.17.v201004271640.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.ocl.common_1.8.400.v20200309-0848.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.ocl.ecore_3.15.0.v20200309-0848.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.acceleo.common_3.7.11.202102190929.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.acceleo.model_3.7.11.202102190929.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.acceleo.profiler_3.7.11.202102190929.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.acceleo.engine_3.7.11.202102190929.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.emf.codegen.ecore_2.26.0.v20210506-1425.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.emf.codegen_2.22.0.v20210420-0623.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/plugins/com.google.guava_30.1.0.v20210127-2300.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.emf.edit_2.16.0.v20190920-0401.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.emf.ecore.change_2.14.0.v20190528-0725.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.core.resources_3.15.0.v20210521-0722.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.emf.edit.ui_2.20.0.v20210506-1232.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.ui.views_3.11.0.v20210111-1351.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.ui.workbench_3.122.200.v20210506-1640.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.e4.ui.workbench3_0.15.500.v20201021-1339.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.emf.common.ui_2.18.0.v20190507-0402.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.ui_3.119.0.v20210111-1350.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.swt_3.116.100.v20210602-2209.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.swt.win32.win32.x86_64_3.116.100.v20210602-2209.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.jface_3.22.200.v20210401-0958.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.core.commands_3.10.0.v20210401-0744.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.ui.ide_3.18.200.v20210523-1724.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.e4.ui.ide_3.15.200.v20210108-1832.jar"/>
+    </path>
+
+    <path id="EzProcessGenerator.classpath">
+        <path refid="EzProcessGenerator.libraryclasspath"/>
+    </path>
+
+    <!-- The classpath with only the jars available in the plugin folder of Eclipse -->
+    <path id="EzProcessGenerator.libraryclasspath.alljars">
+        <pathelement location="../EzProcessGenerator/bin"/>
+        <fileset dir="${ECLIPSE_HOME}/plugins/" includes="*.jar"/>
+    </path>
+
+    <path id="EzProcessGenerator.classpath.alljars">
+        <path refid="EzProcessGenerator.libraryclasspath.alljars"/>
+    </path>
+
+    <!-- The default task with the jars used by this project -->
+    <target name="generateApp">
+        <java classname="EzProcessGenerator.main.GenerateApp" classpathref="EzProcessGenerator.classpath">
+            <arg value="${model}"/>
+            <arg value="${target}"/>
+        </java>
+    </target>
+
+    <!--
+        In case of problem you can also try with all the jar available in your Eclipse
+        Keep in mind that having two versions of the same jar can create problems
+    -->
+    <target name="generateApp.alljars">
+        <java classname="EzProcessGenerator.main.GenerateApp" classpathref="EzProcessGenerator.classpath">
+            <arg value="${model}"/>
+            <arg value="${target}"/>
+        </java>
+    </target>
+</project>

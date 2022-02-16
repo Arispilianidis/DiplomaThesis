@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated ezProcess -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="ezProcess.presentation.EzProcessModelWizardID"
+            name="%_UI_EzProcessModelWizard_label"
+            class="ezProcess.presentation.EzProcessModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/EzProcessModelFile.gif">
+         <description>%_UI_EzProcessModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated ezProcess -->
+      <editor
+            id="ezProcess.presentation.EzProcessEditorID"
+            name="%_UI_EzProcessEditor_label"
+            icon="icons/full/obj16/EzProcessModelFile.gif"
+            extensions="ezprocess"
+            class="ezProcess.presentation.EzProcessEditor"
+            contributorClass="ezProcess.presentation.EzProcessActionBarContributor">
+      </editor>
+   </extension>
+
+</plugin>

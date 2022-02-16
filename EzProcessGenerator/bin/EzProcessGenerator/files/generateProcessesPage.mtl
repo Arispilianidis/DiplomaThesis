@@ -1,0 +1,193 @@
+[comment encoding = UTF-8 /]
+[module generateProcessesPage('http://www.example.org/ezProcess')]
+
+
+[template public generateProcessesPage(anApp : App) post(trim())]
+
+[file ('Output/src/Processes.js', false, 'UTF-8')]
+import React, { useState } from 'react'
+import { useLocation } from 'react-router';
+import { useNavigate } from 'react-router-dom';
+import Candidates from './Candidates';
+import CurrentDate from './components/CurrentDate';
+import axios from 'axios'
+import './css/Tables.css'
+
+
+function Processes() {
+
+    const { state } = useLocation();
+    const serverUserInfo = state['[0]'/]
+    const navigate = useNavigate();
+
+    const ['['/]candidates, setCandidates] = useState(null)
+    const ['['/]error, setError] = useState(null);
+    const ['['/]showCandidates, setShowCandidates] = useState(false)
+    const ['['/]selectedCandidates, setSelectedCandidates] = useState(null)
+    const ['['/]JobDescTempOfScrenningProcess, setJobDescTempOfScrenningProcess] = useState(null)
+
+    function goto(event) {
+
+        let processName = event.target.textContent
+        navigate("/" + processName, { state: ['['/]serverUserInfo, processName] })
+    }
+
+    function createProcessDropdownMenu() {
+
+        return serverUserInfo.assignedProcesses.map((element) => {
+            return <li key={element} onClick={goto} style={{ cursor: 'pointer', marginLeft: 10, marginBottom: 10 }}>{element}</li>
+        });
+
+    }
+
+    function getCandidates(event) {
+
+        setJobDescTempOfScrenningProcess(event.target.textContent) 
+
+        axios.get("http://localhost:3000/JobDescTempCandidates", {
+            params: { JobDescTempOfScrenningProcess: event.target.textContent },
+            method: 'GET',
+            headers: {
+                'Access-Control-Allow-Origin': '*',
+                'Content-Type': 'application/json',
+            }
+        })
+            .then(response => {
+                console.log(response.data.data)
+                setCandidates(response.data.data)
+            })
+            .then(() => {
+                setShowCandidates(true)
+            })
+            .catch(error => {
+                console.log("Error at get Candidates => " + error.message)
+                setError(error)
+            })
+
+    }
+
+    // Catch Rating value
+    const handleCandidates = (flatRows) => {
+        setSelectedCandidates(flatRows)
+    }
+
+    function completeTask(accepted) {
+        let link
+        let emails = ['['/]]
+        let original = ['['/]]
+
+        console.log(selectedCandidates)
+        console.log(JobDescTempOfScrenningProcess)
+
+        if (selectedCandidates === undefined || selectedCandidates.length === 0) {
+            // array empty or does not exist
+            alert("No Candidates where selected. Please select one or more candidates before pressing Accept/Reject.")
+            return
+        }else{
+
+            selectedCandidates.forEach(element => {
+
+                emails.push(element.original.EMAIL)
+                original.push(element.original)
+            });
+
+        }
+
+        if (accepted) {
+
+            link = "mailto:" + emails['['/]0] + " "
+                + "?cc=" + emails.slice(1)
+                + "&subject=" + encodeURIComponent("Congratulations")
+                + "&body=" + encodeURIComponent("We would like to inform you that you have successfully passed the stage of the selection process.\n")
+
+        } else {
+
+            link = "mailto:" + emails['['/]0] + " "
+                + "?cc=" + emails.slice(1)
+                + "&subject=" + encodeURIComponent("Thank you for applying")
+                + "&body=" + encodeURIComponent("We would like to inform you that you you did not pass the stage of the selection process.\n")
+
+  		
+
+	            axios.delete("http://localhost:3000/JobDescTempCandidates", {
+	                params: {
+	                    'selectedCandidates': original ,
+	                    'processName': JobDescTempOfScrenningProcess
+	                },
+	                headers: {
+	                    'Access-Control-Allow-Origin': '*',
+	                    'Content-Type': 'application/json',
+	                }
+	            })
+	                .catch(error => {
+	                    console.log("Error at delete Candidates => " + error.message)
+	                    setError(error)
+	                })
+			}
+
+        
+        window.location.href = link;
+
+    }
+
+    function createCandidatesDropdownMenu() {
+
+        let JobDescTempOfScrenningProcesses = ['['/]
+			[for (process : Process | hasProcess)]
+				[if (process.oclIsTypeOf(ezProcess::JobDescription))]
+					"[process.name/]",
+				[/if]
+			[/for]
+        ]
+
+        return JobDescTempOfScrenningProcesses.map((element) => {
+            return <li onClick={getCandidates} key={element} style={{ cursor: 'pointer', marginLeft: 10, marginBottom: 10 }}>{element}</li>
+        });
+
+    }
+
+    function handleShow() {
+        setShowCandidates(false)
+    }
+
+
+    if (error) {
+        return <pre> {JSON.stringify(error.message, null, 2)}</pre>
+    }
+
+    return (
+
+        <div className='TableContainer'>
+            <CurrentDate />
+            <div className="dropdown">
+                <button style={{ marginTop: '40px' }} className="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"> Create Process
+                    <span className="caret"></span></button>
+
+                <ul className="dropdown-menu">
+                    {createProcessDropdownMenu()}
+                </ul>
+            </div>
+            <div className="dropdown">
+                <button onClick={handleShow} style={{ marginTop: '40px' }} className="btn btn-info btn-primary dropdown-toggle" type="button" data-toggle="dropdown"> Show Screened Candidates
+                    <span className="caret"></span></button>
+
+                <ul className="dropdown-menu">
+                    {createCandidatesDropdownMenu()}
+                </ul>
+            </div>
+
+            {showCandidates ?
+                <div>
+                    <Candidates candidates={candidates} handleCandidates={handleCandidates} />
+                    <button style={{ float: 'none', marginLeft: 0 }} className="btn_complete" onClick={() => { completeTask(true) }}> Accept </button>
+                    <button style={{ float: 'none', }} className="btn_reject" onClick={() => { completeTask(false) }}> Reject </button>
+                </div>
+                : " "}
+        </div>
+    )
+}
+
+export default Processes
+
+[/file]
+[/template]

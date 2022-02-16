@@ -1,0 +1,668 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:mtl="http://www.eclipse.org/acceleo/mtl/3.0" xmlns:ocl.ecore="http://www.eclipse.org/ocl/1.1.0/Ecore">
+  <mtl:Module name="generateUsersDataJSON" nsURI="EzProcessGenerator::files::generateUsersDataJSON" startHeaderPosition="29" endHeaderPosition="218">
+    <input>
+      <takesTypesFrom href="http://www.example.org/ezProcess#/"/>
+    </input>
+    <ownedModuleElement xsi:type="mtl:Template" name="generateUsersDataJSON" visibility="Public">
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;"/>
+      <body xsi:type="mtl:FileBlock" openMode="OverWrite">
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="[">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;"/>
+        <body xsi:type="mtl:ForBlock">
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;"/>
+          <body xsi:type="mtl:TemplateInvocation" definition="/0/getPerson">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            <argument xsi:type="ocl.ecore:VariableExp" name="person" referredVariable="/0/generateUsersDataJSON/%.1/%.2/person">
+              <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Employee"/>
+            </argument>
+          </body>
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;"/>
+          <loopVariable name="person">
+            <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Employee"/>
+          </loopVariable>
+          <iterSet xsi:type="ocl.ecore:PropertyCallExp" eType="/9/OrderedSet(Employee)">
+            <source xsi:type="ocl.ecore:VariableExp" name="self" referredVariable="/10">
+              <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//App"/>
+            </source>
+            <referredProperty xsi:type="ecore:EReference" href="http://www.example.org/ezProcess#//App/hasEmployee"/>
+          </iterSet>
+          <each xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=",&#xA;">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          </each>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="]">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;&#xA;"/>
+        <fileUrl xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="Server/myapi/routes/UsersData.json">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </fileUrl>
+        <charset xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="UTF-8">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </charset>
+      </body>
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;"/>
+      <parameter name="anApp">
+        <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//App"/>
+      </parameter>
+    </ownedModuleElement>
+    <ownedModuleElement xsi:type="mtl:Template" name="getPerson" visibility="Public">
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="{&#xA; &#x9;&quot;id&quot;: "/>
+      <body xsi:type="ocl.ecore:PropertyCallExp">
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+        <source xsi:type="ocl.ecore:VariableExp" name="aPerson" referredVariable="/0/getPerson/aPerson">
+          <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Employee"/>
+        </source>
+        <referredProperty xsi:type="ecore:EAttribute" href="http://www.example.org/ezProcess#//Employee/id"/>
+      </body>
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=",&#xA;&#x9;&quot;firstName&quot;: &quot;"/>
+      <body xsi:type="ocl.ecore:PropertyCallExp">
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <source xsi:type="ocl.ecore:VariableExp" name="aPerson" referredVariable="/0/getPerson/aPerson">
+          <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Employee"/>
+        </source>
+        <referredProperty xsi:type="ecore:EAttribute" href="http://www.example.org/ezProcess#//Employee/firstName"/>
+      </body>
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&quot;,&#xA;&#x9;&quot;lastName&quot;: &quot;"/>
+      <body xsi:type="ocl.ecore:PropertyCallExp">
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <source xsi:type="ocl.ecore:VariableExp" name="aPerson" referredVariable="/0/getPerson/aPerson">
+          <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Employee"/>
+        </source>
+        <referredProperty xsi:type="ecore:EAttribute" href="http://www.example.org/ezProcess#//Employee/lastName"/>
+      </body>
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&quot;,&#xA;&#x9;&quot;email&quot;: &quot;"/>
+      <body xsi:type="ocl.ecore:PropertyCallExp">
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <source xsi:type="ocl.ecore:VariableExp" name="aPerson" referredVariable="/0/getPerson/aPerson">
+          <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Employee"/>
+        </source>
+        <referredProperty xsi:type="ecore:EAttribute" href="http://www.example.org/ezProcess#//Employee/email"/>
+      </body>
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&quot;,&#xA;&#x9;&quot;username&quot;: &quot;"/>
+      <body xsi:type="ocl.ecore:PropertyCallExp">
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <source xsi:type="ocl.ecore:VariableExp" name="aPerson" referredVariable="/0/getPerson/aPerson">
+          <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Employee"/>
+        </source>
+        <referredProperty xsi:type="ecore:EAttribute" href="http://www.example.org/ezProcess#//Employee/userName"/>
+      </body>
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&quot;,&#xA;&#x9;&quot;password&quot;: &quot;"/>
+      <body xsi:type="ocl.ecore:PropertyCallExp">
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <source xsi:type="ocl.ecore:VariableExp" name="aPerson" referredVariable="/0/getPerson/aPerson">
+          <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Employee"/>
+        </source>
+        <referredProperty xsi:type="ecore:EAttribute" href="http://www.example.org/ezProcess#//Employee/password"/>
+      </body>
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&quot;,&#xA;&#x9;&quot;assignedProcesses&quot;: "/>
+      <body xsi:type="mtl:TemplateInvocation" definition="/0/getProcesses">
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <argument xsi:type="ocl.ecore:VariableExp" name="aPerson" referredVariable="/0/getPerson/aPerson">
+          <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Employee"/>
+        </argument>
+      </body>
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;}"/>
+      <parameter name="aPerson">
+        <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Employee"/>
+      </parameter>
+    </ownedModuleElement>
+    <ownedModuleElement xsi:type="mtl:Template" name="getProcesses" visibility="Public">
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="[">
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+      </body>
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;"/>
+      <body xsi:type="mtl:ForBlock">
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;&quot;"/>
+        <body xsi:type="ocl.ecore:PropertyCallExp">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <source xsi:type="ocl.ecore:VariableExp" name="process" referredVariable="/0/getProcesses/%.2/process">
+            <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Process"/>
+          </source>
+          <referredProperty xsi:type="ecore:EAttribute" href="http://www.example.org/ezProcess#//Process/name"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&quot;&#xA;"/>
+        <loopVariable name="process">
+          <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Process"/>
+        </loopVariable>
+        <iterSet xsi:type="ocl.ecore:PropertyCallExp" eType="/9/OrderedSet(Process)">
+          <source xsi:type="ocl.ecore:VariableExp" name="self" referredVariable="/34">
+            <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Employee"/>
+          </source>
+          <referredProperty xsi:type="ecore:EReference" href="http://www.example.org/ezProcess#//Employee/assignedProcess"/>
+        </iterSet>
+        <each xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=", ">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </each>
+      </body>
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="]">
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+      </body>
+      <parameter name="aPerson">
+        <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Employee"/>
+      </parameter>
+      <post xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/oclstdlib_String_Class/trim">
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <source xsi:type="ocl.ecore:VariableExp" name="self" referredVariable="/31">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </source>
+      </post>
+    </ownedModuleElement>
+  </mtl:Module>
+  <ecore:EPackage name="additions">
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_String_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+      </eAnnotations>
+      <eOperations name="trim">
+        <eAnnotations source="MTL non-standard"/>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+      </eOperations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Integer_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Real_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Real"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ecore_EObject_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+      </eAnnotations>
+      <eOperations name="generateUsersDataJSON">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL" references="/0/generateUsersDataJSON"/>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="anApp">
+          <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//App"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="getPerson">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL" references="/0/getPerson"/>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="aPerson">
+          <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Employee"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="getProcesses">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL" references="/0/getProcesses"/>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="aPerson">
+          <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Employee"/>
+        </eParameters>
+      </eOperations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_OclAny_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OclAny"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Collection(T)_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Collection(T)"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Sequence(T)_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Sequence(T)"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_OrderedSet(T)_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OrderedSet(T)"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ezProcess_App_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.example.org/ezProcess#//App"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ezProcess_Employee_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.example.org/ezProcess#//Employee"/>
+      </eAnnotations>
+    </eClassifiers>
+  </ecore:EPackage>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//App"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//App"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//App"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//App"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//App"/>
+  </ocl.ecore:Variable>
+  <ecore:EPackage name="collections">
+    <eClassifiers xsi:type="ocl.ecore:OrderedSetType" name="OrderedSet(Employee)" instanceClassName="java.util.LinkedHashSet">
+      <elementType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Employee"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ocl.ecore:OrderedSetType" name="OrderedSet(Process)" instanceClassName="java.util.LinkedHashSet">
+      <elementType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Process"/>
+    </eClassifiers>
+  </ecore:EPackage>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//App"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//App"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Employee"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Employee"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//App"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="i">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//App"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Employee"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Employee"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Employee"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Employee"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Employee"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Employee"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Employee"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Employee"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Employee"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Employee"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Employee"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Employee"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Employee"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Employee"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Process"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Process"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Employee"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="i">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Employee"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </ocl.ecore:Variable>
+  <ecore:EAnnotation source="positions">
+    <eAnnotations source="positions.0" references="/0/generateUsersDataJSON">
+      <details key="start" value="98"/>
+      <details key="end" value="336"/>
+      <details key="line" value="5"/>
+    </eAnnotations>
+    <eAnnotations source="positions.1" references="/0/generateUsersDataJSON/%">
+      <details key="start" value="151"/>
+      <details key="end" value="152"/>
+      <details key="line" value="6"/>
+    </eAnnotations>
+    <eAnnotations source="positions.2" references="/0/generateUsersDataJSON/%.1">
+      <details key="start" value="152"/>
+      <details key="end" value="323"/>
+      <details key="line" value="7"/>
+    </eAnnotations>
+    <eAnnotations source="positions.3" references="/0/generateUsersDataJSON/%.1/%">
+      <details key="start" value="215"/>
+      <details key="end" value="218"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.4" references="/0/generateUsersDataJSON/%.1/%.1">
+      <details key="start" value="220"/>
+      <details key="end" value="221"/>
+      <details key="line" value="9"/>
+    </eAnnotations>
+    <eAnnotations source="positions.5" references="/0/generateUsersDataJSON/%.1/%.2">
+      <details key="start" value="221"/>
+      <details key="end" value="307"/>
+      <details key="line" value="9"/>
+    </eAnnotations>
+    <eAnnotations source="positions.6" references="/0/generateUsersDataJSON/%.1/%.2/%">
+      <details key="start" value="279"/>
+      <details key="end" value="280"/>
+      <details key="line" value="10"/>
+    </eAnnotations>
+    <eAnnotations source="positions.7" references="/0/generateUsersDataJSON/%.1/%.2/%.1">
+      <details key="start" value="281"/>
+      <details key="end" value="298"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.8" references="/0/generateUsersDataJSON/%.1/%.2/%.1/person">
+      <details key="start" value="291"/>
+      <details key="end" value="297"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.9" references="/0/generateUsersDataJSON/%.1/%.2/%.2">
+      <details key="start" value="300"/>
+      <details key="end" value="301"/>
+      <details key="line" value="11"/>
+    </eAnnotations>
+    <eAnnotations source="positions.10" references="/0/generateUsersDataJSON/%.1/%.2/person">
+      <details key="start" value="227"/>
+      <details key="end" value="244"/>
+      <details key="line" value="9"/>
+    </eAnnotations>
+    <eAnnotations source="positions.11" references="/0/generateUsersDataJSON/%.1/%.2/%.3">
+      <details key="start" value="247"/>
+      <details key="end" value="258"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.12" references="/0/generateUsersDataJSON/%.1/%.2/%.3/self">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.13" references="/0/generateUsersDataJSON/%.1/%.2/%.4">
+      <details key="start" value="271"/>
+      <details key="end" value="276"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.14" references="/0/generateUsersDataJSON/%.1/%.3">
+      <details key="start" value="309"/>
+      <details key="end" value="312"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.15" references="/0/generateUsersDataJSON/%.1/%.4">
+      <details key="start" value="314"/>
+      <details key="end" value="316"/>
+      <details key="line" value="13"/>
+    </eAnnotations>
+    <eAnnotations source="positions.16" references="/0/generateUsersDataJSON/%.1/%.5">
+      <details key="start" value="159"/>
+      <details key="end" value="195"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.17" references="/0/generateUsersDataJSON/%.1/%.6">
+      <details key="start" value="204"/>
+      <details key="end" value="211"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.18" references="/0/generateUsersDataJSON/%.2">
+      <details key="start" value="324"/>
+      <details key="end" value="325"/>
+      <details key="line" value="15"/>
+    </eAnnotations>
+    <eAnnotations source="positions.19" references="/0/generateUsersDataJSON/anApp">
+      <details key="start" value="137"/>
+      <details key="end" value="148"/>
+      <details key="line" value="5"/>
+    </eAnnotations>
+    <eAnnotations source="positions.20" references="/0/getPerson">
+      <details key="start" value="339"/>
+      <details key="end" value="648"/>
+      <details key="line" value="19"/>
+    </eAnnotations>
+    <eAnnotations source="positions.21" references="/0/getPerson/%">
+      <details key="start" value="387"/>
+      <details key="end" value="397"/>
+      <details key="line" value="20"/>
+    </eAnnotations>
+    <eAnnotations source="positions.22" references="/0/getPerson/%.1">
+      <details key="start" value="398"/>
+      <details key="end" value="408"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.23" references="/0/getPerson/%.1/aPerson">
+      <details key="start" value="398"/>
+      <details key="end" value="405"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.24" references="/0/getPerson/%.2">
+      <details key="start" value="410"/>
+      <details key="end" value="427"/>
+      <details key="line" value="21"/>
+    </eAnnotations>
+    <eAnnotations source="positions.25" references="/0/getPerson/%.3">
+      <details key="start" value="428"/>
+      <details key="end" value="445"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.26" references="/0/getPerson/%.3/aPerson">
+      <details key="start" value="428"/>
+      <details key="end" value="435"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.27" references="/0/getPerson/%.4">
+      <details key="start" value="447"/>
+      <details key="end" value="464"/>
+      <details key="line" value="22"/>
+    </eAnnotations>
+    <eAnnotations source="positions.28" references="/0/getPerson/%.5">
+      <details key="start" value="465"/>
+      <details key="end" value="481"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.29" references="/0/getPerson/%.5/aPerson">
+      <details key="start" value="465"/>
+      <details key="end" value="472"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.30" references="/0/getPerson/%.6">
+      <details key="start" value="483"/>
+      <details key="end" value="497"/>
+      <details key="line" value="23"/>
+    </eAnnotations>
+    <eAnnotations source="positions.31" references="/0/getPerson/%.7">
+      <details key="start" value="498"/>
+      <details key="end" value="511"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.32" references="/0/getPerson/%.7/aPerson">
+      <details key="start" value="498"/>
+      <details key="end" value="505"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.33" references="/0/getPerson/%.8">
+      <details key="start" value="513"/>
+      <details key="end" value="530"/>
+      <details key="line" value="24"/>
+    </eAnnotations>
+    <eAnnotations source="positions.34" references="/0/getPerson/%.9">
+      <details key="start" value="531"/>
+      <details key="end" value="547"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.35" references="/0/getPerson/%.9/aPerson">
+      <details key="start" value="531"/>
+      <details key="end" value="538"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.36" references="/0/getPerson/%.10">
+      <details key="start" value="549"/>
+      <details key="end" value="566"/>
+      <details key="line" value="25"/>
+    </eAnnotations>
+    <eAnnotations source="positions.37" references="/0/getPerson/%.11">
+      <details key="start" value="567"/>
+      <details key="end" value="583"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.38" references="/0/getPerson/%.11/aPerson">
+      <details key="start" value="567"/>
+      <details key="end" value="574"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.39" references="/0/getPerson/%.12">
+      <details key="start" value="585"/>
+      <details key="end" value="610"/>
+      <details key="line" value="26"/>
+    </eAnnotations>
+    <eAnnotations source="positions.40" references="/0/getPerson/%.13">
+      <details key="start" value="611"/>
+      <details key="end" value="632"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.41" references="/0/getPerson/%.13/aPerson">
+      <details key="start" value="624"/>
+      <details key="end" value="631"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.42" references="/0/getPerson/%.14">
+      <details key="start" value="634"/>
+      <details key="end" value="636"/>
+      <details key="line" value="28"/>
+    </eAnnotations>
+    <eAnnotations source="positions.43" references="/0/getPerson/aPerson">
+      <details key="start" value="366"/>
+      <details key="end" value="384"/>
+      <details key="line" value="19"/>
+    </eAnnotations>
+    <eAnnotations source="positions.44" references="/0/getProcesses">
+      <details key="start" value="650"/>
+      <details key="end" value="828"/>
+      <details key="line" value="31"/>
+    </eAnnotations>
+    <eAnnotations source="positions.45" references="/0/getProcesses/%">
+      <details key="start" value="715"/>
+      <details key="end" value="718"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.46" references="/0/getProcesses/%.1">
+      <details key="start" value="720"/>
+      <details key="end" value="721"/>
+      <details key="line" value="33"/>
+    </eAnnotations>
+    <eAnnotations source="positions.47" references="/0/getProcesses/%.2">
+      <details key="start" value="722"/>
+      <details key="end" value="809"/>
+      <details key="line" value="33"/>
+    </eAnnotations>
+    <eAnnotations source="positions.48" references="/0/getProcesses/%.2/%">
+      <details key="start" value="783"/>
+      <details key="end" value="785"/>
+      <details key="line" value="34"/>
+    </eAnnotations>
+    <eAnnotations source="positions.49" references="/0/getProcesses/%.2/%.1">
+      <details key="start" value="786"/>
+      <details key="end" value="798"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.50" references="/0/getProcesses/%.2/%.1/process">
+      <details key="start" value="786"/>
+      <details key="end" value="793"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.51" references="/0/getProcesses/%.2/%.2">
+      <details key="start" value="800"/>
+      <details key="end" value="802"/>
+      <details key="line" value="34"/>
+    </eAnnotations>
+    <eAnnotations source="positions.52" references="/0/getProcesses/%.2/process">
+      <details key="start" value="728"/>
+      <details key="end" value="745"/>
+      <details key="line" value="33"/>
+    </eAnnotations>
+    <eAnnotations source="positions.53" references="/0/getProcesses/%.2/%.3">
+      <details key="start" value="748"/>
+      <details key="end" value="763"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.54" references="/0/getProcesses/%.2/%.3/self">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.55" references="/0/getProcesses/%.2/%.4">
+      <details key="start" value="776"/>
+      <details key="end" value="780"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.56" references="/0/getProcesses/%.3">
+      <details key="start" value="811"/>
+      <details key="end" value="814"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.57" references="/0/getProcesses/aPerson">
+      <details key="start" value="680"/>
+      <details key="end" value="698"/>
+      <details key="line" value="31"/>
+    </eAnnotations>
+    <eAnnotations source="positions.58" references="/0/getProcesses/%.4">
+      <details key="start" value="705"/>
+      <details key="end" value="711"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.59" references="/0/getProcesses/%.4/self">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+  </ecore:EAnnotation>
+</xmi:XMI>

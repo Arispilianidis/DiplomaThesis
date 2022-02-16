@@ -1,0 +1,37 @@
+[comment encoding = UTF-8 /]
+[module generateUsersDataJSON('http://www.example.org/ezProcess')]
+
+
+[template public generateUsersDataJSON(anApp : App)]
+
+[file ('Server/myapi/routes/UsersData.json', false, 'UTF-8')]
+['['/]
+[for (person : Employee | hasEmployee) separator (',\n')]
+	[getPerson(person)/]
+[/for]
+[']'/]
+
+[/file]
+
+[/template]
+
+
+[template public getPerson(aPerson : Employee)]
+{
+ 	"id": [aPerson.id/],
+	"firstName": "[aPerson.firstName/]",
+	"lastName": "[aPerson.lastName/]",
+	"email": "[aPerson.email/]",
+	"username": "[aPerson.userName/]",
+	"password": "[aPerson.password/]",
+	"assignedProcesses": [getProcesses(aPerson)/]
+}
+[/template]
+
+[template public getProcesses(aPerson : Employee) post(trim())]
+['['/]
+	[for (process : Process | assignedProcess) separator (', ')]
+	"[process.name/]"
+	[/for]
+[']'/]
+[/template]

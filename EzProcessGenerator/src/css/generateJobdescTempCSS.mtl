@@ -1,0 +1,123 @@
+[comment encoding = UTF-8 /]
+[module generateJobdescTempCSS('http://www.example.org/ezProcess')]
+
+
+[template public generateJobdescTempCSS(anApp : App)]
+
+[file ('Output/src/css/JobDescTemp.css', false, 'UTF-8')]
+
+body {
+    background-image: url("https://www.teahub.io/photos/full/96-964892_backgrounds-professional-business-backgrounds-professional-professional-backgrounds-for.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;   
+  }
+
+#regForm {
+  background-color:#d4bd9a;
+  margin: 40px auto;
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 40px;
+  width: 90%;
+  min-width: 500px;
+  max-width: 600px;
+}
+
+.img-proof{
+  border: 1px solid #ddd;
+  border-radius: 2px;
+  padding: 5px;
+  width: 200px;
+  height: 200px;
+}
+
+
+h1{
+  text-align: center;
+  border: 3px solid powderblue;
+  margin: 10px;
+}
+
+h3 {
+  text-align: center;
+  margin: 10px;
+  margin-top: 20px;
+  border-bottom: 1px dashed black ;
+}
+
+
+
+p{
+  text-align: justify;
+  margin: 10px;
+  font-family: system-ui;
+  padding: 5px 1px;
+}
+
+textarea{
+  padding: 12px 20px;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: #f8f8f8;
+  resize: vertical;
+  max-block-size: 200px;
+  min-block-size: 100px;
+  width: 90%;
+  margin: 10px;
+  margin-left: 4%;
+  margin-right: 5%;
+
+}
+
+.CheckboxContainer{
+  display: inline-block;
+  flex-direction: column;
+  border: 2px solid lightgray;
+  overflow-y: scroll;
+  width: 380px;
+  height: 200px;
+  position:static;
+  margin: 10px;
+  min-width: 94%;
+
+}
+
+
+input['['/]type='checkbox'] {
+  display:flex;
+  margin: 10px;
+  margin-right:5px;
+  background:white;
+  border-radius:20px;
+  border: 1px solid #dee2e6;                                                
+  box-sizing:content-box;                                                   
+  line-height:16px;
+  position: relative;
+  vertical-align: middle;  
+  margin-left: 20px;                                           
+
+}    
+
+
+.PrevBtn {
+  width: 40%;
+  padding: 14px 20px;
+  margin-top: 5px;
+  margin-left:30%;
+  margin-right:30%;
+  background-color: lightslategray;
+  border: none;
+  color: white;
+  cursor: pointer;
+  text-align: center;
+}
+
+.PrevBtn:hover{
+  opacity: 0.8;
+}
+
+
+
+
+[/file]
+[/template]

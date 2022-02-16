@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:mtl="http://www.eclipse.org/acceleo/mtl/3.0" xmlns:ocl.ecore="http://www.eclipse.org/ocl/1.1.0/Ecore">
+  <mtl:Module name="generateJobdescTempCSS" nsURI="css::generateJobdescTempCSS" startHeaderPosition="29" endHeaderPosition="1530">
+    <input>
+      <takesTypesFrom href="http://www.example.org/ezProcess#/"/>
+    </input>
+    <ownedModuleElement xsi:type="mtl:Template" name="generateJobdescTempCSS" visibility="Public">
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;"/>
+      <body xsi:type="mtl:FileBlock" openMode="OverWrite">
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;body {&#xA;    background-image: url(&quot;https://www.teahub.io/photos/full/96-964892_backgrounds-professional-business-backgrounds-professional-professional-backgrounds-for.jpg&quot;);&#xA;    background-repeat: no-repeat;&#xA;    background-attachment: fixed;&#xA;    background-size: cover;   &#xA;  }&#xA;&#xA;#regForm {&#xA;  background-color:#d4bd9a;&#xA;  margin: 40px auto;&#xA;  font-family: Arial, Helvetica, sans-serif;&#xA;  padding: 40px;&#xA;  width: 90%;&#xA;  min-width: 500px;&#xA;  max-width: 600px;&#xA;}&#xA;&#xA;.img-proof{&#xA;  border: 1px solid #ddd;&#xA;  border-radius: 2px;&#xA;  padding: 5px;&#xA;  width: 200px;&#xA;  height: 200px;&#xA;}&#xA;&#xA;&#xA;h1{&#xA;  text-align: center;&#xA;  border: 3px solid powderblue;&#xA;  margin: 10px;&#xA;}&#xA;&#xA;h3 {&#xA;  text-align: center;&#xA;  margin: 10px;&#xA;  margin-top: 20px;&#xA;  border-bottom: 1px dashed black ;&#xA;}&#xA;&#xA;&#xA;&#xA;p{&#xA;  text-align: justify;&#xA;  margin: 10px;&#xA;  font-family: system-ui;&#xA;  padding: 5px 1px;&#xA;}&#xA;&#xA;textarea{&#xA;  padding: 12px 20px;&#xA;  border: 2px solid #ccc;&#xA;  border-radius: 4px;&#xA;  background-color: #f8f8f8;&#xA;  resize: vertical;&#xA;  max-block-size: 200px;&#xA;  min-block-size: 100px;&#xA;  width: 90%;&#xA;  margin: 10px;&#xA;  margin-left: 4%;&#xA;  margin-right: 5%;&#xA;&#xA;}&#xA;&#xA;.CheckboxContainer{&#xA;  display: inline-block;&#xA;  flex-direction: column;&#xA;  border: 2px solid lightgray;&#xA;  overflow-y: scroll;&#xA;  width: 380px;&#xA;  height: 200px;&#xA;  position:static;&#xA;  margin: 10px;&#xA;  min-width: 94%;&#xA;&#xA;}&#xA;&#xA;&#xA;input"/>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="[">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="type='checkbox'] {&#xA;  display:flex;&#xA;  margin: 10px;&#xA;  margin-right:5px;&#xA;  background:white;&#xA;  border-radius:20px;&#xA;  border: 1px solid #dee2e6;                                                &#xA;  box-sizing:content-box;                                                   &#xA;  line-height:16px;&#xA;  position: relative;&#xA;  vertical-align: middle;  &#xA;  margin-left: 20px;                                           &#xA;&#xA;}    &#xA;&#xA;&#xA;.PrevBtn {&#xA;  width: 40%;&#xA;  padding: 14px 20px;&#xA;  margin-top: 5px;&#xA;  margin-left:30%;&#xA;  margin-right:30%;&#xA;  background-color: lightslategray;&#xA;  border: none;&#xA;  color: white;&#xA;  cursor: pointer;&#xA;  text-align: center;&#xA;}&#xA;&#xA;.PrevBtn:hover{&#xA;  opacity: 0.8;&#xA;}&#xA;&#xA;&#xA;&#xA;&#xA;"/>
+        <fileUrl xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="Output/src/css/JobDescTemp.css">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </fileUrl>
+        <charset xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="UTF-8">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </charset>
+      </body>
+      <parameter name="anApp">
+        <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//App"/>
+      </parameter>
+    </ownedModuleElement>
+  </mtl:Module>
+  <ecore:EPackage name="additions">
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_String_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Integer_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Real_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Real"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ecore_EObject_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+      </eAnnotations>
+      <eOperations name="generateJobdescTempCSS">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL" references="/0/generateJobdescTempCSS"/>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="anApp">
+          <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//App"/>
+        </eParameters>
+      </eOperations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_OclAny_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OclAny"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Collection(T)_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Collection(T)"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Sequence(T)_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Sequence(T)"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_OrderedSet(T)_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OrderedSet(T)"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ezProcess_App_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.example.org/ezProcess#//App"/>
+      </eAnnotations>
+    </eClassifiers>
+  </ecore:EPackage>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//App"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//App"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//App"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//App"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//App"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </ocl.ecore:Variable>
+  <ecore:EAnnotation source="positions">
+    <eAnnotations source="positions.0" references="/0/generateJobdescTempCSS">
+      <details key="start" value="99"/>
+      <details key="end" value="2216"/>
+      <details key="line" value="5"/>
+    </eAnnotations>
+    <eAnnotations source="positions.1" references="/0/generateJobdescTempCSS/%">
+      <details key="start" value="153"/>
+      <details key="end" value="154"/>
+      <details key="line" value="6"/>
+    </eAnnotations>
+    <eAnnotations source="positions.2" references="/0/generateJobdescTempCSS/%.1">
+      <details key="start" value="154"/>
+      <details key="end" value="2204"/>
+      <details key="line" value="7"/>
+    </eAnnotations>
+    <eAnnotations source="positions.3" references="/0/generateJobdescTempCSS/%.1/%">
+      <details key="start" value="212"/>
+      <details key="end" value="1526"/>
+      <details key="line" value="8"/>
+    </eAnnotations>
+    <eAnnotations source="positions.4" references="/0/generateJobdescTempCSS/%.1/%.1">
+      <details key="start" value="1527"/>
+      <details key="end" value="1530"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.5" references="/0/generateJobdescTempCSS/%.1/%.2">
+      <details key="start" value="1532"/>
+      <details key="end" value="2197"/>
+      <details key="line" value="86"/>
+    </eAnnotations>
+    <eAnnotations source="positions.6" references="/0/generateJobdescTempCSS/%.1/%.3">
+      <details key="start" value="161"/>
+      <details key="end" value="193"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.7" references="/0/generateJobdescTempCSS/%.1/%.4">
+      <details key="start" value="202"/>
+      <details key="end" value="209"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.8" references="/0/generateJobdescTempCSS/anApp">
+      <details key="start" value="139"/>
+      <details key="end" value="150"/>
+      <details key="line" value="5"/>
+    </eAnnotations>
+  </ecore:EAnnotation>
+</xmi:XMI>

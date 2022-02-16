@@ -1,0 +1,41 @@
+[comment encoding = UTF-8 /]
+[module generateJobDescTempOptionsRating('http://www.example.org/ezProcess')]
+
+
+[template public generateJobDescTempOptionsRating(anApp : App) post(trim())]
+
+[file ('Server/myapi/routes/JobDescTempOptionsRating.js', false, 'UTF-8')]
+var express = require('express');
+var router = express.Router();
+const fs = require('fs')
+
+/* GET users listing. */
+router.get('/', function (req, res, next) {
+
+    let param = req.query.processName
+    console.log(param)
+    let optionsDataArray
+
+
+    if (fs.existsSync(__dirname + '\\' + param + "OptionsRating.json")) {
+
+        delete require.cache['['/]require.resolve(__dirname + '\\' + param + "OptionsRating.json")]
+        optionsDataArray = require(__dirname + '\\' + param + "OptionsRating.json");
+        console.log("exists:");
+        console.log(optionsDataArray);
+
+        res.json({
+            data: optionsDataArray
+        })
+    } else {
+        console.log("DOES NOT exist:");
+        res.json({
+            data: ['['/]]
+        })
+    }
+});
+
+
+module.exports = router;
+[/file]
+[/template]

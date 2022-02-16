@@ -1,0 +1,55 @@
+[comment encoding = UTF-8 /]
+[module getFormikControlField('http://www.example.org/ezProcess')]
+
+
+[template public getFormikControlField(value : InitialValue) post(trim())]
+
+	[if (value.oclIsTypeOf(MultipleChoiceFromList))]
+		<FormikControl control='checkbox' label="[value.label/]" name='[value.name/]' id="[value.oclAsType(MultipleChoiceFromList).optionVarName/]" options={[value.oclAsType(MultipleChoiceFromList).optionVarName/]}/>
+	[elseif (value.oclIsKindOf(InputField))]
+
+			[if (value.oclIsTypeOf(FileField))]
+				<label><b>[value.label/]</b></label>
+				<label htmlFor="[value.name/]" className='btn' style={{ marginLeft: 20, border: '1px solid black', backgroundColor: 'white', display: 'block', width: '150px', marginTop: '5px', marginBottom: '5px' }}>Upload File</label>
+				[if (value.required)]
+				<input style={{ marginLeft: 20, display: 'none'}} name='[value.name/]' type='file' id='[value.name/]' required onChange={(event) => {
+  	  		  	  formik.setFieldValue("[value.name/]",event.currentTarget.files['[0]'/])
+  	  		  	  props.postProof("[value.name/]")
+				}} />
+				[else]
+				<input style={{ marginLeft: 20, display: 'none'}} name='[value.name/]' type='file' id='[value.name/]' onChange={(event) => {
+  	  		  	  formik.setFieldValue("[value.name/]",event.currentTarget.files['[0]'/])
+  	  		  	  props.postProof("[value.name/]")
+				}} />
+				[/if]
+				{getImageName(formik.values.[value.name/])}
+			[elseif (value.oclIsTypeOf(TextField))]
+				<FormikControl control='input' type='text' label='[value.label/]' name='[value.name/]' placeholder="[value.oclAsType(TextField).placeholder/]" />
+			[elseif (value.oclIsTypeOf(NumberField))]
+				<FormikControl control='input' type='number' label='[value.label/]' name='[value.name/]' />
+			[elseif (value.oclIsTypeOf(CandidateTextField))]
+			<FormikControl control='input' type='text' label='[value.label/]' name='[value.oclAsType(CandidateTextField).candidateField/]' placeholder="[value.oclAsType(CandidateTextField).placeholder/]" />
+			[elseif (value.oclIsTypeOf(CandidateEmailField))]
+			<FormikControl control='input' type='email' label='[value.label/]' name='EMAIL' placeholder="[value.oclAsType(CandidateEmailField).placeholder/]" />
+			[elseif (value.oclIsTypeOf(EmailField))]
+				<FormikControl control='input' type='email' label='[value.label/]' name='[value.name/]' placeholder="[value.oclAsType(EmailField).placeholder/]" />
+			[/if]
+	[elseif (value.oclIsTypeOf(FreeTextArea))]
+			<FormikControl control ='textarea' label='[value.label/]' name='[value.name/]' placeholder="[value.oclAsType(FreeTextArea).placeholder/]" />
+	[elseif (value.oclIsTypeOf(Date))]
+			<FormikControl control ='date' label='[value.label/]' name='[value.name/]'/>
+	[elseif (value.oclIsTypeOf(SingleChoiceFromList))]
+			<FormikControl control ='radio' label='[value.label/]' name='[value.name/]' options={[value.oclAsType(SingleChoiceFromList).optionVarName/]}/>
+	[elseif (value.oclIsTypeOf(SingleChoiceFromDropDownList))]
+			<FormikControl control ='select' label='[value.label/]' name='[value.name/]' options={[value.oclAsType(SingleChoiceFromDropDownList).optionVarName/]} />
+	[/if]
+[if (value.Proof)]
+<label htmlFor="[value.name + 'Proof'/]" className='btn' style={{ border: '1px solid black', backgroundColor: 'white', display: 'block', width: '150px', marginTop: '5px', marginBottom: '5px' }}>Choose Image</label>
+<input style={{ marginLeft: 20,  marginTop:10, display: 'none' }} name='[value.name + 'Proof'/]' type='file' id='[value.name + 'Proof'/]' accept="image/*" onChange={(event) => {
+  formik.setFieldValue("[value.name + 'Proof'/]",event.currentTarget.files['[0]'/])
+  props.postProof("[value.name + 'Proof'/]")
+}} />
+{getImageName(formik.values.[value.name + 'Proof'/])}
+<Proof file={formik.values.[value.name + 'Proof'/]} />		
+[/if]
+[/template]

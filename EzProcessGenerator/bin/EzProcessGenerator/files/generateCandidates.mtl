@@ -1,0 +1,158 @@
+[comment encoding = UTF-8 /]
+[module generateCandidates('http://www.example.org/ezProcess')]
+
+
+[template public generateCandidates(anApp : App)]
+
+[file ('Output/src/Candidates.js', false, 'UTF-8')]
+import React, { useMemo,useEffect } from 'react'
+import { useTable, useSortBy, usePagination, useRowSelect } from 'react-table'
+import { COLUMNS } from "./columns"
+
+const IndeterminateCheckbox = React.forwardRef(
+    ({ indeterminate, ...rest }, ref) => {
+        const defaultRef = React.useRef()
+        const resolvedRef = ref || defaultRef
+
+        React.useEffect(() => {
+            resolvedRef.current.indeterminate = indeterminate
+        }, ['['/]resolvedRef, indeterminate])
+
+        return (
+            <>
+                <input type="checkbox" ref={resolvedRef} {...rest} />
+            </>
+        )
+    }
+)
+
+function Candidates(props) {
+
+    const columns = useMemo(() => COLUMNS, ['[]'/])
+    const candidates = useMemo(() => props.candidates, ['['/]props.candidates])
+
+    useEffect(() => {
+        props.handleCandidates(selectedFlatRows)
+    })
+    const {
+        getTableProps,
+        getTableBodyProps,
+        headerGroups,
+        prepareRow,
+        page,
+        nextPage,
+        previousPage,
+        canNextPage,
+        canPreviousPage,
+        pageOptions,
+        setPageSize,
+        selectedFlatRows,
+        state: { pageIndex, pageSize },
+    } = useTable({
+        columns,
+        data: candidates
+    },
+        useSortBy,
+        usePagination,
+        useRowSelect,
+        hooks => {
+            hooks.visibleColumns.push(columns => ['['/]
+                // Let's make a column for selection
+                {
+                    id: 'selection',
+                    // The header can use the table's getToggleAllRowsSelectedProps method
+                    // to render a checkbox
+                    Header: ({ getToggleAllPageRowsSelectedProps }) => (
+                        <div>
+                            <IndeterminateCheckbox {...getToggleAllPageRowsSelectedProps()} />
+                        </div>
+                    ),
+                    // The cell can use the individual row's getToggleRowSelectedProps method
+                    // to the render a checkbox
+                    Cell: ({ row }) => (
+                        <div>
+                            <IndeterminateCheckbox {...row.getToggleRowSelectedProps()} />
+                        </div>
+                    ),
+                },
+                ...columns,
+            ])
+        }
+    )
+
+    return (
+
+        <div style={{ overflowY: 'scroll', maxHeight: 200, marginTop: 10, marginLeft: 0, marginRight: 0 }}>
+            <table {...getTableProps()}>
+                <thead>
+                    {headerGroups.map((headerGroup) => (
+
+                        <tr {...headerGroup.getHeaderGroupProps()}>
+                            {headerGroup.headers.map((column) => (
+                                <th {...column.getHeaderProps(column.getSortByToggleProps())}><b>
+                                    {column.render('Header')}
+                                </b>
+                                    <span>
+
+                                        {column.isSorted ? (column.isSortedDesc ? <i className="far fa-caret-square-down"></i> : <i className="far fa-caret-square-up"> </i>) : ''}
+                                    </span>
+                                </th>
+                            ))}
+                        </tr>
+                    ))}
+                </thead>
+                <tbody {...getTableBodyProps()}>
+                    {page.map((row) => {
+                        prepareRow(row)
+                        return (
+                            <tr {...row.getRowProps()}>
+                                {row.cells.map((cell) => {
+                                    return <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
+                                })}
+                            </tr>
+                        )
+                    })}
+                </tbody>
+            </table>
+            <div style={{ marginTop: 10, backgroundColor: 'white', width: '61%' }}>
+                <span>
+                    Page {' '}
+                    <strong>
+                        {pageIndex + 1} of {pageOptions.length}
+                    </strong> {' '}
+                </span>
+                <select value={pageSize} onChange={e => setPageSize(Number(e.target.value))}>
+                    {
+                        ['['/]5, 10, 25, 50].map(pageSize => (
+                            <option key={pageSize} value={pageSize}>
+                                Show {pageSize}
+                            </option>
+                        ))
+                    }
+                </select>
+                {/* <pre>
+                    <code>
+                        {JSON.stringify(
+                            {
+                                selectedRowIds: selectedRowIds,
+                                'selectedFlatRows['[]'/].original': selectedFlatRows.map(
+                                    d => d.original
+                                ),
+                            },
+                            null,
+                            2
+                        )}
+                    </code>
+                </pre> */}
+                <button onClick={() => previousPage()} disabled={!canPreviousPage}> Previous </button>
+                <button onClick={() => nextPage()} disabled={!canNextPage}> Next </button>
+            </div>
+        </div>
+
+    )
+}
+
+export default Candidates
+
+[/file]
+[/template]

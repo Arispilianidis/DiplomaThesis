@@ -1,0 +1,157 @@
+[comment encoding = UTF-8 /]
+[module generateOnboardingPage('http://www.example.org/ezProcess')]
+
+[import commonTemplates::getValueOptionsArray /]
+[import commonTemplates::getFormikControlField /]
+
+[template public generateOnboardingPage(page : Page, processName: String, id : Integer) post(trim())]
+
+[file ('Output/src/'+processName+'/'+processName + id+'.js', false, 'UTF-8')]
+import React from 'react'
+import FormikControl from '../components/FormikControl'
+import { Formik, Form } from 'formik'
+[if (page.hasInitialvalue->select(v| v.Proof)->size()>0)]
+import Proof, {getImageName} from '../components/Proof'
+[elseif (page.hasInitialvalue->select(v| v.Proof)->size() = 0 and page.hasInitialvalue->select(v | v.oclIsTypeOf(FileField))->size() > 0)]
+import {getImageName} from '../components/Proof'
+[/if]
+
+
+[for (task : OnboardingTask | hasOnboardingTask)]
+	[if (task.oclIsTypeOf(OnboardingSetupTask))]
+const [task.name + task.oclAsType(OnboardingSetupTask).isAbout.name + 'Options'/] = ['['/]]
+	[elseif (task.oclIsTypeOf(OnboardingTrainingTask))]
+const [task.name + getOBtaskQuestion(task).isAbout.name + 'Options'/] = ['['/]]
+	[/if]	
+[/for]
+
+function [processName+id/](props) {
+
+  const handleSumbit = (values) => {
+[if (page.first)]
+	if (props.handleCandidate(values)) {
+      //candidate exists
+      props.onSubmit(values, false)
+    } else {
+      alert("This candidate does not exist in the Database. Please choose another one.")
+    }
+[else]
+	[if (page.final)]
+	props.onSubmit(values, true)
+	[else]
+	props.onSubmit(values, false)
+	[/if]
+[/if]
+  }
+
+[getValueOptionsArray(page)/]
+
+[if (page.hasOnboardingTask->size() > 0 )]
+	function toArray(aVar) {
+
+        if (typeof (aVar) === 'string') {
+            aVar = ['['/]aVar]
+        }
+        return aVar
+    }
+
+
+    function getOnboardingQuestions(Item, QId, label, FormikName, optionsArray, optionsArrayName) {
+
+        optionsArray = ['['/]]
+        let thresholds
+        toArray(props.answers['['/]Item]).forEach(ans => {
+            thresholds = props.optionsRating.find(o => o.name === Item).options.find(v => v.optionValue === ans).optionRating.find(r => r.isAbout === QId).thresholds
+
+            thresholds.filter(thres => thres.length !== 0).forEach(threshold => {
+                if ((threshold.min <= props.candidateInfo.ratingsMap['['/]ans + `Rating${QId}`]) && (threshold.max >= props.candidateInfo.ratingsMap['['/]ans + `Rating${QId}`])) {
+                    threshold.text.forEach(t => {
+
+                        optionsArray.push({
+                            "key": t,
+                            "value": t,
+                        })
+                    })
+                }
+            })
+        })
+
+        return <FormikControl control='checkbox' label={label} name={FormikName} id={optionsArrayName} options={optionsArray} />
+    }
+
+
+    function getSimpleTasks(Item, label, FormikName, simpleoptionsArray, optionsArrayName ){
+
+        simpleoptionsArray= ['['/]]
+        toArray(props.answers['['/]Item]).forEach(ans => {
+          let setupActions = props.optionsRating.find(o => o.name===Item).options.find(opt => opt.optionValue=== ans).setupAction 
+          setupActions.filter(act => act.length !== 0).forEach(element => {
+            simpleoptionsArray.push({
+                "key": element,
+                "value": element,
+            })
+          });
+        })
+
+        return <FormikControl control='checkbox' label={label} name={FormikName} id={optionsArrayName} options={simpleoptionsArray} />
+    }
+[/if]
+
+[if (not(page.first))]
+  const { prevStep } = props
+[/if]
+
+return (
+
+    <Formik initialValues={props.initialValues} validationSchema={props.validationSchema} onSubmit={handleSumbit} >
+      {
+
+        formik => <Form id="regForm">
+          <h1> [processName/] Overview </h1>
+          <span>
+
+            <h3> [page.header/]</h3>
+
+            <p> [page.description/]</p>
+
+			[for ( value : InitialValue | hasInitialvalue)]
+					[getFormikControlField(value)/]
+			[/for]
+
+			[for (task : OnboardingTask | hasOnboardingTask)]
+				[if (task.oclIsTypeOf(OnboardingTrainingTask))]
+					{getOnboardingQuestions("[getOBtaskQuestion(task).isAbout.name/]", [getOBtaskQuestion(task).ID/], "[task.label/]", "[task.name + getOBtaskQuestion(task).isAbout.name/]", [task.name + getOBtaskQuestion(task).isAbout.name + 'Options'/], "[task.name + getOBtaskQuestion(task).isAbout.name + 'Options'/]")}
+				[elseif (task.oclIsTypeOf(OnboardingSetupTask))]
+					{getSimpleTasks("[getSimpleOBTaskValue(task).name/]", "[task.label/]", "[task.name + getSimpleOBTaskValue(task).name/]", [task.name+ getSimpleOBTaskValue(task).name + 'Options' /], "[task.name+ getSimpleOBTaskValue(task).name + 'Options'/]")}
+				[/if]
+			[/for]
+
+            <button type="submit"> Next</button>
+			[if (not(page.first))]
+						<button type="button" className="PrevBtn" onClick={prevStep}> Back</button>
+			[/if]
+
+          </span>
+
+        </Form>
+      }
+
+    </Formik >
+
+  )
+}
+
+export default [processName+id/]
+
+
+[/file]
+[/template]
+
+[query public getOBtaskQuestion(task : OnboardingTask) : Question =
+ task.oclAsType(OnboardingTrainingTask).isAbout
+ /]
+
+[query public getSimpleOBTaskValue(task : OnboardingTask) : MultipleOptions =
+ task.oclAsType(OnboardingSetupTask).isAbout
+ /]
+

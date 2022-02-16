@@ -1,0 +1,1117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:mtl="http://www.eclipse.org/acceleo/mtl/3.0" xmlns:ocl.ecore="http://www.eclipse.org/ocl/1.1.0/Ecore">
+  <mtl:Module name="getValidationSchema" nsURI="commonTemplates::getValidationSchema" startHeaderPosition="29" endHeaderPosition="258">
+    <input>
+      <takesTypesFrom href="http://www.example.org/ezProcess#/"/>
+    </input>
+    <ownedModuleElement xsi:type="mtl:Template" name="getValidationSchema" visibility="Public">
+      <body xsi:type="mtl:ForBlock">
+        <body xsi:type="mtl:IfBlock">
+          <body xsi:type="mtl:TemplateInvocation" definition="/0/getRequiredValue">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            <argument xsi:type="ocl.ecore:VariableExp" name="value" referredVariable="/0/getValidationSchema/%/value">
+              <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//InitialValue"/>
+            </argument>
+          </body>
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;"/>
+          <ifExpr xsi:type="ocl.ecore:PropertyCallExp">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
+            <source xsi:type="ocl.ecore:VariableExp" name="value" referredVariable="/0/getValidationSchema/%/value">
+              <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//InitialValue"/>
+            </source>
+            <referredProperty xsi:type="ecore:EAttribute" href="http://www.example.org/ezProcess#//InitialValue/required"/>
+          </ifExpr>
+        </body>
+        <loopVariable name="value">
+          <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//InitialValue"/>
+        </loopVariable>
+        <iterSet xsi:type="ocl.ecore:PropertyCallExp" eType="/7/OrderedSet(InitialValue)">
+          <source xsi:type="ocl.ecore:VariableExp" name="page" referredVariable="/0/getValidationSchema/page">
+            <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Page"/>
+          </source>
+          <referredProperty xsi:type="ecore:EReference" href="http://www.example.org/ezProcess#//Page/hasInitialvalue"/>
+        </iterSet>
+      </body>
+      <body xsi:type="mtl:ForBlock">
+        <body xsi:type="mtl:IfBlock">
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;"/>
+          <body xsi:type="ocl.ecore:PropertyCallExp">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            <source xsi:type="ocl.ecore:VariableExp" name="task" referredVariable="/0/getValidationSchema/%.1/task">
+              <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//OnboardingTask"/>
+            </source>
+            <referredProperty xsi:type="ecore:EAttribute" href="http://www.example.org/ezProcess#//OnboardingTask/name"/>
+          </body>
+          <body xsi:type="mtl:TemplateInvocation" definition="/0/getRequiredValue">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            <argument xsi:type="ocl.ecore:PropertyCallExp">
+              <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//MultipleOptions"/>
+              <source xsi:type="ocl.ecore:OperationCallExp">
+                <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//OnboardingSetupTask"/>
+                <source xsi:type="ocl.ecore:VariableExp" name="task" referredVariable="/0/getValidationSchema/%.1/task">
+                  <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//OnboardingTask"/>
+                </source>
+                <argument xsi:type="ocl.ecore:TypeExp" eType="/16/OnboardingSetupTask">
+                  <referredType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//OnboardingSetupTask"/>
+                </argument>
+                <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OclAny_Class/oclAsType"/>
+              </source>
+              <referredProperty xsi:type="ecore:EReference" href="http://www.example.org/ezProcess#//OnboardingSetupTask/isAbout"/>
+            </argument>
+          </body>
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;"/>
+          <ifExpr xsi:type="ocl.ecore:OperationCallExp">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
+            <source xsi:type="ocl.ecore:VariableExp" name="task" referredVariable="/0/getValidationSchema/%.1/task">
+              <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//OnboardingTask"/>
+            </source>
+            <argument xsi:type="ocl.ecore:TypeExp" eType="/16/OnboardingSetupTask">
+              <referredType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//OnboardingSetupTask"/>
+            </argument>
+            <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OclAny_Class/oclIsTypeOf"/>
+          </ifExpr>
+          <elseIf>
+            <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;"/>
+            <body xsi:type="ocl.ecore:PropertyCallExp">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+              <source xsi:type="ocl.ecore:VariableExp" name="task" referredVariable="/0/getValidationSchema/%.1/task">
+                <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//OnboardingTask"/>
+              </source>
+              <referredProperty xsi:type="ecore:EAttribute" href="http://www.example.org/ezProcess#//OnboardingTask/name"/>
+            </body>
+            <body xsi:type="mtl:TemplateInvocation" definition="/0/getRequiredValue">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+              <argument xsi:type="ocl.ecore:PropertyCallExp">
+                <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//MultipleOptions"/>
+                <source xsi:type="ocl.ecore:PropertyCallExp">
+                  <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Question"/>
+                  <source xsi:type="ocl.ecore:OperationCallExp">
+                    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//OnboardingTrainingTask"/>
+                    <source xsi:type="ocl.ecore:VariableExp" name="task" referredVariable="/0/getValidationSchema/%.1/task">
+                      <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//OnboardingTask"/>
+                    </source>
+                    <argument xsi:type="ocl.ecore:TypeExp" eType="/16/OnboardingTrainingTask">
+                      <referredType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//OnboardingTrainingTask"/>
+                    </argument>
+                    <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OclAny_Class/oclAsType"/>
+                  </source>
+                  <referredProperty xsi:type="ecore:EReference" href="http://www.example.org/ezProcess#//OnboardingTrainingTask/isAbout"/>
+                </source>
+                <referredProperty xsi:type="ecore:EReference" href="http://www.example.org/ezProcess#//Question/isAbout"/>
+              </argument>
+            </body>
+            <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;"/>
+            <ifExpr xsi:type="ocl.ecore:OperationCallExp">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
+              <source xsi:type="ocl.ecore:VariableExp" name="task" referredVariable="/0/getValidationSchema/%.1/task">
+                <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//OnboardingTask"/>
+              </source>
+              <argument xsi:type="ocl.ecore:TypeExp" eType="/16/OnboardingTrainingTask">
+                <referredType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//OnboardingTrainingTask"/>
+              </argument>
+              <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OclAny_Class/oclIsTypeOf"/>
+            </ifExpr>
+          </elseIf>
+        </body>
+        <loopVariable name="task">
+          <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//OnboardingTask"/>
+        </loopVariable>
+        <iterSet xsi:type="ocl.ecore:PropertyCallExp" eType="/7/OrderedSet(OnboardingTask)">
+          <source xsi:type="ocl.ecore:VariableExp" name="page" referredVariable="/0/getValidationSchema/page">
+            <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Page"/>
+          </source>
+          <referredProperty xsi:type="ecore:EReference" href="http://www.example.org/ezProcess#//Page/hasOnboardingTask"/>
+        </iterSet>
+      </body>
+      <parameter name="page">
+        <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Page"/>
+      </parameter>
+      <post xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/oclstdlib_String_Class/trim">
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <source xsi:type="ocl.ecore:VariableExp" name="self" referredVariable="/5">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </source>
+      </post>
+    </ownedModuleElement>
+    <ownedModuleElement xsi:type="mtl:Template" name="getRequiredValue" visibility="Public">
+      <body xsi:type="mtl:IfBlock">
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;"/>
+        <body xsi:type="ocl.ecore:PropertyCallExp">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <source xsi:type="ocl.ecore:VariableExp" name="value" referredVariable="/0/getRequiredValue/value">
+            <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//InitialValue"/>
+          </source>
+          <referredProperty xsi:type="ecore:EAttribute" href="http://www.example.org/ezProcess#//InitialValue/name"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=": Yup.date().required('Required').nullable(),&#xA;"/>
+        <ifExpr xsi:type="ocl.ecore:OperationCallExp">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
+          <source xsi:type="ocl.ecore:VariableExp" name="value" referredVariable="/0/getRequiredValue/value">
+            <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//InitialValue"/>
+          </source>
+          <argument xsi:type="ocl.ecore:TypeExp" eType="/16/Date">
+            <referredType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Date"/>
+          </argument>
+          <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OclAny_Class/oclIsTypeOf"/>
+        </ifExpr>
+        <else>
+          <body xsi:type="mtl:IfBlock">
+            <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;"/>
+            <body xsi:type="ocl.ecore:PropertyCallExp">
+              <eType xsi:type="ecore:EEnum" href="http://www.example.org/ezProcess#//CandidateFieldType"/>
+              <source xsi:type="ocl.ecore:OperationCallExp">
+                <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//CandidateTextField"/>
+                <source xsi:type="ocl.ecore:VariableExp" name="value" referredVariable="/0/getRequiredValue/value">
+                  <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//InitialValue"/>
+                </source>
+                <argument xsi:type="ocl.ecore:TypeExp" eType="/16/CandidateTextField">
+                  <referredType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//CandidateTextField"/>
+                </argument>
+                <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OclAny_Class/oclAsType"/>
+              </source>
+              <referredProperty xsi:type="ecore:EAttribute" href="http://www.example.org/ezProcess#//CandidateTextField/candidateField"/>
+            </body>
+            <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=": Yup.string().required('Required'),&#xA;"/>
+            <ifExpr xsi:type="ocl.ecore:OperationCallExp">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
+              <source xsi:type="ocl.ecore:VariableExp" name="value" referredVariable="/0/getRequiredValue/value">
+                <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//InitialValue"/>
+              </source>
+              <argument xsi:type="ocl.ecore:TypeExp" eType="/16/CandidateTextField">
+                <referredType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//CandidateTextField"/>
+              </argument>
+              <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OclAny_Class/oclIsTypeOf"/>
+            </ifExpr>
+            <else>
+              <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;&#x9;"/>
+              <body xsi:type="ocl.ecore:PropertyCallExp">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                <source xsi:type="ocl.ecore:VariableExp" name="value" referredVariable="/0/getRequiredValue/value">
+                  <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//InitialValue"/>
+                </source>
+                <referredProperty xsi:type="ecore:EAttribute" href="http://www.example.org/ezProcess#//InitialValue/name"/>
+              </body>
+              <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=": Yup.string().required('Required'),&#xA;"/>
+            </else>
+            <elseIf>
+              <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;EMAIL: Yup.string().email('Invalid email').required('Required'),&#xA;"/>
+              <ifExpr xsi:type="ocl.ecore:OperationCallExp">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
+                <source xsi:type="ocl.ecore:VariableExp" name="value" referredVariable="/0/getRequiredValue/value">
+                  <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//InitialValue"/>
+                </source>
+                <argument xsi:type="ocl.ecore:TypeExp" eType="/16/CandidateEmailField">
+                  <referredType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//CandidateEmailField"/>
+                </argument>
+                <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OclAny_Class/oclIsTypeOf"/>
+              </ifExpr>
+            </elseIf>
+            <elseIf>
+              <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;"/>
+              <body xsi:type="ocl.ecore:PropertyCallExp">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                <source xsi:type="ocl.ecore:VariableExp" name="value" referredVariable="/0/getRequiredValue/value">
+                  <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//InitialValue"/>
+                </source>
+                <referredProperty xsi:type="ecore:EAttribute" href="http://www.example.org/ezProcess#//InitialValue/name"/>
+              </body>
+              <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=": Yup.string().email('Invalid email').required('Required'),&#xA;"/>
+              <ifExpr xsi:type="ocl.ecore:OperationCallExp">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
+                <source xsi:type="ocl.ecore:VariableExp" name="value" referredVariable="/0/getRequiredValue/value">
+                  <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//InitialValue"/>
+                </source>
+                <argument xsi:type="ocl.ecore:TypeExp" eType="/16/EmailField">
+                  <referredType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//EmailField"/>
+                </argument>
+                <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OclAny_Class/oclIsTypeOf"/>
+              </ifExpr>
+            </elseIf>
+          </body>
+        </else>
+        <elseIf>
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;"/>
+          <body xsi:type="ocl.ecore:PropertyCallExp">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            <source xsi:type="ocl.ecore:VariableExp" name="value" referredVariable="/0/getRequiredValue/value">
+              <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//InitialValue"/>
+            </source>
+            <referredProperty xsi:type="ecore:EAttribute" href="http://www.example.org/ezProcess#//InitialValue/name"/>
+          </body>
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=": Yup.number().required('Required').min("/>
+          <body xsi:type="ocl.ecore:PropertyCallExp">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+            <source xsi:type="ocl.ecore:OperationCallExp">
+              <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//NumberField"/>
+              <source xsi:type="ocl.ecore:VariableExp" name="value" referredVariable="/0/getRequiredValue/value">
+                <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//InitialValue"/>
+              </source>
+              <argument xsi:type="ocl.ecore:TypeExp" eType="/16/NumberField">
+                <referredType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//NumberField"/>
+              </argument>
+              <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OclAny_Class/oclAsType"/>
+            </source>
+            <referredProperty xsi:type="ecore:EAttribute" href="http://www.example.org/ezProcess#//NumberField/min"/>
+          </body>
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=").max("/>
+          <body xsi:type="ocl.ecore:PropertyCallExp">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+            <source xsi:type="ocl.ecore:OperationCallExp">
+              <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//NumberField"/>
+              <source xsi:type="ocl.ecore:VariableExp" name="value" referredVariable="/0/getRequiredValue/value">
+                <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//InitialValue"/>
+              </source>
+              <argument xsi:type="ocl.ecore:TypeExp" eType="/16/NumberField">
+                <referredType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//NumberField"/>
+              </argument>
+              <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OclAny_Class/oclAsType"/>
+            </source>
+            <referredProperty xsi:type="ecore:EAttribute" href="http://www.example.org/ezProcess#//NumberField/max"/>
+          </body>
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="),&#xA;"/>
+          <ifExpr xsi:type="ocl.ecore:OperationCallExp">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
+            <source xsi:type="ocl.ecore:VariableExp" name="value" referredVariable="/0/getRequiredValue/value">
+              <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//InitialValue"/>
+            </source>
+            <argument xsi:type="ocl.ecore:TypeExp" eType="/16/NumberField">
+              <referredType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//NumberField"/>
+            </argument>
+            <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OclAny_Class/oclIsTypeOf"/>
+          </ifExpr>
+        </elseIf>
+        <elseIf>
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;"/>
+          <body xsi:type="ocl.ecore:PropertyCallExp">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            <source xsi:type="ocl.ecore:VariableExp" name="value" referredVariable="/0/getRequiredValue/value">
+              <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//InitialValue"/>
+            </source>
+            <referredProperty xsi:type="ecore:EAttribute" href="http://www.example.org/ezProcess#//InitialValue/name"/>
+          </body>
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=": Yup.array().required('Required').min(1, 'Required'),&#xA;"/>
+          <ifExpr xsi:type="ocl.ecore:OperationCallExp">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
+            <source xsi:type="ocl.ecore:VariableExp" name="value" referredVariable="/0/getRequiredValue/value">
+              <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//InitialValue"/>
+            </source>
+            <argument xsi:type="ocl.ecore:TypeExp" eType="/16/MultipleChoiceFromList">
+              <referredType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//MultipleChoiceFromList"/>
+            </argument>
+            <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OclAny_Class/oclIsTypeOf"/>
+          </ifExpr>
+        </elseIf>
+      </body>
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;"/>
+      <parameter name="value">
+        <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//InitialValue"/>
+      </parameter>
+      <post xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/oclstdlib_String_Class/trim">
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <source xsi:type="ocl.ecore:VariableExp" name="self" referredVariable="/28">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </source>
+      </post>
+    </ownedModuleElement>
+  </mtl:Module>
+  <ecore:EPackage name="additions">
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_String_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+      </eAnnotations>
+      <eOperations name="trim">
+        <eAnnotations source="MTL non-standard"/>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+      </eOperations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Integer_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Real_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Real"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ecore_EObject_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+      </eAnnotations>
+      <eOperations name="getValidationSchema">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL" references="/0/getValidationSchema"/>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="page">
+          <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Page"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="getRequiredValue">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL" references="/0/getRequiredValue"/>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="value">
+          <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//InitialValue"/>
+        </eParameters>
+      </eOperations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_OclAny_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OclAny"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Collection(T)_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Collection(T)"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Sequence(T)_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Sequence(T)"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_OrderedSet(T)_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OrderedSet(T)"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ezProcess_Page_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.example.org/ezProcess#//Page"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ezProcess_InitialValue_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.example.org/ezProcess#//InitialValue"/>
+      </eAnnotations>
+    </eClassifiers>
+  </ecore:EPackage>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Page"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Page"/>
+  </ocl.ecore:Variable>
+  <ecore:EPackage name="collections">
+    <eClassifiers xsi:type="ocl.ecore:OrderedSetType" name="OrderedSet(InitialValue)" instanceClassName="java.util.LinkedHashSet">
+      <elementType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//InitialValue"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ocl.ecore:OrderedSetType" name="OrderedSet(OnboardingTask)" instanceClassName="java.util.LinkedHashSet">
+      <elementType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//OnboardingTask"/>
+    </eClassifiers>
+  </ecore:EPackage>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Page"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//InitialValue"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//InitialValue"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//InitialValue"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Page"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="i">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Page"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//OnboardingTask"/>
+  </ocl.ecore:Variable>
+  <ecore:EPackage name="types">
+    <eClassifiers xsi:type="ocl.ecore:TypeType" name="OnboardingSetupTask">
+      <referredType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//OnboardingSetupTask"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ocl.ecore:TypeType" name="OnboardingTrainingTask">
+      <referredType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//OnboardingTrainingTask"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ocl.ecore:TypeType" name="Date">
+      <referredType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Date"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ocl.ecore:TypeType" name="NumberField">
+      <referredType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//NumberField"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ocl.ecore:TypeType" name="MultipleChoiceFromList">
+      <referredType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//MultipleChoiceFromList"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ocl.ecore:TypeType" name="CandidateTextField">
+      <referredType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//CandidateTextField"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ocl.ecore:TypeType" name="CandidateEmailField">
+      <referredType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//CandidateEmailField"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ocl.ecore:TypeType" name="EmailField">
+      <referredType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//EmailField"/>
+    </eClassifiers>
+  </ecore:EPackage>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//OnboardingTask"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//OnboardingTask"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//OnboardingTask"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//OnboardingTask"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//OnboardingTask"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//OnboardingTask"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Page"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="i">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//InitialValue"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//InitialValue"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//InitialValue"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//InitialValue"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//InitialValue"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//InitialValue"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//InitialValue"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//InitialValue"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//InitialValue"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//InitialValue"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//InitialValue"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//InitialValue"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//InitialValue"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//InitialValue"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//InitialValue"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//InitialValue"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </ocl.ecore:Variable>
+  <ecore:EAnnotation source="positions">
+    <eAnnotations source="positions.0" references="/0/getValidationSchema">
+      <details key="start" value="96"/>
+      <details key="end" value="622"/>
+      <details key="line" value="5"/>
+    </eAnnotations>
+    <eAnnotations source="positions.1" references="/0/getValidationSchema/%">
+      <details key="start" value="160"/>
+      <details key="end" value="273"/>
+      <details key="line" value="6"/>
+    </eAnnotations>
+    <eAnnotations source="positions.2" references="/0/getValidationSchema/%/%">
+      <details key="start" value="212"/>
+      <details key="end" value="266"/>
+      <details key="line" value="7"/>
+    </eAnnotations>
+    <eAnnotations source="positions.3" references="/0/getValidationSchema/%/%/%">
+      <details key="start" value="235"/>
+      <details key="end" value="258"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.4" references="/0/getValidationSchema/%/%/%/value">
+      <details key="start" value="252"/>
+      <details key="end" value="257"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.5" references="/0/getValidationSchema/%/%/%.1">
+      <details key="start" value="260"/>
+      <details key="end" value="261"/>
+      <details key="line" value="9"/>
+    </eAnnotations>
+    <eAnnotations source="positions.6" references="/0/getValidationSchema/%/%/%.2">
+      <details key="start" value="216"/>
+      <details key="end" value="232"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.7" references="/0/getValidationSchema/%/%/%.2/value">
+      <details key="start" value="217"/>
+      <details key="end" value="222"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.8" references="/0/getValidationSchema/%/value">
+      <details key="start" value="166"/>
+      <details key="end" value="185"/>
+      <details key="line" value="6"/>
+    </eAnnotations>
+    <eAnnotations source="positions.9" references="/0/getValidationSchema/%/%.1">
+      <details key="start" value="188"/>
+      <details key="end" value="208"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.10" references="/0/getValidationSchema/%/%.1/page">
+      <details key="start" value="188"/>
+      <details key="end" value="192"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.11" references="/0/getValidationSchema/%.1">
+      <details key="start" value="275"/>
+      <details key="end" value="610"/>
+      <details key="line" value="11"/>
+    </eAnnotations>
+    <eAnnotations source="positions.12" references="/0/getValidationSchema/%.1/%">
+      <details key="start" value="331"/>
+      <details key="end" value="602"/>
+      <details key="line" value="12"/>
+    </eAnnotations>
+    <eAnnotations source="positions.13" references="/0/getValidationSchema/%.1/%/%">
+      <details key="start" value="376"/>
+      <details key="end" value="377"/>
+      <details key="line" value="13"/>
+    </eAnnotations>
+    <eAnnotations source="positions.14" references="/0/getValidationSchema/%.1/%/%.1">
+      <details key="start" value="378"/>
+      <details key="end" value="387"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.15" references="/0/getValidationSchema/%.1/%/%.1/task">
+      <details key="start" value="378"/>
+      <details key="end" value="382"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.16" references="/0/getValidationSchema/%.1/%/%.2">
+      <details key="start" value="390"/>
+      <details key="end" value="451"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.17" references="/0/getValidationSchema/%.1/%/%.2/%">
+      <details key="start" value="407"/>
+      <details key="end" value="450"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.18" references="/0/getValidationSchema/%.1/%/%.2/%/%">
+      <details key="start" value="407"/>
+      <details key="end" value="442"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.19" references="/0/getValidationSchema/%.1/%/%.2/%/%/task">
+      <details key="start" value="407"/>
+      <details key="end" value="411"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.20" references="/0/getValidationSchema/%.1/%/%.2/%/%/%">
+      <details key="start" value="422"/>
+      <details key="end" value="441"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.21" references="/0/getValidationSchema/%.1/%/%.3">
+      <details key="start" value="453"/>
+      <details key="end" value="454"/>
+      <details key="line" value="14"/>
+    </eAnnotations>
+    <eAnnotations source="positions.22" references="/0/getValidationSchema/%.1/%/%.4">
+      <details key="start" value="335"/>
+      <details key="end" value="374"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.23" references="/0/getValidationSchema/%.1/%/%.4/task">
+      <details key="start" value="336"/>
+      <details key="end" value="340"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.24" references="/0/getValidationSchema/%.1/%/%.4/%">
+      <details key="start" value="353"/>
+      <details key="end" value="372"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.25" references="/0/getValidationSchema/%.1/%/%.5">
+      <details key="start" value="455"/>
+      <details key="end" value="597"/>
+      <details key="line" value="14"/>
+    </eAnnotations>
+    <eAnnotations source="positions.26" references="/0/getValidationSchema/%.1/%/%.5/%">
+      <details key="start" value="507"/>
+      <details key="end" value="508"/>
+      <details key="line" value="15"/>
+    </eAnnotations>
+    <eAnnotations source="positions.27" references="/0/getValidationSchema/%.1/%/%.5/%.1">
+      <details key="start" value="509"/>
+      <details key="end" value="518"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.28" references="/0/getValidationSchema/%.1/%/%.5/%.1/task">
+      <details key="start" value="509"/>
+      <details key="end" value="513"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.29" references="/0/getValidationSchema/%.1/%/%.5/%.2">
+      <details key="start" value="521"/>
+      <details key="end" value="593"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.30" references="/0/getValidationSchema/%.1/%/%.5/%.2/%">
+      <details key="start" value="538"/>
+      <details key="end" value="592"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.31" references="/0/getValidationSchema/%.1/%/%.5/%.2/%/%">
+      <details key="start" value="538"/>
+      <details key="end" value="584"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.32" references="/0/getValidationSchema/%.1/%/%.5/%.2/%/%/%">
+      <details key="start" value="538"/>
+      <details key="end" value="576"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.33" references="/0/getValidationSchema/%.1/%/%.5/%.2/%/%/%/task">
+      <details key="start" value="538"/>
+      <details key="end" value="542"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.34" references="/0/getValidationSchema/%.1/%/%.5/%.2/%/%/%/%">
+      <details key="start" value="553"/>
+      <details key="end" value="575"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.35" references="/0/getValidationSchema/%.1/%/%.5/%.3">
+      <details key="start" value="595"/>
+      <details key="end" value="596"/>
+      <details key="line" value="16"/>
+    </eAnnotations>
+    <eAnnotations source="positions.36" references="/0/getValidationSchema/%.1/%/%.5/%.4">
+      <details key="start" value="463"/>
+      <details key="end" value="505"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.37" references="/0/getValidationSchema/%.1/%/%.5/%.4/task">
+      <details key="start" value="464"/>
+      <details key="end" value="468"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.38" references="/0/getValidationSchema/%.1/%/%.5/%.4/%">
+      <details key="start" value="481"/>
+      <details key="end" value="503"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.39" references="/0/getValidationSchema/%.1/task">
+      <details key="start" value="281"/>
+      <details key="end" value="302"/>
+      <details key="line" value="11"/>
+    </eAnnotations>
+    <eAnnotations source="positions.40" references="/0/getValidationSchema/%.1/%.1">
+      <details key="start" value="305"/>
+      <details key="end" value="327"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.41" references="/0/getValidationSchema/%.1/%.1/page">
+      <details key="start" value="305"/>
+      <details key="end" value="309"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.42" references="/0/getValidationSchema/page">
+      <details key="start" value="133"/>
+      <details key="end" value="144"/>
+      <details key="line" value="5"/>
+    </eAnnotations>
+    <eAnnotations source="positions.43" references="/0/getValidationSchema/%.2">
+      <details key="start" value="151"/>
+      <details key="end" value="157"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.44" references="/0/getValidationSchema/%.2/self">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.45" references="/0/getRequiredValue">
+      <details key="start" value="624"/>
+      <details key="end" value="1544"/>
+      <details key="line" value="20"/>
+    </eAnnotations>
+    <eAnnotations source="positions.46" references="/0/getRequiredValue/%">
+      <details key="start" value="694"/>
+      <details key="end" value="1531"/>
+      <details key="line" value="21"/>
+    </eAnnotations>
+    <eAnnotations source="positions.47" references="/0/getRequiredValue/%/%">
+      <details key="start" value="725"/>
+      <details key="end" value="726"/>
+      <details key="line" value="22"/>
+    </eAnnotations>
+    <eAnnotations source="positions.48" references="/0/getRequiredValue/%/%.1">
+      <details key="start" value="727"/>
+      <details key="end" value="737"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.49" references="/0/getRequiredValue/%/%.1/value">
+      <details key="start" value="727"/>
+      <details key="end" value="732"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.50" references="/0/getRequiredValue/%/%.2">
+      <details key="start" value="739"/>
+      <details key="end" value="785"/>
+      <details key="line" value="22"/>
+    </eAnnotations>
+    <eAnnotations source="positions.51" references="/0/getRequiredValue/%/%.3">
+      <details key="start" value="698"/>
+      <details key="end" value="723"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.52" references="/0/getRequiredValue/%/%.3/value">
+      <details key="start" value="699"/>
+      <details key="end" value="704"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.53" references="/0/getRequiredValue/%/%.3/%">
+      <details key="start" value="717"/>
+      <details key="end" value="721"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.54" references="/0/getRequiredValue/%/%.4">
+      <details key="start" value="1082"/>
+      <details key="end" value="1526"/>
+      <details key="line" value="27"/>
+    </eAnnotations>
+    <eAnnotations source="positions.55" references="/0/getRequiredValue/%/%.4/%">
+      <details key="start" value="1090"/>
+      <details key="end" value="1525"/>
+      <details key="line" value="28"/>
+    </eAnnotations>
+    <eAnnotations source="positions.56" references="/0/getRequiredValue/%/%.4/%/%">
+      <details key="start" value="1135"/>
+      <details key="end" value="1136"/>
+      <details key="line" value="29"/>
+    </eAnnotations>
+    <eAnnotations source="positions.57" references="/0/getRequiredValue/%/%.4/%/%.1">
+      <details key="start" value="1137"/>
+      <details key="end" value="1187"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.58" references="/0/getRequiredValue/%/%.4/%/%.1/%">
+      <details key="start" value="1137"/>
+      <details key="end" value="1172"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.59" references="/0/getRequiredValue/%/%.4/%/%.1/%/value">
+      <details key="start" value="1137"/>
+      <details key="end" value="1142"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.60" references="/0/getRequiredValue/%/%.4/%/%.1/%/%">
+      <details key="start" value="1153"/>
+      <details key="end" value="1171"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.61" references="/0/getRequiredValue/%/%.4/%/%.2">
+      <details key="start" value="1189"/>
+      <details key="end" value="1226"/>
+      <details key="line" value="29"/>
+    </eAnnotations>
+    <eAnnotations source="positions.62" references="/0/getRequiredValue/%/%.4/%/%.3">
+      <details key="start" value="1094"/>
+      <details key="end" value="1133"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.63" references="/0/getRequiredValue/%/%.4/%/%.3/value">
+      <details key="start" value="1095"/>
+      <details key="end" value="1100"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.64" references="/0/getRequiredValue/%/%.4/%/%.3/%">
+      <details key="start" value="1113"/>
+      <details key="end" value="1131"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.65" references="/0/getRequiredValue/%/%.4/%/%.4">
+      <details key="start" value="1460"/>
+      <details key="end" value="1520"/>
+      <details key="line" value="34"/>
+    </eAnnotations>
+    <eAnnotations source="positions.66" references="/0/getRequiredValue/%/%.4/%/%.4/%">
+      <details key="start" value="1467"/>
+      <details key="end" value="1469"/>
+      <details key="line" value="35"/>
+    </eAnnotations>
+    <eAnnotations source="positions.67" references="/0/getRequiredValue/%/%.4/%/%.4/%.1">
+      <details key="start" value="1470"/>
+      <details key="end" value="1480"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.68" references="/0/getRequiredValue/%/%.4/%/%.4/%.1/value">
+      <details key="start" value="1470"/>
+      <details key="end" value="1475"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.69" references="/0/getRequiredValue/%/%.4/%/%.4/%.2">
+      <details key="start" value="1482"/>
+      <details key="end" value="1519"/>
+      <details key="line" value="35"/>
+    </eAnnotations>
+    <eAnnotations source="positions.70" references="/0/getRequiredValue/%/%.4/%/%.5">
+      <details key="start" value="1227"/>
+      <details key="end" value="1344"/>
+      <details key="line" value="30"/>
+    </eAnnotations>
+    <eAnnotations source="positions.71" references="/0/getRequiredValue/%/%.4/%/%.5/%">
+      <details key="start" value="1277"/>
+      <details key="end" value="1343"/>
+      <details key="line" value="31"/>
+    </eAnnotations>
+    <eAnnotations source="positions.72" references="/0/getRequiredValue/%/%.4/%/%.5/%.1">
+      <details key="start" value="1235"/>
+      <details key="end" value="1275"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.73" references="/0/getRequiredValue/%/%.4/%/%.5/%.1/value">
+      <details key="start" value="1236"/>
+      <details key="end" value="1241"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.74" references="/0/getRequiredValue/%/%.4/%/%.5/%.1/%">
+      <details key="start" value="1254"/>
+      <details key="end" value="1273"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.75" references="/0/getRequiredValue/%/%.4/%/%.6">
+      <details key="start" value="1344"/>
+      <details key="end" value="1460"/>
+      <details key="line" value="32"/>
+    </eAnnotations>
+    <eAnnotations source="positions.76" references="/0/getRequiredValue/%/%.4/%/%.6/%">
+      <details key="start" value="1385"/>
+      <details key="end" value="1386"/>
+      <details key="line" value="33"/>
+    </eAnnotations>
+    <eAnnotations source="positions.77" references="/0/getRequiredValue/%/%.4/%/%.6/%.1">
+      <details key="start" value="1387"/>
+      <details key="end" value="1397"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.78" references="/0/getRequiredValue/%/%.4/%/%.6/%.1/value">
+      <details key="start" value="1387"/>
+      <details key="end" value="1392"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.79" references="/0/getRequiredValue/%/%.4/%/%.6/%.2">
+      <details key="start" value="1399"/>
+      <details key="end" value="1459"/>
+      <details key="line" value="33"/>
+    </eAnnotations>
+    <eAnnotations source="positions.80" references="/0/getRequiredValue/%/%.4/%/%.6/%.3">
+      <details key="start" value="1352"/>
+      <details key="end" value="1383"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.81" references="/0/getRequiredValue/%/%.4/%/%.6/%.3/value">
+      <details key="start" value="1353"/>
+      <details key="end" value="1358"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.82" references="/0/getRequiredValue/%/%.4/%/%.6/%.3/%">
+      <details key="start" value="1371"/>
+      <details key="end" value="1381"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.83" references="/0/getRequiredValue/%/%.5">
+      <details key="start" value="785"/>
+      <details key="end" value="960"/>
+      <details key="line" value="23"/>
+    </eAnnotations>
+    <eAnnotations source="positions.84" references="/0/getRequiredValue/%/%.5/%">
+      <details key="start" value="827"/>
+      <details key="end" value="828"/>
+      <details key="line" value="24"/>
+    </eAnnotations>
+    <eAnnotations source="positions.85" references="/0/getRequiredValue/%/%.5/%.1">
+      <details key="start" value="829"/>
+      <details key="end" value="839"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.86" references="/0/getRequiredValue/%/%.5/%.1/value">
+      <details key="start" value="829"/>
+      <details key="end" value="834"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.87" references="/0/getRequiredValue/%/%.5/%.2">
+      <details key="start" value="841"/>
+      <details key="end" value="881"/>
+      <details key="line" value="24"/>
+    </eAnnotations>
+    <eAnnotations source="positions.88" references="/0/getRequiredValue/%/%.5/%.3">
+      <details key="start" value="882"/>
+      <details key="end" value="914"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.89" references="/0/getRequiredValue/%/%.5/%.3/%">
+      <details key="start" value="882"/>
+      <details key="end" value="910"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.90" references="/0/getRequiredValue/%/%.5/%.3/%/value">
+      <details key="start" value="882"/>
+      <details key="end" value="887"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.91" references="/0/getRequiredValue/%/%.5/%.3/%/%">
+      <details key="start" value="898"/>
+      <details key="end" value="909"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.92" references="/0/getRequiredValue/%/%.5/%.4">
+      <details key="start" value="916"/>
+      <details key="end" value="922"/>
+      <details key="line" value="24"/>
+    </eAnnotations>
+    <eAnnotations source="positions.93" references="/0/getRequiredValue/%/%.5/%.5">
+      <details key="start" value="923"/>
+      <details key="end" value="955"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.94" references="/0/getRequiredValue/%/%.5/%.5/%">
+      <details key="start" value="923"/>
+      <details key="end" value="951"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.95" references="/0/getRequiredValue/%/%.5/%.5/%/value">
+      <details key="start" value="923"/>
+      <details key="end" value="928"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.96" references="/0/getRequiredValue/%/%.5/%.5/%/%">
+      <details key="start" value="939"/>
+      <details key="end" value="950"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.97" references="/0/getRequiredValue/%/%.5/%.6">
+      <details key="start" value="957"/>
+      <details key="end" value="960"/>
+      <details key="line" value="24"/>
+    </eAnnotations>
+    <eAnnotations source="positions.98" references="/0/getRequiredValue/%/%.5/%.7">
+      <details key="start" value="793"/>
+      <details key="end" value="825"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.99" references="/0/getRequiredValue/%/%.5/%.7/value">
+      <details key="start" value="794"/>
+      <details key="end" value="799"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.100" references="/0/getRequiredValue/%/%.5/%.7/%">
+      <details key="start" value="812"/>
+      <details key="end" value="823"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.101" references="/0/getRequiredValue/%/%.6">
+      <details key="start" value="960"/>
+      <details key="end" value="1082"/>
+      <details key="line" value="25"/>
+    </eAnnotations>
+    <eAnnotations source="positions.102" references="/0/getRequiredValue/%/%.6/%">
+      <details key="start" value="1013"/>
+      <details key="end" value="1014"/>
+      <details key="line" value="26"/>
+    </eAnnotations>
+    <eAnnotations source="positions.103" references="/0/getRequiredValue/%/%.6/%.1">
+      <details key="start" value="1015"/>
+      <details key="end" value="1025"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.104" references="/0/getRequiredValue/%/%.6/%.1/value">
+      <details key="start" value="1015"/>
+      <details key="end" value="1020"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.105" references="/0/getRequiredValue/%/%.6/%.2">
+      <details key="start" value="1027"/>
+      <details key="end" value="1082"/>
+      <details key="line" value="26"/>
+    </eAnnotations>
+    <eAnnotations source="positions.106" references="/0/getRequiredValue/%/%.6/%.3">
+      <details key="start" value="968"/>
+      <details key="end" value="1011"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.107" references="/0/getRequiredValue/%/%.6/%.3/value">
+      <details key="start" value="969"/>
+      <details key="end" value="974"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.108" references="/0/getRequiredValue/%/%.6/%.3/%">
+      <details key="start" value="987"/>
+      <details key="end" value="1009"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.109" references="/0/getRequiredValue/%.1">
+      <details key="start" value="1532"/>
+      <details key="end" value="1533"/>
+      <details key="line" value="38"/>
+    </eAnnotations>
+    <eAnnotations source="positions.110" references="/0/getRequiredValue/value">
+      <details key="start" value="658"/>
+      <details key="end" value="678"/>
+      <details key="line" value="20"/>
+    </eAnnotations>
+    <eAnnotations source="positions.111" references="/0/getRequiredValue/%.2">
+      <details key="start" value="685"/>
+      <details key="end" value="691"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.112" references="/0/getRequiredValue/%.2/self">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+  </ecore:EAnnotation>
+</xmi:XMI>

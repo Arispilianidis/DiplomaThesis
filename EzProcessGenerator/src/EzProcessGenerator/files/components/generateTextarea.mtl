@@ -1,0 +1,27 @@
+[comment encoding = UTF-8 /]
+[module generateTextarea('http://www.example.org/ezProcess')]
+
+
+[template public generateTextarea(anApp : App)]
+
+[file ('Output/src/components/Textarea.js', false, 'UTF-8')]
+
+import React from 'react'
+import {Field, ErrorMessage} from 'formik'
+import TextError from './TextError'
+
+function Textarea( props) {
+    const {label, name, ...rest} = props
+    return (
+        <div style={{display:'inline'}}>
+            <label htmlFor={name}><b>{label}</b></label>
+            <Field as='textarea' id={name} name={name} {...rest} />
+            <ErrorMessage name={name} component={TextError}/>
+        </div>
+    )
+}
+
+export default Textarea
+
+[/file]
+[/template]

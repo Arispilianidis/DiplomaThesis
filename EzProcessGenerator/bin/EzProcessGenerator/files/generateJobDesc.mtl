@@ -1,0 +1,111 @@
+[comment encoding = UTF-8 /]
+[module generateJobDesc('http://www.example.org/ezProcess')]
+
+[import EzProcessGenerator::files::generateJobDescPage /]
+[import commonTemplates::getInitialValueType /]
+[import commonTemplates::getValidationSchema /]
+[import EzProcessGenerator::files::generateJobDescFinal /]
+
+
+[template public generateJobDesc(aJobDescriptionTemplate : JobDescription) post(trim())]
+
+[file ('Output/src/'+aJobDescriptionTemplate.name + '/'+ aJobDescriptionTemplate.name+'.js', false, 'UTF-8')]
+import React, { useState } from 'react';
+import * as Yup from 'yup'
+import { useNavigate } from 'react-router-dom';
+import { useLocation } from 'react-router';
+import axios from 'axios'
+import '../css/JobDescTemp.css';
+[generateJobDescFinal(aJobDescriptionTemplate)/]
+[for (page : Page | hasPage)]
+import [aJobDescriptionTemplate.name + i /] from './[aJobDescriptionTemplate.name + i /]'
+[generateJobDescPage(page,aJobDescriptionTemplate.name,i)/]
+[/for]
+
+
+
+function [aJobDescriptionTemplate.name/]() {
+
+  let { state } = useLocation();
+  let serverUserInfo = state[ '[0]' /] 
+  let processName = state[ '[1]' /] 
+
+  const navigate = useNavigate();
+  const ['[step, setStep]'/]= useState(0);
+  const ['[initialValues, setInitialValues]'/] = useState({
+ [for (page : Page | hasPage)]
+ [for (value: InitialValue | page.hasInitialvalue)]
+ 	[getInitialValueType(value)/]
+[/for]
+[/for]
+  })
+
+
+  function postProof(imagefileName) {
+
+    var uploadsPostURL = "http://localhost:3000/uploadeFiles"
+
+    var formData = new FormData();
+    var imagefile = document.getElementById(imagefileName)
+    console.log(imagefile)
+    formData.append("file", imagefile.files['[0]'/]);
+    axios.post(uploadsPostURL, formData, {
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Content-Type':'multipart/form-data',
+      }
+    })
+    .catch(error => console.log("Error at postProof => " + error.message))
+
+  }
+
+ [for (page : Page | hasPage)]
+  const validationSchema[i/] = Yup.object({
+    [getValidationSchema(page)/]
+  })
+
+[/for]
+
+  // Proceed to next step
+  const onSubmit = (formValues, final) => {
+
+    setInitialValues((prev) => ({ ...prev, ...formValues }))
+
+    if (final) {
+      console.log("Form submitted", formValues)
+
+      navigate("/[aJobDescriptionTemplate.name/]Final", {state: ['[formValues,serverUserInfo,processName]'/]});
+    }
+    else{
+      setStep(step => step + 1)
+    }
+
+  }
+
+  // Proceed to prev step
+  function prevStep() {
+    setStep(step => step - 1)
+  }
+
+  const pages = ['['/]
+[for (page : Page | hasPage) before ('\n')]
+	[if (page.first)]
+		<[aJobDescriptionTemplate.name + i/] initialValues={initialValues} validationSchema={validationSchema[i/]} onSubmit={onSubmit} postProof={postProof} />,
+	[else]
+		<[aJobDescriptionTemplate.name + i/] prevStep={prevStep} initialValues={initialValues} validationSchema={validationSchema[i/]} onSubmit={onSubmit} postProof={postProof} />,
+	[/if]
+[/for]
+	[']'/]
+
+  return (
+    <div>
+      { pages['[step]'/] }
+    </div>
+  );
+
+}
+
+export default [aJobDescriptionTemplate.name/];
+[/file]
+[/template]
+

@@ -1,0 +1,1659 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:mtl="http://www.eclipse.org/acceleo/mtl/3.0" xmlns:ocl.ecore="http://www.eclipse.org/ocl/1.1.0/Ecore">
+  <mtl:Module name="generateOnboarding" nsURI="EzProcessGenerator::files::generateOnboarding" startHeaderPosition="29" endHeaderPosition="152">
+    <input>
+      <takesTypesFrom href="http://www.example.org/ezProcess#/"/>
+    </input>
+    <imports href="platform:/resource/EzProcessGenerator/bin/EzProcessGenerator/files/generateOnboardingPage.emtl#/0"/>
+    <imports href="platform:/resource/EzProcessGenerator/bin/commonTemplates/getInitialValueType.emtl#/0"/>
+    <imports href="platform:/resource/EzProcessGenerator/bin/commonTemplates/getValidationSchema.emtl#/0"/>
+    <ownedModuleElement xsi:type="mtl:Template" name="generateOnboarding" visibility="Public">
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;"/>
+      <body xsi:type="mtl:FileBlock" openMode="OverWrite">
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="import React, { useState, useEffect } from 'react';&#xA;import { useNavigate } from 'react-router-dom';&#xA;import { useLocation } from 'react-router';&#xA;import * as Yup from 'yup'&#xA;import axios from 'axios'&#xA;"/>
+        <body xsi:type="mtl:ForBlock">
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="import "/>
+          <body xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/oclstdlib_String_Class/+">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            <source xsi:type="ocl.ecore:PropertyCallExp">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+              <source xsi:type="ocl.ecore:VariableExp" name="anOnboarding" referredVariable="/0/generateOnboarding/anOnboarding">
+                <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Onboarding"/>
+              </source>
+              <referredProperty xsi:type="ecore:EAttribute" href="http://www.example.org/ezProcess#//Process/name"/>
+            </source>
+            <argument xsi:type="ocl.ecore:VariableExp" name="i" referredVariable="/16">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+            </argument>
+          </body>
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=" from './"/>
+          <body xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/oclstdlib_String_Class/+">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            <source xsi:type="ocl.ecore:PropertyCallExp">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+              <source xsi:type="ocl.ecore:VariableExp" name="anOnboarding" referredVariable="/0/generateOnboarding/anOnboarding">
+                <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Onboarding"/>
+              </source>
+              <referredProperty xsi:type="ecore:EAttribute" href="http://www.example.org/ezProcess#//Process/name"/>
+            </source>
+            <argument xsi:type="ocl.ecore:VariableExp" name="i" referredVariable="/16">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+            </argument>
+          </body>
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="'&#xA;"/>
+          <body xsi:type="mtl:TemplateInvocation">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            <definition href="platform:/resource/EzProcessGenerator/bin/EzProcessGenerator/files/generateOnboardingPage.emtl#/0/generateOnboardingPage"/>
+            <argument xsi:type="ocl.ecore:VariableExp" name="page" referredVariable="/0/generateOnboarding/%.1/%.1/page">
+              <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Page"/>
+            </argument>
+            <argument xsi:type="ocl.ecore:PropertyCallExp">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+              <source xsi:type="ocl.ecore:VariableExp" name="anOnboarding" referredVariable="/0/generateOnboarding/anOnboarding">
+                <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Onboarding"/>
+              </source>
+              <referredProperty xsi:type="ecore:EAttribute" href="http://www.example.org/ezProcess#//Process/name"/>
+            </argument>
+            <argument xsi:type="ocl.ecore:VariableExp" name="i" referredVariable="/16">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+            </argument>
+          </body>
+          <loopVariable name="page">
+            <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Page"/>
+          </loopVariable>
+          <iterSet xsi:type="ocl.ecore:PropertyCallExp" eType="/9/OrderedSet(Page)">
+            <source xsi:type="ocl.ecore:VariableExp" name="self" referredVariable="/10">
+              <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Onboarding"/>
+            </source>
+            <referredProperty xsi:type="ecore:EReference" href="http://www.example.org/ezProcess#//Process/hasPage"/>
+          </iterSet>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;&#xA;function "/>
+        <body xsi:type="ocl.ecore:PropertyCallExp">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <source xsi:type="ocl.ecore:VariableExp" name="anOnboarding" referredVariable="/0/generateOnboarding/anOnboarding">
+            <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Onboarding"/>
+          </source>
+          <referredProperty xsi:type="ecore:EAttribute" href="http://www.example.org/ezProcess#//Process/name"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="() {&#xA;&#xA;  let { state } = useLocation();&#xA;  let serverUserInfo = state"/>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="[0]">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=" &#xA;  //let processName = state"/>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="[1]">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=" &#xA;&#xA;  const navigate = useNavigate();&#xA;  const "/>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="[step, setStep]">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="= useState(0);&#xA;  const "/>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="[initialValues, setInitialValues]">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=" = useState({&#xA;"/>
+        <body xsi:type="mtl:ForBlock">
+          <body xsi:type="mtl:ForBlock">
+            <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=" &#x9;"/>
+            <body xsi:type="mtl:TemplateInvocation">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+              <definition href="platform:/resource/EzProcessGenerator/bin/commonTemplates/getInitialValueType.emtl#/0/getInitialValueType"/>
+              <argument xsi:type="ocl.ecore:VariableExp" name="value" referredVariable="/0/generateOnboarding/%.1/%.13/%/value">
+                <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//InitialValue"/>
+              </argument>
+            </body>
+            <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;"/>
+            <loopVariable name="value">
+              <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//InitialValue"/>
+            </loopVariable>
+            <iterSet xsi:type="ocl.ecore:PropertyCallExp" eType="/9/OrderedSet(InitialValue)">
+              <source xsi:type="ocl.ecore:VariableExp" name="page" referredVariable="/0/generateOnboarding/%.1/%.13/page">
+                <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Page"/>
+              </source>
+              <referredProperty xsi:type="ecore:EReference" href="http://www.example.org/ezProcess#//Page/hasInitialvalue"/>
+            </iterSet>
+          </body>
+          <body xsi:type="mtl:ForBlock">
+            <body xsi:type="mtl:IfBlock">
+              <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;"/>
+              <body xsi:type="ocl.ecore:PropertyCallExp">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                <source xsi:type="ocl.ecore:VariableExp" name="task" referredVariable="/0/generateOnboarding/%.1/%.13/%.1/task">
+                  <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//OnboardingTask"/>
+                </source>
+                <referredProperty xsi:type="ecore:EAttribute" href="http://www.example.org/ezProcess#//OnboardingTask/name"/>
+              </body>
+              <body xsi:type="mtl:TemplateInvocation">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                <definition href="platform:/resource/EzProcessGenerator/bin/commonTemplates/getInitialValueType.emtl#/0/getInitialValueType"/>
+                <argument xsi:type="ocl.ecore:PropertyCallExp">
+                  <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//MultipleOptions"/>
+                  <source xsi:type="ocl.ecore:OperationCallExp">
+                    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//OnboardingSetupTask"/>
+                    <source xsi:type="ocl.ecore:VariableExp" name="task" referredVariable="/0/generateOnboarding/%.1/%.13/%.1/task">
+                      <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//OnboardingTask"/>
+                    </source>
+                    <argument xsi:type="ocl.ecore:TypeExp" eType="/31/OnboardingSetupTask">
+                      <referredType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//OnboardingSetupTask"/>
+                    </argument>
+                    <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OclAny_Class/oclAsType"/>
+                  </source>
+                  <referredProperty xsi:type="ecore:EReference" href="http://www.example.org/ezProcess#//OnboardingSetupTask/isAbout"/>
+                </argument>
+              </body>
+              <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;"/>
+              <ifExpr xsi:type="ocl.ecore:OperationCallExp">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
+                <source xsi:type="ocl.ecore:VariableExp" name="task" referredVariable="/0/generateOnboarding/%.1/%.13/%.1/task">
+                  <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//OnboardingTask"/>
+                </source>
+                <argument xsi:type="ocl.ecore:TypeExp" eType="/31/OnboardingSetupTask">
+                  <referredType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//OnboardingSetupTask"/>
+                </argument>
+                <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OclAny_Class/oclIsTypeOf"/>
+              </ifExpr>
+              <elseIf>
+                <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;"/>
+                <body xsi:type="ocl.ecore:PropertyCallExp">
+                  <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                  <source xsi:type="ocl.ecore:VariableExp" name="task" referredVariable="/0/generateOnboarding/%.1/%.13/%.1/task">
+                    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//OnboardingTask"/>
+                  </source>
+                  <referredProperty xsi:type="ecore:EAttribute" href="http://www.example.org/ezProcess#//OnboardingTask/name"/>
+                </body>
+                <body xsi:type="mtl:TemplateInvocation">
+                  <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                  <definition href="platform:/resource/EzProcessGenerator/bin/commonTemplates/getInitialValueType.emtl#/0/getInitialValueType"/>
+                  <argument xsi:type="ocl.ecore:PropertyCallExp">
+                    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//MultipleOptions"/>
+                    <source xsi:type="ocl.ecore:PropertyCallExp">
+                      <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Question"/>
+                      <source xsi:type="ocl.ecore:OperationCallExp">
+                        <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//OnboardingTrainingTask"/>
+                        <source xsi:type="ocl.ecore:VariableExp" name="task" referredVariable="/0/generateOnboarding/%.1/%.13/%.1/task">
+                          <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//OnboardingTask"/>
+                        </source>
+                        <argument xsi:type="ocl.ecore:TypeExp" eType="/31/OnboardingTrainingTask">
+                          <referredType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//OnboardingTrainingTask"/>
+                        </argument>
+                        <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OclAny_Class/oclAsType"/>
+                      </source>
+                      <referredProperty xsi:type="ecore:EReference" href="http://www.example.org/ezProcess#//OnboardingTrainingTask/isAbout"/>
+                    </source>
+                    <referredProperty xsi:type="ecore:EReference" href="http://www.example.org/ezProcess#//Question/isAbout"/>
+                  </argument>
+                </body>
+                <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;"/>
+                <ifExpr xsi:type="ocl.ecore:OperationCallExp">
+                  <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
+                  <source xsi:type="ocl.ecore:VariableExp" name="task" referredVariable="/0/generateOnboarding/%.1/%.13/%.1/task">
+                    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//OnboardingTask"/>
+                  </source>
+                  <argument xsi:type="ocl.ecore:TypeExp" eType="/31/OnboardingTrainingTask">
+                    <referredType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//OnboardingTrainingTask"/>
+                  </argument>
+                  <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OclAny_Class/oclIsTypeOf"/>
+                </ifExpr>
+              </elseIf>
+            </body>
+            <loopVariable name="task">
+              <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//OnboardingTask"/>
+            </loopVariable>
+            <iterSet xsi:type="ocl.ecore:PropertyCallExp" eType="/9/OrderedSet(OnboardingTask)">
+              <source xsi:type="ocl.ecore:VariableExp" name="self" referredVariable="/29">
+                <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Page"/>
+              </source>
+              <referredProperty xsi:type="ecore:EReference" href="http://www.example.org/ezProcess#//Page/hasOnboardingTask"/>
+            </iterSet>
+          </body>
+          <loopVariable name="page">
+            <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Page"/>
+          </loopVariable>
+          <iterSet xsi:type="ocl.ecore:PropertyCallExp" eType="/9/OrderedSet(Page)">
+            <source xsi:type="ocl.ecore:VariableExp" name="self" referredVariable="/22">
+              <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Onboarding"/>
+            </source>
+            <referredProperty xsi:type="ecore:EReference" href="http://www.example.org/ezProcess#//Process/hasPage"/>
+          </iterSet>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="  })&#xA;&#xA;  function postProof(imagefileName) {&#xA;&#xA;    var uploadsPostURL = &quot;http://localhost:3000/uploadeFiles&quot;&#xA;&#xA;    var formData = new FormData();&#xA;    var imagefile = document.getElementById(imagefileName)&#xA;    console.log(imagefile)&#xA;    formData.append(&quot;file&quot;, imagefile.files"/>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="[0]">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=");&#xA;    axios.post(uploadsPostURL, formData, {&#xA;      headers: {&#xA;        'Access-Control-Allow-Origin': '*',&#xA;        'Content-Type':'multipart/form-data',&#xA;      }&#xA;    })&#xA;    .catch(error => console.log(&quot;Error at postProof => &quot; + error.message))&#xA;&#xA;  }&#xA;&#xA;"/>
+        <body xsi:type="mtl:ForBlock">
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="  const validationSchema"/>
+          <body xsi:type="ocl.ecore:VariableExp" name="i" referredVariable="/48">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+          </body>
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=" = Yup.object({&#xA;    "/>
+          <body xsi:type="mtl:TemplateInvocation">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            <definition href="platform:/resource/EzProcessGenerator/bin/commonTemplates/getValidationSchema.emtl#/0/getValidationSchema"/>
+            <argument xsi:type="ocl.ecore:VariableExp" name="page" referredVariable="/0/generateOnboarding/%.1/%.17/page">
+              <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Page"/>
+            </argument>
+          </body>
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;  })&#xA;"/>
+          <loopVariable name="page">
+            <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Page"/>
+          </loopVariable>
+          <iterSet xsi:type="ocl.ecore:PropertyCallExp" eType="/9/OrderedSet(Page)">
+            <source xsi:type="ocl.ecore:VariableExp" name="self" referredVariable="/43">
+              <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Onboarding"/>
+            </source>
+            <referredProperty xsi:type="ecore:EReference" href="http://www.example.org/ezProcess#//Process/hasPage"/>
+          </iterSet>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;  function handleCandidate(formValues) {&#xA;&#xA;    let currentCandidate = candidates.find(c => (c.FIRST_NAME.toLowerCase() === formValues.FIRST_NAME.toLowerCase()) &amp;&amp; (c.LAST_NAME.toLowerCase() === formValues.LAST_NAME.toLowerCase()) &amp;&amp; (c.EMAIL.toLowerCase() === formValues.EMAIL.toLowerCase()))&#xA;    console.log(currentCandidate)&#xA;&#xA;    if(currentCandidate === undefined){&#xA;      return false&#xA;    }&#xA;    else{&#xA;      setCandidateInfo(currentCandidate)&#xA;      return true&#xA;    }&#xA;  }&#xA;&#xA;  const "/>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="[">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="candidateInfo, setCandidateInfo] = useState(null);&#xA;  const "/>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="[">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="candidates, setCandidates] = useState(null)&#xA;  const "/>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="[">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="optionsRating, setOptionsRating] = useState(null);&#xA;  const "/>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="[">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="answers, setAnswers] = useState(null);&#xA;&#xA;  useEffect(() => {&#xA;&#xA;    axios.get(&quot;http://localhost:3000/JobDescTempCandidates&quot;, {&#xA;      params: { JobDescTempOfScrenningProcess: &quot;"/>
+        <body xsi:type="ocl.ecore:PropertyCallExp">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <source xsi:type="ocl.ecore:PropertyCallExp">
+            <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//JobDescription"/>
+            <source xsi:type="ocl.ecore:PropertyCallExp">
+              <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Screening"/>
+              <source xsi:type="ocl.ecore:VariableExp" name="anOnboarding" referredVariable="/0/generateOnboarding/anOnboarding">
+                <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Onboarding"/>
+              </source>
+              <referredProperty xsi:type="ecore:EReference" href="http://www.example.org/ezProcess#//Onboarding/hasScreening"/>
+            </source>
+            <referredProperty xsi:type="ecore:EReference" href="http://www.example.org/ezProcess#//Screening/hasJobDescription"/>
+          </source>
+          <referredProperty xsi:type="ecore:EAttribute" href="http://www.example.org/ezProcess#//Process/name"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&quot; },&#xA;      method: 'GET',&#xA;      headers: {&#xA;        'Access-Control-Allow-Origin': '*',&#xA;        'Content-Type': 'application/json',&#xA;      }&#xA;    })&#xA;      .then(response => {&#xA;        console.log(response.data.data)&#xA;        setCandidates(response.data.data)&#xA;      })&#xA;      .catch(error => {&#xA;        console.log(&quot;Error at get Candidates => &quot; + error.message)&#xA;      })&#xA;&#xA;    axios.get(&quot;http://localhost:3000/JobDescTempOptionsRating&quot;, {&#xA;      params: { processName: &quot;"/>
+        <body xsi:type="ocl.ecore:PropertyCallExp">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <source xsi:type="ocl.ecore:PropertyCallExp">
+            <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//JobDescription"/>
+            <source xsi:type="ocl.ecore:PropertyCallExp">
+              <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Screening"/>
+              <source xsi:type="ocl.ecore:VariableExp" name="anOnboarding" referredVariable="/0/generateOnboarding/anOnboarding">
+                <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Onboarding"/>
+              </source>
+              <referredProperty xsi:type="ecore:EReference" href="http://www.example.org/ezProcess#//Onboarding/hasScreening"/>
+            </source>
+            <referredProperty xsi:type="ecore:EReference" href="http://www.example.org/ezProcess#//Screening/hasJobDescription"/>
+          </source>
+          <referredProperty xsi:type="ecore:EAttribute" href="http://www.example.org/ezProcess#//Process/name"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&quot; },&#xA;      method: 'GET',&#xA;      headers: {&#xA;        'Access-Control-Allow-Origin': '*',&#xA;        'Content-Type': 'application/json',&#xA;      }&#xA;    })&#xA;      .then(response => {&#xA;        console.log(response.data.data)&#xA;        setOptionsRating(response.data.data)&#xA;&#xA;      })&#xA;      .catch(error => console.log(&quot;Error at get Job Description Options Rating &quot; + error.message))&#xA;&#xA;      axios.get(&quot;http://localhost:3000/JobDescTemp&quot;, {&#xA;        params: { processName: &quot;"/>
+        <body xsi:type="ocl.ecore:PropertyCallExp">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <source xsi:type="ocl.ecore:PropertyCallExp">
+            <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//JobDescription"/>
+            <source xsi:type="ocl.ecore:PropertyCallExp">
+              <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Screening"/>
+              <source xsi:type="ocl.ecore:VariableExp" name="anOnboarding" referredVariable="/0/generateOnboarding/anOnboarding">
+                <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Onboarding"/>
+              </source>
+              <referredProperty xsi:type="ecore:EReference" href="http://www.example.org/ezProcess#//Onboarding/hasScreening"/>
+            </source>
+            <referredProperty xsi:type="ecore:EReference" href="http://www.example.org/ezProcess#//Screening/hasJobDescription"/>
+          </source>
+          <referredProperty xsi:type="ecore:EAttribute" href="http://www.example.org/ezProcess#//Process/name"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&quot; },&#xA;          method: 'GET',&#xA;          headers: {&#xA;              'Access-Control-Allow-Origin': '*',&#xA;              'Content-Type': 'application/json',&#xA;          }&#xA;      })&#xA;       .then(response => {&#xA;            setAnswers(response.data.data)&#xA;        })&#xA;          .catch(error => {&#xA;            alert(&quot;You need to complete a Job Description Task first&quot;)&#xA;            console.log(&quot;Error at get Job Description Questions &quot; + error.message)&#xA;        })&#xA;&#xA;  }, "/>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="[">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="])&#xA;&#xA;  // Proceed to next step&#xA;  const onSubmit = (formValues, final) => {&#xA;&#xA;    setInitialValues((prev) => ({ ...prev, ...formValues }))&#xA;&#xA;    if (final) {&#xA;      console.log(&quot;Form submitted&quot;, formValues)&#xA;&#xA;      navigate(&quot;/Processes&quot;, { state: "/>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="[">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="serverUserInfo] });&#xA;    }&#xA;    else{&#xA;      setStep(step => step + 1)&#xA;    }&#xA;&#xA;  }&#xA;&#xA;&#xA;&#xA;  // Proceed to prev step&#xA;  function prevStep() {&#xA;    setStep(step => step - 1)&#xA;  }&#xA;&#xA;  const pages = "/>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="[">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;"/>
+        <body xsi:type="mtl:ForBlock">
+          <body xsi:type="mtl:IfBlock">
+            <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;&#x9;&lt;"/>
+            <body xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/oclstdlib_String_Class/+">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+              <source xsi:type="ocl.ecore:PropertyCallExp">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                <source xsi:type="ocl.ecore:VariableExp" name="anOnboarding" referredVariable="/0/generateOnboarding/anOnboarding">
+                  <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Onboarding"/>
+                </source>
+                <referredProperty xsi:type="ecore:EAttribute" href="http://www.example.org/ezProcess#//Process/name"/>
+              </source>
+              <argument xsi:type="ocl.ecore:VariableExp" name="i" referredVariable="/68">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+              </argument>
+            </body>
+            <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=" initialValues={initialValues} validationSchema={validationSchema"/>
+            <body xsi:type="ocl.ecore:VariableExp" name="i" referredVariable="/68">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+            </body>
+            <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="} onSubmit={onSubmit} postProof={postProof} handleCandidate={handleCandidate}/>,&#xA;"/>
+            <ifExpr xsi:type="ocl.ecore:PropertyCallExp">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
+              <source xsi:type="ocl.ecore:VariableExp" name="page" referredVariable="/0/generateOnboarding/%.1/%.39/page">
+                <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Page"/>
+              </source>
+              <referredProperty xsi:type="ecore:EAttribute" href="http://www.example.org/ezProcess#//Page/first"/>
+            </ifExpr>
+            <else>
+              <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;&#x9;&lt;"/>
+              <body xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/oclstdlib_String_Class/+">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                <source xsi:type="ocl.ecore:PropertyCallExp">
+                  <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                  <source xsi:type="ocl.ecore:VariableExp" name="anOnboarding" referredVariable="/0/generateOnboarding/anOnboarding">
+                    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Onboarding"/>
+                  </source>
+                  <referredProperty xsi:type="ecore:EAttribute" href="http://www.example.org/ezProcess#//Process/name"/>
+                </source>
+                <argument xsi:type="ocl.ecore:VariableExp" name="i" referredVariable="/68">
+                  <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+                </argument>
+              </body>
+              <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=" prevStep={prevStep} initialValues={initialValues} validationSchema={validationSchema"/>
+              <body xsi:type="ocl.ecore:VariableExp" name="i" referredVariable="/68">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+              </body>
+              <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="} onSubmit={onSubmit} postProof={postProof} candidateInfo={candidateInfo} optionsRating={optionsRating} answers={answers}/>,&#xA;"/>
+            </else>
+          </body>
+          <loopVariable name="page">
+            <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Page"/>
+          </loopVariable>
+          <iterSet xsi:type="ocl.ecore:PropertyCallExp" eType="/9/OrderedSet(Page)">
+            <source xsi:type="ocl.ecore:VariableExp" name="self" referredVariable="/59">
+              <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Onboarding"/>
+            </source>
+            <referredProperty xsi:type="ecore:EReference" href="http://www.example.org/ezProcess#//Process/hasPage"/>
+          </iterSet>
+          <before xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          </before>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;"/>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="]">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;&#xA;  return (&#xA;    &lt;div>&#xA;      { pages"/>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="[step]">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=" }&#xA;    &lt;/div>&#xA;  );&#xA;&#xA;}&#xA;&#xA;export default "/>
+        <body xsi:type="ocl.ecore:PropertyCallExp">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <source xsi:type="ocl.ecore:VariableExp" name="anOnboarding" referredVariable="/0/generateOnboarding/anOnboarding">
+            <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Onboarding"/>
+          </source>
+          <referredProperty xsi:type="ecore:EAttribute" href="http://www.example.org/ezProcess#//Process/name"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=";&#xA;&#xA;"/>
+        <fileUrl xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/oclstdlib_String_Class/+">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <source xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/oclstdlib_String_Class/+">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            <source xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/oclstdlib_String_Class/+">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+              <source xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/oclstdlib_String_Class/+">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                <source xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="Output/src/">
+                  <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                </source>
+                <argument xsi:type="ocl.ecore:PropertyCallExp">
+                  <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                  <source xsi:type="ocl.ecore:VariableExp" name="anOnboarding" referredVariable="/0/generateOnboarding/anOnboarding">
+                    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Onboarding"/>
+                  </source>
+                  <referredProperty xsi:type="ecore:EAttribute" href="http://www.example.org/ezProcess#//Process/name"/>
+                </argument>
+              </source>
+              <argument xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="/">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+              </argument>
+            </source>
+            <argument xsi:type="ocl.ecore:PropertyCallExp">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+              <source xsi:type="ocl.ecore:VariableExp" name="anOnboarding" referredVariable="/0/generateOnboarding/anOnboarding">
+                <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Onboarding"/>
+              </source>
+              <referredProperty xsi:type="ecore:EAttribute" href="http://www.example.org/ezProcess#//Process/name"/>
+            </argument>
+          </source>
+          <argument xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=".js">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          </argument>
+        </fileUrl>
+        <charset xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="UTF-8">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </charset>
+      </body>
+      <parameter name="anOnboarding">
+        <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Onboarding"/>
+      </parameter>
+      <post xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/oclstdlib_String_Class/trim">
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <source xsi:type="ocl.ecore:VariableExp" name="self" referredVariable="/5">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </source>
+      </post>
+    </ownedModuleElement>
+  </mtl:Module>
+  <ecore:EPackage name="additions">
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_String_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+      </eAnnotations>
+      <eOperations name="trim">
+        <eAnnotations source="MTL non-standard"/>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+      </eOperations>
+      <eOperations name="+">
+        <eAnnotations source="MTL non-standard"/>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="other">
+          <eType xsi:type="ocl.ecore:AnyType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OclAny"/>
+        </eParameters>
+      </eOperations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Integer_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Real_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Real"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ecore_EObject_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+      </eAnnotations>
+      <eOperations name="generateOnboarding">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL" references="/0/generateOnboarding"/>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="anOnboarding">
+          <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Onboarding"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="generateOnboardingPage">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="platform:/resource/EzProcessGenerator/bin/EzProcessGenerator/files/generateOnboardingPage.emtl#/0/generateOnboardingPage"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="page">
+          <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Page"/>
+        </eParameters>
+        <eParameters name="processName">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </eParameters>
+        <eParameters name="id">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="getInitialValueType">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="platform:/resource/EzProcessGenerator/bin/commonTemplates/getInitialValueType.emtl#/0/getInitialValueType"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="value">
+          <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//InitialValue"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="getValidationSchema">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="platform:/resource/EzProcessGenerator/bin/commonTemplates/getValidationSchema.emtl#/0/getValidationSchema"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="page">
+          <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Page"/>
+        </eParameters>
+      </eOperations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_OclAny_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OclAny"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Collection(T)_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Collection(T)"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Sequence(T)_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Sequence(T)"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_OrderedSet(T)_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OrderedSet(T)"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ezProcess_Onboarding_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.example.org/ezProcess#//Onboarding"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ezProcess_Page_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.example.org/ezProcess#//Page"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ezProcess_OnboardingTask_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.example.org/ezProcess#//OnboardingTask"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ezProcess_InitialValue_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.example.org/ezProcess#//InitialValue"/>
+      </eAnnotations>
+    </eClassifiers>
+  </ecore:EPackage>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Onboarding"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Onboarding"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Onboarding"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Onboarding"/>
+  </ocl.ecore:Variable>
+  <ecore:EPackage name="collections">
+    <eClassifiers xsi:type="ocl.ecore:OrderedSetType" name="OrderedSet(Page)" instanceClassName="java.util.LinkedHashSet">
+      <elementType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Page"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ocl.ecore:OrderedSetType" name="OrderedSet(InitialValue)" instanceClassName="java.util.LinkedHashSet">
+      <elementType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//InitialValue"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ocl.ecore:OrderedSetType" name="OrderedSet(OnboardingTask)" instanceClassName="java.util.LinkedHashSet">
+      <elementType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//OnboardingTask"/>
+    </eClassifiers>
+  </ecore:EPackage>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Onboarding"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Page"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Page"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Page"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Page"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Onboarding"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="i">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Onboarding"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Onboarding"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Onboarding"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Onboarding"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Onboarding"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Onboarding"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Page"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Page"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//InitialValue"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//InitialValue"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Page"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="i">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Page"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//OnboardingTask"/>
+  </ocl.ecore:Variable>
+  <ecore:EPackage name="types">
+    <eClassifiers xsi:type="ocl.ecore:TypeType" name="OnboardingSetupTask">
+      <referredType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//OnboardingSetupTask"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ocl.ecore:TypeType" name="OnboardingTrainingTask">
+      <referredType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//OnboardingTrainingTask"/>
+    </eClassifiers>
+  </ecore:EPackage>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//OnboardingTask"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//OnboardingTask"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//OnboardingTask"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//OnboardingTask"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//OnboardingTask"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//OnboardingTask"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Page"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="i">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Onboarding"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="i">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Onboarding"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Onboarding"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Page"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Page"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Page"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Onboarding"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="i">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Onboarding"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Onboarding"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Onboarding"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Onboarding"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Onboarding"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Onboarding"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Onboarding"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Onboarding"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Onboarding"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Onboarding"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Onboarding"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Onboarding"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Page"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Page"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Page"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Page"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Page"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Page"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Onboarding"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="i">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Onboarding"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Onboarding"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//Onboarding"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </ocl.ecore:Variable>
+  <ecore:EAnnotation source="positions">
+    <eAnnotations source="positions.0" references="/0/generateOnboarding">
+      <details key="start" value="252"/>
+      <details key="end" value="5620"/>
+      <details key="line" value="8"/>
+    </eAnnotations>
+    <eAnnotations source="positions.1" references="/0/generateOnboarding/%">
+      <details key="start" value="329"/>
+      <details key="end" value="330"/>
+      <details key="line" value="9"/>
+    </eAnnotations>
+    <eAnnotations source="positions.2" references="/0/generateOnboarding/%.1">
+      <details key="start" value="330"/>
+      <details key="end" value="5608"/>
+      <details key="line" value="10"/>
+    </eAnnotations>
+    <eAnnotations source="positions.3" references="/0/generateOnboarding/%.1/%">
+      <details key="start" value="418"/>
+      <details key="end" value="615"/>
+      <details key="line" value="11"/>
+    </eAnnotations>
+    <eAnnotations source="positions.4" references="/0/generateOnboarding/%.1/%.1">
+      <details key="start" value="615"/>
+      <details key="end" value="770"/>
+      <details key="line" value="16"/>
+    </eAnnotations>
+    <eAnnotations source="positions.5" references="/0/generateOnboarding/%.1/%.1/%">
+      <details key="start" value="645"/>
+      <details key="end" value="652"/>
+      <details key="line" value="17"/>
+    </eAnnotations>
+    <eAnnotations source="positions.6" references="/0/generateOnboarding/%.1/%.1/%.1">
+      <details key="start" value="653"/>
+      <details key="end" value="674"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.7" references="/0/generateOnboarding/%.1/%.1/%.1/%">
+      <details key="start" value="653"/>
+      <details key="end" value="670"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.8" references="/0/generateOnboarding/%.1/%.1/%.1/%/anOnboarding">
+      <details key="start" value="653"/>
+      <details key="end" value="665"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.9" references="/0/generateOnboarding/%.1/%.1/%.1/i">
+      <details key="start" value="673"/>
+      <details key="end" value="674"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.10" references="/0/generateOnboarding/%.1/%.1/%.2">
+      <details key="start" value="677"/>
+      <details key="end" value="686"/>
+      <details key="line" value="17"/>
+    </eAnnotations>
+    <eAnnotations source="positions.11" references="/0/generateOnboarding/%.1/%.1/%.3">
+      <details key="start" value="687"/>
+      <details key="end" value="708"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.12" references="/0/generateOnboarding/%.1/%.1/%.3/%">
+      <details key="start" value="687"/>
+      <details key="end" value="704"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.13" references="/0/generateOnboarding/%.1/%.1/%.3/%/anOnboarding">
+      <details key="start" value="687"/>
+      <details key="end" value="699"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.14" references="/0/generateOnboarding/%.1/%.1/%.3/i">
+      <details key="start" value="707"/>
+      <details key="end" value="708"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.15" references="/0/generateOnboarding/%.1/%.1/%.4">
+      <details key="start" value="711"/>
+      <details key="end" value="713"/>
+      <details key="line" value="17"/>
+    </eAnnotations>
+    <eAnnotations source="positions.16" references="/0/generateOnboarding/%.1/%.1/%.5">
+      <details key="start" value="714"/>
+      <details key="end" value="762"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.17" references="/0/generateOnboarding/%.1/%.1/%.5/page">
+      <details key="start" value="737"/>
+      <details key="end" value="741"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.18" references="/0/generateOnboarding/%.1/%.1/%.5/%">
+      <details key="start" value="742"/>
+      <details key="end" value="759"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.19" references="/0/generateOnboarding/%.1/%.1/%.5/%/anOnboarding">
+      <details key="start" value="742"/>
+      <details key="end" value="754"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.20" references="/0/generateOnboarding/%.1/%.1/%.5/i">
+      <details key="start" value="760"/>
+      <details key="end" value="761"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.21" references="/0/generateOnboarding/%.1/%.1/page">
+      <details key="start" value="621"/>
+      <details key="end" value="632"/>
+      <details key="line" value="16"/>
+    </eAnnotations>
+    <eAnnotations source="positions.22" references="/0/generateOnboarding/%.1/%.1/%.6">
+      <details key="start" value="635"/>
+      <details key="end" value="642"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.23" references="/0/generateOnboarding/%.1/%.1/%.6/self">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.24" references="/0/generateOnboarding/%.1/%.2">
+      <details key="start" value="771"/>
+      <details key="end" value="782"/>
+      <details key="line" value="19"/>
+    </eAnnotations>
+    <eAnnotations source="positions.25" references="/0/generateOnboarding/%.1/%.3">
+      <details key="start" value="783"/>
+      <details key="end" value="800"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.26" references="/0/generateOnboarding/%.1/%.3/anOnboarding">
+      <details key="start" value="783"/>
+      <details key="end" value="795"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.27" references="/0/generateOnboarding/%.1/%.4">
+      <details key="start" value="802"/>
+      <details key="end" value="869"/>
+      <details key="line" value="21"/>
+    </eAnnotations>
+    <eAnnotations source="positions.28" references="/0/generateOnboarding/%.1/%.5">
+      <details key="start" value="871"/>
+      <details key="end" value="876"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.29" references="/0/generateOnboarding/%.1/%.6">
+      <details key="start" value="879"/>
+      <details key="end" value="908"/>
+      <details key="line" value="24"/>
+    </eAnnotations>
+    <eAnnotations source="positions.30" references="/0/generateOnboarding/%.1/%.7">
+      <details key="start" value="910"/>
+      <details key="end" value="915"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.31" references="/0/generateOnboarding/%.1/%.8">
+      <details key="start" value="918"/>
+      <details key="end" value="963"/>
+      <details key="line" value="25"/>
+    </eAnnotations>
+    <eAnnotations source="positions.32" references="/0/generateOnboarding/%.1/%.9">
+      <details key="start" value="964"/>
+      <details key="end" value="981"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.33" references="/0/generateOnboarding/%.1/%.10">
+      <details key="start" value="983"/>
+      <details key="end" value="1006"/>
+      <details key="line" value="28"/>
+    </eAnnotations>
+    <eAnnotations source="positions.34" references="/0/generateOnboarding/%.1/%.11">
+      <details key="start" value="1007"/>
+      <details key="end" value="1042"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.35" references="/0/generateOnboarding/%.1/%.12">
+      <details key="start" value="1044"/>
+      <details key="end" value="1058"/>
+      <details key="line" value="29"/>
+    </eAnnotations>
+    <eAnnotations source="positions.36" references="/0/generateOnboarding/%.1/%.13">
+      <details key="start" value="1059"/>
+      <details key="end" value="1524"/>
+      <details key="line" value="30"/>
+    </eAnnotations>
+    <eAnnotations source="positions.37" references="/0/generateOnboarding/%.1/%.13/%">
+      <details key="start" value="1090"/>
+      <details key="end" value="1179"/>
+      <details key="line" value="31"/>
+    </eAnnotations>
+    <eAnnotations source="positions.38" references="/0/generateOnboarding/%.1/%.13/%/%">
+      <details key="start" value="1141"/>
+      <details key="end" value="1143"/>
+      <details key="line" value="32"/>
+    </eAnnotations>
+    <eAnnotations source="positions.39" references="/0/generateOnboarding/%.1/%.13/%/%.1">
+      <details key="start" value="1144"/>
+      <details key="end" value="1170"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.40" references="/0/generateOnboarding/%.1/%.13/%/%.1/value">
+      <details key="start" value="1164"/>
+      <details key="end" value="1169"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.41" references="/0/generateOnboarding/%.1/%.13/%/%.2">
+      <details key="start" value="1172"/>
+      <details key="end" value="1173"/>
+      <details key="line" value="33"/>
+    </eAnnotations>
+    <eAnnotations source="positions.42" references="/0/generateOnboarding/%.1/%.13/%/value">
+      <details key="start" value="1096"/>
+      <details key="end" value="1115"/>
+      <details key="line" value="31"/>
+    </eAnnotations>
+    <eAnnotations source="positions.43" references="/0/generateOnboarding/%.1/%.13/%/%.3">
+      <details key="start" value="1118"/>
+      <details key="end" value="1138"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.44" references="/0/generateOnboarding/%.1/%.13/%/%.3/page">
+      <details key="start" value="1118"/>
+      <details key="end" value="1122"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.45" references="/0/generateOnboarding/%.1/%.13/%.1">
+      <details key="start" value="1181"/>
+      <details key="end" value="1517"/>
+      <details key="line" value="34"/>
+    </eAnnotations>
+    <eAnnotations source="positions.46" references="/0/generateOnboarding/%.1/%.13/%.1/%">
+      <details key="start" value="1232"/>
+      <details key="end" value="1509"/>
+      <details key="line" value="35"/>
+    </eAnnotations>
+    <eAnnotations source="positions.47" references="/0/generateOnboarding/%.1/%.13/%.1/%/%">
+      <details key="start" value="1277"/>
+      <details key="end" value="1278"/>
+      <details key="line" value="36"/>
+    </eAnnotations>
+    <eAnnotations source="positions.48" references="/0/generateOnboarding/%.1/%.13/%.1/%/%.1">
+      <details key="start" value="1279"/>
+      <details key="end" value="1288"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.49" references="/0/generateOnboarding/%.1/%.13/%.1/%/%.1/task">
+      <details key="start" value="1279"/>
+      <details key="end" value="1283"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.50" references="/0/generateOnboarding/%.1/%.13/%.1/%/%.2">
+      <details key="start" value="1291"/>
+      <details key="end" value="1355"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.51" references="/0/generateOnboarding/%.1/%.13/%.1/%/%.2/%">
+      <details key="start" value="1311"/>
+      <details key="end" value="1354"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.52" references="/0/generateOnboarding/%.1/%.13/%.1/%/%.2/%/%">
+      <details key="start" value="1311"/>
+      <details key="end" value="1346"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.53" references="/0/generateOnboarding/%.1/%.13/%.1/%/%.2/%/%/task">
+      <details key="start" value="1311"/>
+      <details key="end" value="1315"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.54" references="/0/generateOnboarding/%.1/%.13/%.1/%/%.2/%/%/%">
+      <details key="start" value="1326"/>
+      <details key="end" value="1345"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.55" references="/0/generateOnboarding/%.1/%.13/%.1/%/%.3">
+      <details key="start" value="1357"/>
+      <details key="end" value="1358"/>
+      <details key="line" value="37"/>
+    </eAnnotations>
+    <eAnnotations source="positions.56" references="/0/generateOnboarding/%.1/%.13/%.1/%/%.4">
+      <details key="start" value="1236"/>
+      <details key="end" value="1275"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.57" references="/0/generateOnboarding/%.1/%.13/%.1/%/%.4/task">
+      <details key="start" value="1237"/>
+      <details key="end" value="1241"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.58" references="/0/generateOnboarding/%.1/%.13/%.1/%/%.4/%">
+      <details key="start" value="1254"/>
+      <details key="end" value="1273"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.59" references="/0/generateOnboarding/%.1/%.13/%.1/%/%.5">
+      <details key="start" value="1359"/>
+      <details key="end" value="1504"/>
+      <details key="line" value="37"/>
+    </eAnnotations>
+    <eAnnotations source="positions.60" references="/0/generateOnboarding/%.1/%.13/%.1/%/%.5/%">
+      <details key="start" value="1411"/>
+      <details key="end" value="1412"/>
+      <details key="line" value="38"/>
+    </eAnnotations>
+    <eAnnotations source="positions.61" references="/0/generateOnboarding/%.1/%.13/%.1/%/%.5/%.1">
+      <details key="start" value="1413"/>
+      <details key="end" value="1422"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.62" references="/0/generateOnboarding/%.1/%.13/%.1/%/%.5/%.1/task">
+      <details key="start" value="1413"/>
+      <details key="end" value="1417"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.63" references="/0/generateOnboarding/%.1/%.13/%.1/%/%.5/%.2">
+      <details key="start" value="1425"/>
+      <details key="end" value="1500"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.64" references="/0/generateOnboarding/%.1/%.13/%.1/%/%.5/%.2/%">
+      <details key="start" value="1445"/>
+      <details key="end" value="1499"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.65" references="/0/generateOnboarding/%.1/%.13/%.1/%/%.5/%.2/%/%">
+      <details key="start" value="1445"/>
+      <details key="end" value="1491"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.66" references="/0/generateOnboarding/%.1/%.13/%.1/%/%.5/%.2/%/%/%">
+      <details key="start" value="1445"/>
+      <details key="end" value="1483"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.67" references="/0/generateOnboarding/%.1/%.13/%.1/%/%.5/%.2/%/%/%/task">
+      <details key="start" value="1445"/>
+      <details key="end" value="1449"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.68" references="/0/generateOnboarding/%.1/%.13/%.1/%/%.5/%.2/%/%/%/%">
+      <details key="start" value="1460"/>
+      <details key="end" value="1482"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.69" references="/0/generateOnboarding/%.1/%.13/%.1/%/%.5/%.3">
+      <details key="start" value="1502"/>
+      <details key="end" value="1503"/>
+      <details key="line" value="39"/>
+    </eAnnotations>
+    <eAnnotations source="positions.70" references="/0/generateOnboarding/%.1/%.13/%.1/%/%.5/%.4">
+      <details key="start" value="1367"/>
+      <details key="end" value="1409"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.71" references="/0/generateOnboarding/%.1/%.13/%.1/%/%.5/%.4/task">
+      <details key="start" value="1368"/>
+      <details key="end" value="1372"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.72" references="/0/generateOnboarding/%.1/%.13/%.1/%/%.5/%.4/%">
+      <details key="start" value="1385"/>
+      <details key="end" value="1407"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.73" references="/0/generateOnboarding/%.1/%.13/%.1/task">
+      <details key="start" value="1187"/>
+      <details key="end" value="1208"/>
+      <details key="line" value="34"/>
+    </eAnnotations>
+    <eAnnotations source="positions.74" references="/0/generateOnboarding/%.1/%.13/%.1/%.1">
+      <details key="start" value="1211"/>
+      <details key="end" value="1228"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.75" references="/0/generateOnboarding/%.1/%.13/%.1/%.1/self">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.76" references="/0/generateOnboarding/%.1/%.13/page">
+      <details key="start" value="1065"/>
+      <details key="end" value="1076"/>
+      <details key="line" value="30"/>
+    </eAnnotations>
+    <eAnnotations source="positions.77" references="/0/generateOnboarding/%.1/%.13/%.2">
+      <details key="start" value="1079"/>
+      <details key="end" value="1086"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.78" references="/0/generateOnboarding/%.1/%.13/%.2/self">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.79" references="/0/generateOnboarding/%.1/%.14">
+      <details key="start" value="1525"/>
+      <details key="end" value="1797"/>
+      <details key="line" value="42"/>
+    </eAnnotations>
+    <eAnnotations source="positions.80" references="/0/generateOnboarding/%.1/%.15">
+      <details key="start" value="1798"/>
+      <details key="end" value="1803"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.81" references="/0/generateOnboarding/%.1/%.16">
+      <details key="start" value="1805"/>
+      <details key="end" value="2054"/>
+      <details key="line" value="51"/>
+    </eAnnotations>
+    <eAnnotations source="positions.82" references="/0/generateOnboarding/%.1/%.17">
+      <details key="start" value="2055"/>
+      <details key="end" value="2173"/>
+      <details key="line" value="62"/>
+    </eAnnotations>
+    <eAnnotations source="positions.83" references="/0/generateOnboarding/%.1/%.17/%">
+      <details key="start" value="2085"/>
+      <details key="end" value="2109"/>
+      <details key="line" value="63"/>
+    </eAnnotations>
+    <eAnnotations source="positions.84" references="/0/generateOnboarding/%.1/%.17/i">
+      <details key="start" value="2110"/>
+      <details key="end" value="2111"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.85" references="/0/generateOnboarding/%.1/%.17/%.1">
+      <details key="start" value="2113"/>
+      <details key="end" value="2133"/>
+      <details key="line" value="63"/>
+    </eAnnotations>
+    <eAnnotations source="positions.86" references="/0/generateOnboarding/%.1/%.17/%.2">
+      <details key="start" value="2134"/>
+      <details key="end" value="2159"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.87" references="/0/generateOnboarding/%.1/%.17/%.2/page">
+      <details key="start" value="2154"/>
+      <details key="end" value="2158"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.88" references="/0/generateOnboarding/%.1/%.17/%.3">
+      <details key="start" value="2161"/>
+      <details key="end" value="2167"/>
+      <details key="line" value="65"/>
+    </eAnnotations>
+    <eAnnotations source="positions.89" references="/0/generateOnboarding/%.1/%.17/page">
+      <details key="start" value="2061"/>
+      <details key="end" value="2072"/>
+      <details key="line" value="62"/>
+    </eAnnotations>
+    <eAnnotations source="positions.90" references="/0/generateOnboarding/%.1/%.17/%.4">
+      <details key="start" value="2075"/>
+      <details key="end" value="2082"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.91" references="/0/generateOnboarding/%.1/%.17/%.4/self">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.92" references="/0/generateOnboarding/%.1/%.18">
+      <details key="start" value="2174"/>
+      <details key="end" value="2655"/>
+      <details key="line" value="67"/>
+    </eAnnotations>
+    <eAnnotations source="positions.93" references="/0/generateOnboarding/%.1/%.19">
+      <details key="start" value="2656"/>
+      <details key="end" value="2659"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.94" references="/0/generateOnboarding/%.1/%.20">
+      <details key="start" value="2661"/>
+      <details key="end" value="2720"/>
+      <details key="line" value="82"/>
+    </eAnnotations>
+    <eAnnotations source="positions.95" references="/0/generateOnboarding/%.1/%.21">
+      <details key="start" value="2721"/>
+      <details key="end" value="2724"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.96" references="/0/generateOnboarding/%.1/%.22">
+      <details key="start" value="2726"/>
+      <details key="end" value="2778"/>
+      <details key="line" value="83"/>
+    </eAnnotations>
+    <eAnnotations source="positions.97" references="/0/generateOnboarding/%.1/%.23">
+      <details key="start" value="2779"/>
+      <details key="end" value="2782"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.98" references="/0/generateOnboarding/%.1/%.24">
+      <details key="start" value="2784"/>
+      <details key="end" value="2843"/>
+      <details key="line" value="84"/>
+    </eAnnotations>
+    <eAnnotations source="positions.99" references="/0/generateOnboarding/%.1/%.25">
+      <details key="start" value="2844"/>
+      <details key="end" value="2847"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.100" references="/0/generateOnboarding/%.1/%.26">
+      <details key="start" value="2849"/>
+      <details key="end" value="3021"/>
+      <details key="line" value="85"/>
+    </eAnnotations>
+    <eAnnotations source="positions.101" references="/0/generateOnboarding/%.1/%.27">
+      <details key="start" value="3022"/>
+      <details key="end" value="3070"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.102" references="/0/generateOnboarding/%.1/%.27/%">
+      <details key="start" value="3022"/>
+      <details key="end" value="3065"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.103" references="/0/generateOnboarding/%.1/%.27/%/%">
+      <details key="start" value="3022"/>
+      <details key="end" value="3047"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.104" references="/0/generateOnboarding/%.1/%.27/%/%/anOnboarding">
+      <details key="start" value="3022"/>
+      <details key="end" value="3034"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.105" references="/0/generateOnboarding/%.1/%.28">
+      <details key="start" value="3072"/>
+      <details key="end" value="3532"/>
+      <details key="line" value="90"/>
+    </eAnnotations>
+    <eAnnotations source="positions.106" references="/0/generateOnboarding/%.1/%.29">
+      <details key="start" value="3533"/>
+      <details key="end" value="3581"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.107" references="/0/generateOnboarding/%.1/%.29/%">
+      <details key="start" value="3533"/>
+      <details key="end" value="3576"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.108" references="/0/generateOnboarding/%.1/%.29/%/%">
+      <details key="start" value="3533"/>
+      <details key="end" value="3558"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.109" references="/0/generateOnboarding/%.1/%.29/%/%/anOnboarding">
+      <details key="start" value="3533"/>
+      <details key="end" value="3545"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.110" references="/0/generateOnboarding/%.1/%.30">
+      <details key="start" value="3583"/>
+      <details key="end" value="4037"/>
+      <details key="line" value="106"/>
+    </eAnnotations>
+    <eAnnotations source="positions.111" references="/0/generateOnboarding/%.1/%.31">
+      <details key="start" value="4038"/>
+      <details key="end" value="4086"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.112" references="/0/generateOnboarding/%.1/%.31/%">
+      <details key="start" value="4038"/>
+      <details key="end" value="4081"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.113" references="/0/generateOnboarding/%.1/%.31/%/%">
+      <details key="start" value="4038"/>
+      <details key="end" value="4063"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.114" references="/0/generateOnboarding/%.1/%.31/%/%/anOnboarding">
+      <details key="start" value="4038"/>
+      <details key="end" value="4050"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.115" references="/0/generateOnboarding/%.1/%.32">
+      <details key="start" value="4088"/>
+      <details key="end" value="4540"/>
+      <details key="line" value="121"/>
+    </eAnnotations>
+    <eAnnotations source="positions.116" references="/0/generateOnboarding/%.1/%.33">
+      <details key="start" value="4541"/>
+      <details key="end" value="4544"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.117" references="/0/generateOnboarding/%.1/%.34">
+      <details key="start" value="4546"/>
+      <details key="end" value="4787"/>
+      <details key="line" value="136"/>
+    </eAnnotations>
+    <eAnnotations source="positions.118" references="/0/generateOnboarding/%.1/%.35">
+      <details key="start" value="4788"/>
+      <details key="end" value="4791"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.119" references="/0/generateOnboarding/%.1/%.36">
+      <details key="start" value="4793"/>
+      <details key="end" value="4976"/>
+      <details key="line" value="146"/>
+    </eAnnotations>
+    <eAnnotations source="positions.120" references="/0/generateOnboarding/%.1/%.37">
+      <details key="start" value="4977"/>
+      <details key="end" value="4980"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.121" references="/0/generateOnboarding/%.1/%.38">
+      <details key="start" value="4982"/>
+      <details key="end" value="4983"/>
+      <details key="line" value="162"/>
+    </eAnnotations>
+    <eAnnotations source="positions.122" references="/0/generateOnboarding/%.1/%.39">
+      <details key="start" value="4983"/>
+      <details key="end" value="5485"/>
+      <details key="line" value="162"/>
+    </eAnnotations>
+    <eAnnotations source="positions.123" references="/0/generateOnboarding/%.1/%.39/%">
+      <details key="start" value="5028"/>
+      <details key="end" value="5478"/>
+      <details key="line" value="163"/>
+    </eAnnotations>
+    <eAnnotations source="positions.124" references="/0/generateOnboarding/%.1/%.39/%/%">
+      <details key="start" value="5046"/>
+      <details key="end" value="5049"/>
+      <details key="line" value="164"/>
+    </eAnnotations>
+    <eAnnotations source="positions.125" references="/0/generateOnboarding/%.1/%.39/%/%.1">
+      <details key="start" value="5050"/>
+      <details key="end" value="5071"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.126" references="/0/generateOnboarding/%.1/%.39/%/%.1/%">
+      <details key="start" value="5050"/>
+      <details key="end" value="5067"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.127" references="/0/generateOnboarding/%.1/%.39/%/%.1/%/anOnboarding">
+      <details key="start" value="5050"/>
+      <details key="end" value="5062"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.128" references="/0/generateOnboarding/%.1/%.39/%/%.1/i">
+      <details key="start" value="5070"/>
+      <details key="end" value="5071"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.129" references="/0/generateOnboarding/%.1/%.39/%/%.2">
+      <details key="start" value="5073"/>
+      <details key="end" value="5138"/>
+      <details key="line" value="164"/>
+    </eAnnotations>
+    <eAnnotations source="positions.130" references="/0/generateOnboarding/%.1/%.39/%/i">
+      <details key="start" value="5139"/>
+      <details key="end" value="5140"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.131" references="/0/generateOnboarding/%.1/%.39/%/%.3">
+      <details key="start" value="5142"/>
+      <details key="end" value="5223"/>
+      <details key="line" value="164"/>
+    </eAnnotations>
+    <eAnnotations source="positions.132" references="/0/generateOnboarding/%.1/%.39/%/%.4">
+      <details key="start" value="5032"/>
+      <details key="end" value="5044"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.133" references="/0/generateOnboarding/%.1/%.39/%/%.4/page">
+      <details key="start" value="5033"/>
+      <details key="end" value="5037"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.134" references="/0/generateOnboarding/%.1/%.39/%/%.5">
+      <details key="start" value="5224"/>
+      <details key="end" value="5473"/>
+      <details key="line" value="165"/>
+    </eAnnotations>
+    <eAnnotations source="positions.135" references="/0/generateOnboarding/%.1/%.39/%/%.5/%">
+      <details key="start" value="5231"/>
+      <details key="end" value="5234"/>
+      <details key="line" value="166"/>
+    </eAnnotations>
+    <eAnnotations source="positions.136" references="/0/generateOnboarding/%.1/%.39/%/%.5/%.1">
+      <details key="start" value="5235"/>
+      <details key="end" value="5256"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.137" references="/0/generateOnboarding/%.1/%.39/%/%.5/%.1/%">
+      <details key="start" value="5235"/>
+      <details key="end" value="5252"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.138" references="/0/generateOnboarding/%.1/%.39/%/%.5/%.1/%/anOnboarding">
+      <details key="start" value="5235"/>
+      <details key="end" value="5247"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.139" references="/0/generateOnboarding/%.1/%.39/%/%.5/%.1/i">
+      <details key="start" value="5255"/>
+      <details key="end" value="5256"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.140" references="/0/generateOnboarding/%.1/%.39/%/%.5/%.2">
+      <details key="start" value="5258"/>
+      <details key="end" value="5343"/>
+      <details key="line" value="166"/>
+    </eAnnotations>
+    <eAnnotations source="positions.141" references="/0/generateOnboarding/%.1/%.39/%/%.5/i">
+      <details key="start" value="5344"/>
+      <details key="end" value="5345"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.142" references="/0/generateOnboarding/%.1/%.39/%/%.5/%.3">
+      <details key="start" value="5347"/>
+      <details key="end" value="5472"/>
+      <details key="line" value="166"/>
+    </eAnnotations>
+    <eAnnotations source="positions.143" references="/0/generateOnboarding/%.1/%.39/page">
+      <details key="start" value="4989"/>
+      <details key="end" value="5000"/>
+      <details key="line" value="162"/>
+    </eAnnotations>
+    <eAnnotations source="positions.144" references="/0/generateOnboarding/%.1/%.39/%.1">
+      <details key="start" value="5003"/>
+      <details key="end" value="5010"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.145" references="/0/generateOnboarding/%.1/%.39/%.1/self">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.146" references="/0/generateOnboarding/%.1/%.39/%.2">
+      <details key="start" value="5020"/>
+      <details key="end" value="5024"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.147" references="/0/generateOnboarding/%.1/%.40">
+      <details key="start" value="5486"/>
+      <details key="end" value="5487"/>
+      <details key="line" value="169"/>
+    </eAnnotations>
+    <eAnnotations source="positions.148" references="/0/generateOnboarding/%.1/%.41">
+      <details key="start" value="5488"/>
+      <details key="end" value="5491"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.149" references="/0/generateOnboarding/%.1/%.42">
+      <details key="start" value="5493"/>
+      <details key="end" value="5529"/>
+      <details key="line" value="170"/>
+    </eAnnotations>
+    <eAnnotations source="positions.150" references="/0/generateOnboarding/%.1/%.43">
+      <details key="start" value="5530"/>
+      <details key="end" value="5538"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.151" references="/0/generateOnboarding/%.1/%.44">
+      <details key="start" value="5540"/>
+      <details key="end" value="5578"/>
+      <details key="line" value="173"/>
+    </eAnnotations>
+    <eAnnotations source="positions.152" references="/0/generateOnboarding/%.1/%.45">
+      <details key="start" value="5579"/>
+      <details key="end" value="5596"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.153" references="/0/generateOnboarding/%.1/%.45/anOnboarding">
+      <details key="start" value="5579"/>
+      <details key="end" value="5591"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.154" references="/0/generateOnboarding/%.1/%.46">
+      <details key="start" value="5598"/>
+      <details key="end" value="5601"/>
+      <details key="line" value="179"/>
+    </eAnnotations>
+    <eAnnotations source="positions.155" references="/0/generateOnboarding/%.1/%.47">
+      <details key="start" value="337"/>
+      <details key="end" value="399"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.156" references="/0/generateOnboarding/%.1/%.47/%">
+      <details key="start" value="337"/>
+      <details key="end" value="393"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.157" references="/0/generateOnboarding/%.1/%.47/%/%">
+      <details key="start" value="337"/>
+      <details key="end" value="374"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.158" references="/0/generateOnboarding/%.1/%.47/%/%/%">
+      <details key="start" value="337"/>
+      <details key="end" value="368"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.159" references="/0/generateOnboarding/%.1/%.47/%/%/%/%">
+      <details key="start" value="337"/>
+      <details key="end" value="350"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.160" references="/0/generateOnboarding/%.1/%.47/%/%/%/%.1">
+      <details key="start" value="351"/>
+      <details key="end" value="368"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.161" references="/0/generateOnboarding/%.1/%.47/%/%/%/%.1/anOnboarding">
+      <details key="start" value="351"/>
+      <details key="end" value="363"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.162" references="/0/generateOnboarding/%.1/%.47/%/%/%.1">
+      <details key="start" value="371"/>
+      <details key="end" value="374"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.163" references="/0/generateOnboarding/%.1/%.47/%/%.1">
+      <details key="start" value="376"/>
+      <details key="end" value="393"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.164" references="/0/generateOnboarding/%.1/%.47/%/%.1/anOnboarding">
+      <details key="start" value="376"/>
+      <details key="end" value="388"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.165" references="/0/generateOnboarding/%.1/%.47/%.1">
+      <details key="start" value="394"/>
+      <details key="end" value="399"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.166" references="/0/generateOnboarding/%.1/%.48">
+      <details key="start" value="408"/>
+      <details key="end" value="415"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.167" references="/0/generateOnboarding/anOnboarding">
+      <details key="start" value="288"/>
+      <details key="end" value="313"/>
+      <details key="line" value="8"/>
+    </eAnnotations>
+    <eAnnotations source="positions.168" references="/0/generateOnboarding/%.2">
+      <details key="start" value="320"/>
+      <details key="end" value="326"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.169" references="/0/generateOnboarding/%.2/self">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+  </ecore:EAnnotation>
+</xmi:XMI>

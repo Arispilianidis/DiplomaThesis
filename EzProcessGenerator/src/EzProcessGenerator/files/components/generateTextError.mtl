@@ -1,0 +1,22 @@
+[comment encoding = UTF-8 /]
+[module generateTextError('http://www.example.org/ezProcess')]
+
+
+[template public generateTextError(anApp : App)]
+
+[file ('Output/src/components/TextError.js', false, 'UTF-8')]
+
+import React from 'react'
+
+function TextError(props) {
+    return (
+        <div className="Error flexBoxes">
+            {props.children}
+        </div>
+    )
+}
+
+export default TextError
+
+[/file]
+[/template]

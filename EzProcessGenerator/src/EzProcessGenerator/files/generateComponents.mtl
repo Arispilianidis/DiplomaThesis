@@ -1,0 +1,31 @@
+[comment encoding = UTF-8 /]
+[module generateComponents('http://www.example.org/ezProcess')]
+
+[import EzProcessGenerator::files::components::generateCheckBoxGroup /]
+[import EzProcessGenerator::files::components::generateCurrentDate /]
+[import EzProcessGenerator::files::components::generateDatePicker /]
+[import EzProcessGenerator::files::components::generateFormikControl /]
+[import EzProcessGenerator::files::components::generateInput /]
+[import EzProcessGenerator::files::components::generateProof /]
+[import EzProcessGenerator::files::components::generateRadiobuttons /]
+[import EzProcessGenerator::files::components::generateSelect /]
+[import EzProcessGenerator::files::components::generateTextarea /]
+[import EzProcessGenerator::files::components::generateTextError /]
+[import EzProcessGenerator::files::generateProcessColumns/]
+
+
+[template public generateComponents(anApp : App)]
+
+[generateCheckBoxGroup(anApp)/]
+[generateCurrentDate(anApp)/]
+[generateDatePicker(anApp)/]
+[generateFormikControl(anApp)/]
+[generateInput(anApp)/]
+[generateProof(anApp)/]
+[generateRadiobuttons(anApp)/]
+[generateSelect(anApp)/]
+[generateTextarea(anApp)/]
+[generateTextError(anApp)/]
+[generateProcessColumns(anApp)/]
+
+[/template]

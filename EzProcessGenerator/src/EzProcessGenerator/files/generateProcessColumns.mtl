@@ -1,0 +1,27 @@
+[comment encoding = UTF-8 /]
+[module generateProcessColumns('http://www.example.org/ezProcess')]
+
+
+[template public generateProcessColumns(anOclAny : OclAny)]
+
+[file ('Output/src/columns.js', false, 'UTF-8')]
+export const COLUMNS = ['['/]
+	{
+        Header: "First Name",
+        accessor: 'FIRST_NAME'
+    },
+    {
+        Header: "Last Name",
+        accessor: 'LAST_NAME'
+    },
+    {
+        Header: "Email",
+        accessor: 'EMAIL'
+    },
+    {
+        Header: "Score",
+        accessor: 'Score'
+    },
+]
+[/file]
+[/template]

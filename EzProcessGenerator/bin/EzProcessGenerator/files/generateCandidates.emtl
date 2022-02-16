@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:mtl="http://www.eclipse.org/acceleo/mtl/3.0" xmlns:ocl.ecore="http://www.eclipse.org/ocl/1.1.0/Ecore">
+  <mtl:Module name="generateCandidates" nsURI="EzProcessGenerator::files::generateCandidates" startHeaderPosition="29" endHeaderPosition="652">
+    <input>
+      <takesTypesFrom href="http://www.example.org/ezProcess#/"/>
+    </input>
+    <ownedModuleElement xsi:type="mtl:Template" name="generateCandidates" visibility="Public">
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;"/>
+      <body xsi:type="mtl:FileBlock" openMode="OverWrite">
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="import React, { useMemo,useEffect } from 'react'&#xA;import { useTable, useSortBy, usePagination, useRowSelect } from 'react-table'&#xA;import { COLUMNS } from &quot;./columns&quot;&#xA;&#xA;const IndeterminateCheckbox = React.forwardRef(&#xA;    ({ indeterminate, ...rest }, ref) => {&#xA;        const defaultRef = React.useRef()&#xA;        const resolvedRef = ref || defaultRef&#xA;&#xA;        React.useEffect(() => {&#xA;            resolvedRef.current.indeterminate = indeterminate&#xA;        }, "/>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="[">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="resolvedRef, indeterminate])&#xA;&#xA;        return (&#xA;            &lt;>&#xA;                &lt;input type=&quot;checkbox&quot; ref={resolvedRef} {...rest} />&#xA;            &lt;/>&#xA;        )&#xA;    }&#xA;)&#xA;&#xA;function Candidates(props) {&#xA;&#xA;    const columns = useMemo(() => COLUMNS, "/>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="[]">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=")&#xA;    const candidates = useMemo(() => props.candidates, "/>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="[">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="props.candidates])&#xA;&#xA;    useEffect(() => {&#xA;        props.handleCandidates(selectedFlatRows)&#xA;    })&#xA;    const {&#xA;        getTableProps,&#xA;        getTableBodyProps,&#xA;        headerGroups,&#xA;        prepareRow,&#xA;        page,&#xA;        nextPage,&#xA;        previousPage,&#xA;        canNextPage,&#xA;        canPreviousPage,&#xA;        pageOptions,&#xA;        setPageSize,&#xA;        selectedFlatRows,&#xA;        state: { pageIndex, pageSize },&#xA;    } = useTable({&#xA;        columns,&#xA;        data: candidates&#xA;    },&#xA;        useSortBy,&#xA;        usePagination,&#xA;        useRowSelect,&#xA;        hooks => {&#xA;            hooks.visibleColumns.push(columns => "/>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="[">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;                // Let's make a column for selection&#xA;                {&#xA;                    id: 'selection',&#xA;                    // The header can use the table's getToggleAllRowsSelectedProps method&#xA;                    // to render a checkbox&#xA;                    Header: ({ getToggleAllPageRowsSelectedProps }) => (&#xA;                        &lt;div>&#xA;                            &lt;IndeterminateCheckbox {...getToggleAllPageRowsSelectedProps()} />&#xA;                        &lt;/div>&#xA;                    ),&#xA;                    // The cell can use the individual row's getToggleRowSelectedProps method&#xA;                    // to the render a checkbox&#xA;                    Cell: ({ row }) => (&#xA;                        &lt;div>&#xA;                            &lt;IndeterminateCheckbox {...row.getToggleRowSelectedProps()} />&#xA;                        &lt;/div>&#xA;                    ),&#xA;                },&#xA;                ...columns,&#xA;            ])&#xA;        }&#xA;    )&#xA;&#xA;    return (&#xA;&#xA;        &lt;div style={{ overflowY: 'scroll', maxHeight: 200, marginTop: 10, marginLeft: 0, marginRight: 0 }}>&#xA;            &lt;table {...getTableProps()}>&#xA;                &lt;thead>&#xA;                    {headerGroups.map((headerGroup) => (&#xA;&#xA;                        &lt;tr {...headerGroup.getHeaderGroupProps()}>&#xA;                            {headerGroup.headers.map((column) => (&#xA;                                &lt;th {...column.getHeaderProps(column.getSortByToggleProps())}>&lt;b>&#xA;                                    {column.render('Header')}&#xA;                                &lt;/b>&#xA;                                    &lt;span>&#xA;&#xA;                                        {column.isSorted ? (column.isSortedDesc ? &lt;i className=&quot;far fa-caret-square-down&quot;>&lt;/i> : &lt;i className=&quot;far fa-caret-square-up&quot;> &lt;/i>) : ''}&#xA;                                    &lt;/span>&#xA;                                &lt;/th>&#xA;                            ))}&#xA;                        &lt;/tr>&#xA;                    ))}&#xA;                &lt;/thead>&#xA;                &lt;tbody {...getTableBodyProps()}>&#xA;                    {page.map((row) => {&#xA;                        prepareRow(row)&#xA;                        return (&#xA;                            &lt;tr {...row.getRowProps()}>&#xA;                                {row.cells.map((cell) => {&#xA;                                    return &lt;td {...cell.getCellProps()}>{cell.render('Cell')}&lt;/td>&#xA;                                })}&#xA;                            &lt;/tr>&#xA;                        )&#xA;                    })}&#xA;                &lt;/tbody>&#xA;            &lt;/table>&#xA;            &lt;div style={{ marginTop: 10, backgroundColor: 'white', width: '61%' }}>&#xA;                &lt;span>&#xA;                    Page {' '}&#xA;                    &lt;strong>&#xA;                        {pageIndex + 1} of {pageOptions.length}&#xA;                    &lt;/strong> {' '}&#xA;                &lt;/span>&#xA;                &lt;select value={pageSize} onChange={e => setPageSize(Number(e.target.value))}>&#xA;                    {&#xA;                        "/>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="[">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="5, 10, 25, 50].map(pageSize => (&#xA;                            &lt;option key={pageSize} value={pageSize}>&#xA;                                Show {pageSize}&#xA;                            &lt;/option>&#xA;                        ))&#xA;                    }&#xA;                &lt;/select>&#xA;                {/* &lt;pre>&#xA;                    &lt;code>&#xA;                        {JSON.stringify(&#xA;                            {&#xA;                                selectedRowIds: selectedRowIds,&#xA;                                'selectedFlatRows"/>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="[]">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=".original': selectedFlatRows.map(&#xA;                                    d => d.original&#xA;                                ),&#xA;                            },&#xA;                            null,&#xA;                            2&#xA;                        )}&#xA;                    &lt;/code>&#xA;                &lt;/pre> */}&#xA;                &lt;button onClick={() => previousPage()} disabled={!canPreviousPage}> Previous &lt;/button>&#xA;                &lt;button onClick={() => nextPage()} disabled={!canNextPage}> Next &lt;/button>&#xA;            &lt;/div>&#xA;        &lt;/div>&#xA;&#xA;    )&#xA;}&#xA;&#xA;export default Candidates&#xA;&#xA;"/>
+        <fileUrl xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="Output/src/Candidates.js">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </fileUrl>
+        <charset xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="UTF-8">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </charset>
+      </body>
+      <parameter name="anApp">
+        <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//App"/>
+      </parameter>
+    </ownedModuleElement>
+  </mtl:Module>
+  <ecore:EPackage name="additions">
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_String_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Integer_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Real_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Real"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ecore_EObject_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+      </eAnnotations>
+      <eOperations name="generateCandidates">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL" references="/0/generateCandidates"/>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="anApp">
+          <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//App"/>
+        </eParameters>
+      </eOperations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_OclAny_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OclAny"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Collection(T)_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Collection(T)"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Sequence(T)_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Sequence(T)"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_OrderedSet(T)_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OrderedSet(T)"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ezProcess_App_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.example.org/ezProcess#//App"/>
+      </eAnnotations>
+    </eClassifiers>
+  </ecore:EPackage>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//App"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//App"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//App"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//App"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//App"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//App"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//App"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//App"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//App"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//App"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </ocl.ecore:Variable>
+  <ecore:EAnnotation source="positions">
+    <eAnnotations source="positions.0" references="/0/generateCandidates">
+      <details key="start" value="95"/>
+      <details key="end" value="5576"/>
+      <details key="line" value="5"/>
+    </eAnnotations>
+    <eAnnotations source="positions.1" references="/0/generateCandidates/%">
+      <details key="start" value="145"/>
+      <details key="end" value="146"/>
+      <details key="line" value="6"/>
+    </eAnnotations>
+    <eAnnotations source="positions.2" references="/0/generateCandidates/%.1">
+      <details key="start" value="146"/>
+      <details key="end" value="5564"/>
+      <details key="line" value="7"/>
+    </eAnnotations>
+    <eAnnotations source="positions.3" references="/0/generateCandidates/%.1/%">
+      <details key="start" value="198"/>
+      <details key="end" value="648"/>
+      <details key="line" value="8"/>
+    </eAnnotations>
+    <eAnnotations source="positions.4" references="/0/generateCandidates/%.1/%.1">
+      <details key="start" value="649"/>
+      <details key="end" value="652"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.5" references="/0/generateCandidates/%.1/%.2">
+      <details key="start" value="654"/>
+      <details key="end" value="894"/>
+      <details key="line" value="19"/>
+    </eAnnotations>
+    <eAnnotations source="positions.6" references="/0/generateCandidates/%.1/%.3">
+      <details key="start" value="895"/>
+      <details key="end" value="899"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.7" references="/0/generateCandidates/%.1/%.4">
+      <details key="start" value="901"/>
+      <details key="end" value="958"/>
+      <details key="line" value="31"/>
+    </eAnnotations>
+    <eAnnotations source="positions.8" references="/0/generateCandidates/%.1/%.5">
+      <details key="start" value="959"/>
+      <details key="end" value="962"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.9" references="/0/generateCandidates/%.1/%.6">
+      <details key="start" value="964"/>
+      <details key="end" value="1574"/>
+      <details key="line" value="32"/>
+    </eAnnotations>
+    <eAnnotations source="positions.10" references="/0/generateCandidates/%.1/%.7">
+      <details key="start" value="1575"/>
+      <details key="end" value="1578"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.11" references="/0/generateCandidates/%.1/%.8">
+      <details key="start" value="1580"/>
+      <details key="end" value="4481"/>
+      <details key="line" value="60"/>
+    </eAnnotations>
+    <eAnnotations source="positions.12" references="/0/generateCandidates/%.1/%.9">
+      <details key="start" value="4482"/>
+      <details key="end" value="4485"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.13" references="/0/generateCandidates/%.1/%.10">
+      <details key="start" value="4487"/>
+      <details key="end" value="4987"/>
+      <details key="line" value="126"/>
+    </eAnnotations>
+    <eAnnotations source="positions.14" references="/0/generateCandidates/%.1/%.11">
+      <details key="start" value="4988"/>
+      <details key="end" value="4992"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.15" references="/0/generateCandidates/%.1/%.12">
+      <details key="start" value="4994"/>
+      <details key="end" value="5557"/>
+      <details key="line" value="138"/>
+    </eAnnotations>
+    <eAnnotations source="positions.16" references="/0/generateCandidates/%.1/%.13">
+      <details key="start" value="153"/>
+      <details key="end" value="179"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.17" references="/0/generateCandidates/%.1/%.14">
+      <details key="start" value="188"/>
+      <details key="end" value="195"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.18" references="/0/generateCandidates/anApp">
+      <details key="start" value="131"/>
+      <details key="end" value="142"/>
+      <details key="line" value="5"/>
+    </eAnnotations>
+  </ecore:EAnnotation>
+</xmi:XMI>

@@ -1,0 +1,23 @@
+[comment encoding = UTF-8 /]
+[module generateIndexJS('http://www.example.org/ezProcess')]
+
+
+[template public generateIndexJS(anApp : App)]
+
+[file ('Output/src/index.js', false, 'UTF-8')]
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { BrowserRouter as Router} from "react-router-dom";
+import './index.css';
+import App from './App';
+
+
+ReactDOM.render(
+  <Router>
+    <App />
+  </Router>,
+  document.getElementById('root')
+);
+
+[/file]
+[/template]

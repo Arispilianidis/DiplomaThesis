@@ -1,0 +1,156 @@
+[comment encoding = UTF-8 /]
+[module generateLogincCSS('http://www.example.org/ezProcess')]
+
+
+[template public generateLogincCSS(anApp : App)]
+
+[file ('Output/src/css/Login.css', false, 'UTF-8')]
+
+* {
+     /* margin: 10px; */
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  div{
+    display: block;
+    justify-content: center;
+
+  }
+
+  .flexBoxes{
+    display: flex;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    min-width: 300px;
+
+  }
+
+.form-container {
+
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1em;
+    background-color: white;
+    padding: 15px;
+    white-space: normal;
+    font-family: "Helvetica";
+    font-size: 18px;
+    min-width: 300px;
+}
+
+.Error{
+    color: red;
+	margin: 10px;
+}
+
+.imgcontainer{
+    text-align: center;
+    margin: 24px 0 12px 0;
+    position: relative;
+}
+
+h4{
+    color: blue;
+    display: inline-block;
+	margin: 10px;
+}
+
+.btn_complete {
+   
+    background-color: #3fcea3;
+    border-color: #3fcea3;
+    color: #fff;
+    width: 150px;
+    height: 50px;
+    float: right;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 18.5px;
+	margin: 10px;
+}
+
+.btn_reject {
+   
+    background-color: #ce3f52;
+    border-color: #ce3f52;
+    color: #fff;
+    width: 150px;
+    height: 50px;
+    float: right;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 18.5px;
+	margin: 10px;
+}
+
+label{
+    text-align: left;
+    font-family: "Helvetica";
+    display: block;
+    line-height: 150%;
+    font-size: .85em;
+	margin-left: 20px;
+    margin-top: 50px;
+    margin-bottom: 10px;
+}
+
+.radiolabels{
+    text-align: left;    	
+    font-family: "Helvetica";
+    display: block;
+    line-height: 150%;
+    font-size: .85em;
+    margin-left: 20px;
+    margin-bottom: 10px;
+    margin-top: 23px;
+}
+
+
+input['['/]type=text], input['['/]type=email], input['['/]type=number]{
+    margin-top: 5px;
+    padding: 12px 20px;
+    width: 90%;
+    margin-left: 4%;
+    margin-right: 5%;
+    font-size: 17px;
+    font-family: Arial, Helvetica, sans-serif;
+    border: 1px solid #aaaaaa;
+    display: inline-block;
+	margin-bottom: 10px;
+}
+
+input['['/]type=text]:focus, input['['/]type=email]:focus{
+    background-color: lightblue;
+}
+
+
+button['['/]type=submit]{
+    width: 40%;
+    padding: 14px 20px;
+    margin-top: 10%;
+    text-align: center;
+    justify-content: center;
+    margin-left:30%;
+    margin-right:30%;
+    display: flex;
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+button['['/]type=submit]:hover{
+    opacity: 0.8;
+}
+
+
+img{
+    width: 50%;
+    height: 50%;
+    border-radius: 50%;
+}
+
+[/file]
+[/template]

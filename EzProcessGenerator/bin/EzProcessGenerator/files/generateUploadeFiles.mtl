@@ -1,0 +1,32 @@
+[comment encoding = UTF-8 /]
+[module generateUploadeFiles('http://www.example.org/ezProcess')]
+
+
+[template public generateUploadeFiles(anApp : App) post(trim())]
+
+[file ('Server/myapi/routes/uploadeFiles.js', false, 'UTF-8')]
+var express = require('express');
+var router = express.Router();
+const upload = require('express-fileupload')
+
+router.use(upload())
+
+router.post('/', function (req, res, next) {
+
+    if (req.files) {
+
+        var file = req.files.file
+
+        file.mv('./public/uploadedFiles/' + file.name, function (err) {
+            if (err) {
+                res.send(err)
+            }
+        })
+
+    }
+
+});
+
+module.exports = router;
+[/file]
+[/template]

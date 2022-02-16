@@ -1,0 +1,21 @@
+[comment encoding = UTF-8 /]
+[module generateRatingCSS('http://www.example.org/ezProcess')]
+
+
+[template public generateRatingCSS(anApp : App)]
+
+[file ('Output/src/css/Rating.css', false, 'UTF-8')]
+
+.starStyle{
+	height: 22px;
+	background-color: #F2F2F2;
+	padding-left: 2px;
+	padding-right: 2px;
+	color: #F58220;
+	line-height: 22px;
+	margin-left: 5px;
+	margin-right: 5px;
+}
+
+[/file]
+[/template]

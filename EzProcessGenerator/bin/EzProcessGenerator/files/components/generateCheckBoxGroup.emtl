@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:mtl="http://www.eclipse.org/acceleo/mtl/3.0" xmlns:ocl.ecore="http://www.eclipse.org/ocl/1.1.0/Ecore">
+  <mtl:Module name="generateCheckBoxGroup" nsURI="EzProcessGenerator::files::components::generateCheckBoxGroup" startHeaderPosition="29" endHeaderPosition="556">
+    <input>
+      <takesTypesFrom href="http://www.example.org/ezProcess#/"/>
+    </input>
+    <ownedModuleElement xsi:type="mtl:Template" name="generateCheckBoxGroup" visibility="Public">
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;"/>
+      <body xsi:type="mtl:FileBlock" openMode="OverWrite">
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;import React from 'react'&#xA;import { Field, ErrorMessage } from 'formik'&#xA;import TextError from './TextError'&#xA;&#xA;function CheckboxGroup(props) {&#xA;    const { label, name, options, ...rest } = props&#xA;&#xA;    function SearchBox() {&#xA;        // Declare variables&#xA;        var input, filter, ul, li, i, mylabels;&#xA;        var inputsWeActuallyWant = "/>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="[]">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=";&#xA;        input = document.getElementById(props.name);&#xA;        console.log(input)&#xA;        filter = input.value.toLowerCase();&#xA;        ul = document.getElementById(props.id);&#xA;        console.log(ul)&#xA;        li = ul.getElementsByTagName(&quot;input&quot;);&#xA;        mylabels = ul.getElementsByTagName(&quot;label&quot;);&#xA;&#xA;        for (i = 0; i &lt;= (li.length - 1); i++) {&#xA;            if (li"/>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="[i]">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=".id !== props.name) {&#xA;                inputsWeActuallyWant.push(li"/>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="[i]">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=");&#xA;&#xA;            }&#xA;        }&#xA;        li = inputsWeActuallyWant;&#xA;&#xA;&#xA;        // Loop through all list items, and hide those who don't match the search query&#xA;        for (i = 0; i &lt; li.length; i++) {&#xA;&#xA;            if (mylabels"/>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="[i]">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=".innerHTML.toLowerCase().indexOf(filter) > -1) {&#xA;                li"/>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="[i]">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=".style.display = &quot;&quot;;&#xA;                mylabels"/>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="[i]">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=".style.display = &quot;&quot;;&#xA;&#xA;            } else {&#xA;                li"/>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="[i]">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=".style.display = &quot;none&quot;;&#xA;                mylabels"/>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="[i]">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=".style.display = &quot;none&quot;;&#xA;            }&#xA;        }&#xA;    }&#xA;&#xA;    return (&#xA;        &lt;div>&#xA;            &lt;label style={{textAlign: 'center' }}>&lt;b>{label}&lt;/b>&lt;/label>&#xA;            &lt;div id={props.id} className=&quot;CheckboxContainer&quot;>&#xA;&#xA;                &lt;input type=&quot;text&quot; id={props.name} onKeyUp={SearchBox} placeholder=&quot;Search..&quot; />&#xA;&#xA;                &lt;Field name={name} {...rest}>&#xA;                    {&#xA;                        ({ field }) => {&#xA;                            return options.map(option => {&#xA;                                return (&#xA;                                    &lt;React.Fragment key={option.key}>&#xA;                                        &lt;div style={{ justifyContent: 'flex-start' }} className=&quot;flexBoxes&quot;>&#xA;                                            &lt;input type='checkbox' id={option.value} {...field} value={option.value} checked={field.value.includes(option.value)} />&#xA;                                            &lt;label style={{ fontSize: 13.5, marginTop: 7.5, fontStyle: 'italic' }} htmlFor={option.value}>{option.key}&lt;/label>&#xA;                                        &lt;/div>&#xA;                                    &lt;/React.Fragment>&#xA;                                )&#xA;                            })&#xA;                        }&#xA;                    }&#xA;                &lt;/Field>&#xA;&#xA;            &lt;/div>&#xA;            &lt;ErrorMessage name={name} component={TextError} />&#xA;        &lt;/div>&#xA;    )&#xA;}&#xA;&#xA;export default CheckboxGroup&#xA;&#xA;"/>
+        <fileUrl xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="Output/src/components/CheckboxGroup.js">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </fileUrl>
+        <charset xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="UTF-8">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </charset>
+      </body>
+      <parameter name="anApp">
+        <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//App"/>
+      </parameter>
+    </ownedModuleElement>
+  </mtl:Module>
+  <ecore:EPackage name="additions">
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_String_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Integer_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Real_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Real"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ecore_EObject_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+      </eAnnotations>
+      <eOperations name="generateCheckBoxGroup">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL" references="/0/generateCheckBoxGroup"/>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="anApp">
+          <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//App"/>
+        </eParameters>
+      </eOperations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_OclAny_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OclAny"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Collection(T)_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Collection(T)"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Sequence(T)_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Sequence(T)"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_OrderedSet(T)_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OrderedSet(T)"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ezProcess_App_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.example.org/ezProcess#//App"/>
+      </eAnnotations>
+    </eClassifiers>
+  </ecore:EPackage>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//App"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//App"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//App"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//App"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//App"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//App"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//App"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//App"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//App"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//App"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//App"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/ezProcess#//App"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </ocl.ecore:Variable>
+  <ecore:EAnnotation source="positions">
+    <eAnnotations source="positions.0" references="/0/generateCheckBoxGroup">
+      <details key="start" value="98"/>
+      <details key="end" value="2912"/>
+      <details key="line" value="5"/>
+    </eAnnotations>
+    <eAnnotations source="positions.1" references="/0/generateCheckBoxGroup/%">
+      <details key="start" value="151"/>
+      <details key="end" value="152"/>
+      <details key="line" value="6"/>
+    </eAnnotations>
+    <eAnnotations source="positions.2" references="/0/generateCheckBoxGroup/%.1">
+      <details key="start" value="152"/>
+      <details key="end" value="2900"/>
+      <details key="line" value="7"/>
+    </eAnnotations>
+    <eAnnotations source="positions.3" references="/0/generateCheckBoxGroup/%.1/%">
+      <details key="start" value="218"/>
+      <details key="end" value="551"/>
+      <details key="line" value="8"/>
+    </eAnnotations>
+    <eAnnotations source="positions.4" references="/0/generateCheckBoxGroup/%.1/%.1">
+      <details key="start" value="552"/>
+      <details key="end" value="556"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.5" references="/0/generateCheckBoxGroup/%.1/%.2">
+      <details key="start" value="558"/>
+      <details key="end" value="924"/>
+      <details key="line" value="19"/>
+    </eAnnotations>
+    <eAnnotations source="positions.6" references="/0/generateCheckBoxGroup/%.1/%.3">
+      <details key="start" value="925"/>
+      <details key="end" value="930"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.7" references="/0/generateCheckBoxGroup/%.1/%.4">
+      <details key="start" value="932"/>
+      <details key="end" value="998"/>
+      <details key="line" value="29"/>
+    </eAnnotations>
+    <eAnnotations source="positions.8" references="/0/generateCheckBoxGroup/%.1/%.5">
+      <details key="start" value="999"/>
+      <details key="end" value="1004"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.9" references="/0/generateCheckBoxGroup/%.1/%.6">
+      <details key="start" value="1006"/>
+      <details key="end" value="1226"/>
+      <details key="line" value="30"/>
+    </eAnnotations>
+    <eAnnotations source="positions.10" references="/0/generateCheckBoxGroup/%.1/%.7">
+      <details key="start" value="1227"/>
+      <details key="end" value="1232"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.11" references="/0/generateCheckBoxGroup/%.1/%.8">
+      <details key="start" value="1234"/>
+      <details key="end" value="1301"/>
+      <details key="line" value="40"/>
+    </eAnnotations>
+    <eAnnotations source="positions.12" references="/0/generateCheckBoxGroup/%.1/%.9">
+      <details key="start" value="1302"/>
+      <details key="end" value="1307"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.13" references="/0/generateCheckBoxGroup/%.1/%.10">
+      <details key="start" value="1309"/>
+      <details key="end" value="1354"/>
+      <details key="line" value="41"/>
+    </eAnnotations>
+    <eAnnotations source="positions.14" references="/0/generateCheckBoxGroup/%.1/%.11">
+      <details key="start" value="1355"/>
+      <details key="end" value="1360"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.15" references="/0/generateCheckBoxGroup/%.1/%.12">
+      <details key="start" value="1362"/>
+      <details key="end" value="1423"/>
+      <details key="line" value="42"/>
+    </eAnnotations>
+    <eAnnotations source="positions.16" references="/0/generateCheckBoxGroup/%.1/%.13">
+      <details key="start" value="1424"/>
+      <details key="end" value="1429"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.17" references="/0/generateCheckBoxGroup/%.1/%.14">
+      <details key="start" value="1431"/>
+      <details key="end" value="1480"/>
+      <details key="line" value="45"/>
+    </eAnnotations>
+    <eAnnotations source="positions.18" references="/0/generateCheckBoxGroup/%.1/%.15">
+      <details key="start" value="1481"/>
+      <details key="end" value="1486"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.19" references="/0/generateCheckBoxGroup/%.1/%.16">
+      <details key="start" value="1488"/>
+      <details key="end" value="2893"/>
+      <details key="line" value="46"/>
+    </eAnnotations>
+    <eAnnotations source="positions.20" references="/0/generateCheckBoxGroup/%.1/%.17">
+      <details key="start" value="159"/>
+      <details key="end" value="199"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.21" references="/0/generateCheckBoxGroup/%.1/%.18">
+      <details key="start" value="208"/>
+      <details key="end" value="215"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.22" references="/0/generateCheckBoxGroup/anApp">
+      <details key="start" value="137"/>
+      <details key="end" value="148"/>
+      <details key="line" value="5"/>
+    </eAnnotations>
+  </ecore:EAnnotation>
+</xmi:XMI>

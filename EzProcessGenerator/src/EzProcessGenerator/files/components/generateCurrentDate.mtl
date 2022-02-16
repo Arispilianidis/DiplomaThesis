@@ -1,0 +1,36 @@
+[comment encoding = UTF-8 /]
+[module generateCurrentDate('http://www.example.org/ezProcess')]
+
+[template public generateCurrentDate(anApp : App)]
+
+[file ('Output/src/components/CurrentDate.js', false, 'UTF-8')]
+
+import React, { useState, useEffect } from 'react'
+
+function CurrentDate() {
+
+    let ['[date, setDate]'/] = useState(new Date().toLocaleString('en-GB'));
+
+
+    useEffect(() => {
+
+        const intervalID = setInterval(() => {
+            setDate(new Date().toLocaleString('en-GB'))
+        }, 1000)
+
+        return () => {
+            clearInterval(intervalID)
+        }
+
+    }, ['[]'/])
+
+    return (
+        <div style={{marginBottom:25, color:"white" , fontSize:20 , display:'flex', alignItems:'center', marginLeft:40}}>
+            {"Today: " + date}
+        </div>
+    )
+}
+
+export default CurrentDate
+[/file]
+[/template]

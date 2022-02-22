@@ -40,7 +40,7 @@ function [processName+id/](props) {
       {
 
         formik => <Form id="regForm">
-          <h1> [processName/] Overview </h1>
+          <h1> [processName/] </h1>
           <span>
 
             <h3> [page.header/]</h3>

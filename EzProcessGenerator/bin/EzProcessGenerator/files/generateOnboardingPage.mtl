@@ -60,8 +60,17 @@ function [processName+id/](props) {
 
         optionsArray = ['['/]]
         let thresholds
+		let myOptionRating
         toArray(props.answers['['/]Item]).forEach(ans => {
-            thresholds = props.optionsRating.find(o => o.name === Item).options.find(v => v.optionValue === ans).optionRating.find(r => r.isAbout === QId).thresholds
+
+        	myOptionRating = props.optionsRating.find(o => o.name === Item).options.find(v => v.optionValue === ans).optionRating.find(r => r.isAbout === QId)
+
+        	if (myOptionRating===undefined || myOptionRating.length===0)
+        	{
+        		return null
+        	}
+
+      		thresholds = myOptionRating.thresholds
 
             thresholds.filter(thres => thres.length !== 0).forEach(threshold => {
                 if ((threshold.min <= props.candidateInfo.ratingsMap['['/]ans + `Rating${QId}`]) && (threshold.max >= props.candidateInfo.ratingsMap['['/]ans + `Rating${QId}`])) {
@@ -107,7 +116,7 @@ return (
       {
 
         formik => <Form id="regForm">
-          <h1> [processName/] Overview </h1>
+          <h1> [processName/] </h1>
           <span>
 
             <h3> [page.header/]</h3>

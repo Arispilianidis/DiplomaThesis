@@ -35,7 +35,7 @@
         <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="[">
           <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         </body>
-        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="serverUserInfo, processName] })&#xA;    }&#xA;&#xA;    function createProcessDropdownMenu() {&#xA;&#xA;        return serverUserInfo.assignedProcesses.map((element) => {&#xA;            return &lt;li key={element} onClick={goto} style={{ cursor: 'pointer', marginLeft: 10, marginBottom: 10 }}>{element}&lt;/li>&#xA;        });&#xA;&#xA;    }&#xA;&#xA;    function getCandidates(event) {&#xA;&#xA;        setJobDescTempOfScrenningProcess(event.target.textContent) &#xA;&#xA;        axios.get(&quot;http://localhost:3000/JobDescTempCandidates&quot;, {&#xA;            params: { JobDescTempOfScrenningProcess: event.target.textContent },&#xA;            method: 'GET',&#xA;            headers: {&#xA;                'Access-Control-Allow-Origin': '*',&#xA;                'Content-Type': 'application/json',&#xA;            }&#xA;        })&#xA;            .then(response => {&#xA;                console.log(response.data.data)&#xA;                setCandidates(response.data.data)&#xA;            })&#xA;            .then(() => {&#xA;                setShowCandidates(true)&#xA;            })&#xA;            .catch(error => {&#xA;                console.log(&quot;Error at get Candidates => &quot; + error.message)&#xA;                setError(error)&#xA;            })&#xA;&#xA;    }&#xA;&#xA;    // Catch Rating value&#xA;    const handleCandidates = (flatRows) => {&#xA;        setSelectedCandidates(flatRows)&#xA;    }&#xA;&#xA;    function completeTask(accepted) {&#xA;        let link&#xA;        let emails = "/>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="serverUserInfo, processName] })&#xA;    }&#xA;&#xA;    function createProcessDropdownMenu() {&#xA;&#xA;        return serverUserInfo.assignedProcesses.map((element) => {&#xA;            return &lt;li key={element} onClick={goto} style={{ cursor: 'pointer', marginLeft: 10, marginBottom: 10, marginRight: 10 }}>{element}&lt;/li>&#xA;        });&#xA;&#xA;    }&#xA;&#xA;    function getCandidates(event) {&#xA;&#xA;        setJobDescTempOfScrenningProcess(event.target.textContent) &#xA;&#xA;        axios.get(&quot;http://localhost:3000/JobDescTempCandidates&quot;, {&#xA;            params: { JobDescTempOfScrenningProcess: event.target.textContent },&#xA;            method: 'GET',&#xA;            headers: {&#xA;                'Access-Control-Allow-Origin': '*',&#xA;                'Content-Type': 'application/json',&#xA;            }&#xA;        })&#xA;            .then(response => {&#xA;                console.log(response.data.data)&#xA;                setCandidates(response.data.data)&#xA;            })&#xA;            .then(() => {&#xA;                setShowCandidates(true)&#xA;            })&#xA;            .catch(error => {&#xA;                console.log(&quot;Error at get Candidates => &quot; + error.message)&#xA;                setError(error)&#xA;            })&#xA;&#xA;    }&#xA;&#xA;    // Catch Rating value&#xA;    const handleCandidates = (flatRows) => {&#xA;        setSelectedCandidates(flatRows)&#xA;    }&#xA;&#xA;    function completeTask(accepted) {&#xA;        let link&#xA;        let emails = "/>
         <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="[">
           <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         </body>
@@ -259,7 +259,7 @@
   <ecore:EAnnotation source="positions">
     <eAnnotations source="positions.0" references="/0/generateProcessesPage">
       <details key="start" value="98"/>
-      <details key="end" value="6460"/>
+      <details key="end" value="6477"/>
       <details key="line" value="5"/>
     </eAnnotations>
     <eAnnotations source="positions.1" references="/0/generateProcessesPage/%">
@@ -269,7 +269,7 @@
     </eAnnotations>
     <eAnnotations source="positions.2" references="/0/generateProcessesPage/%.1">
       <details key="start" value="165"/>
-      <details key="end" value="6448"/>
+      <details key="end" value="6465"/>
       <details key="line" value="7"/>
     </eAnnotations>
     <eAnnotations source="positions.3" references="/0/generateProcessesPage/%.1/%">
@@ -344,112 +344,112 @@
     </eAnnotations>
     <eAnnotations source="positions.17" references="/0/generateProcessesPage/%.1/%.14">
       <details key="start" value="1117"/>
-      <details key="end" value="2431"/>
+      <details key="end" value="2448"/>
       <details key="line" value="32"/>
     </eAnnotations>
     <eAnnotations source="positions.18" references="/0/generateProcessesPage/%.1/%.15">
-      <details key="start" value="2432"/>
-      <details key="end" value="2435"/>
+      <details key="start" value="2449"/>
+      <details key="end" value="2452"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.19" references="/0/generateProcessesPage/%.1/%.16">
-      <details key="start" value="2437"/>
-      <details key="end" value="2462"/>
+      <details key="start" value="2454"/>
+      <details key="end" value="2479"/>
       <details key="line" value="76"/>
     </eAnnotations>
     <eAnnotations source="positions.20" references="/0/generateProcessesPage/%.1/%.17">
-      <details key="start" value="2463"/>
-      <details key="end" value="2466"/>
+      <details key="start" value="2480"/>
+      <details key="end" value="2483"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.21" references="/0/generateProcessesPage/%.1/%.18">
-      <details key="start" value="2468"/>
-      <details key="end" value="3088"/>
+      <details key="start" value="2485"/>
+      <details key="end" value="3105"/>
       <details key="line" value="77"/>
     </eAnnotations>
     <eAnnotations source="positions.22" references="/0/generateProcessesPage/%.1/%.19">
-      <details key="start" value="3089"/>
-      <details key="end" value="3092"/>
+      <details key="start" value="3106"/>
+      <details key="end" value="3109"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.23" references="/0/generateProcessesPage/%.1/%.20">
-      <details key="start" value="3094"/>
-      <details key="end" value="3423"/>
+      <details key="start" value="3111"/>
+      <details key="end" value="3440"/>
       <details key="line" value="98"/>
     </eAnnotations>
     <eAnnotations source="positions.24" references="/0/generateProcessesPage/%.1/%.21">
-      <details key="start" value="3424"/>
-      <details key="end" value="3427"/>
+      <details key="start" value="3441"/>
+      <details key="end" value="3444"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.25" references="/0/generateProcessesPage/%.1/%.22">
-      <details key="start" value="3429"/>
-      <details key="end" value="4455"/>
+      <details key="start" value="3446"/>
+      <details key="end" value="4472"/>
       <details key="line" value="105"/>
     </eAnnotations>
     <eAnnotations source="positions.26" references="/0/generateProcessesPage/%.1/%.23">
-      <details key="start" value="4456"/>
-      <details key="end" value="4459"/>
+      <details key="start" value="4473"/>
+      <details key="end" value="4476"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.27" references="/0/generateProcessesPage/%.1/%.24">
-      <details key="start" value="4461"/>
-      <details key="end" value="4462"/>
+      <details key="start" value="4478"/>
+      <details key="end" value="4479"/>
       <details key="line" value="136"/>
     </eAnnotations>
     <eAnnotations source="positions.28" references="/0/generateProcessesPage/%.1/%.25">
-      <details key="start" value="4465"/>
-      <details key="end" value="4605"/>
+      <details key="start" value="4482"/>
+      <details key="end" value="4622"/>
       <details key="line" value="136"/>
     </eAnnotations>
     <eAnnotations source="positions.29" references="/0/generateProcessesPage/%.1/%.25/%">
-      <details key="start" value="4508"/>
-      <details key="end" value="4595"/>
+      <details key="start" value="4525"/>
+      <details key="end" value="4612"/>
       <details key="line" value="137"/>
     </eAnnotations>
     <eAnnotations source="positions.30" references="/0/generateProcessesPage/%.1/%.25/%/%">
-      <details key="start" value="4562"/>
-      <details key="end" value="4568"/>
+      <details key="start" value="4579"/>
+      <details key="end" value="4585"/>
       <details key="line" value="138"/>
     </eAnnotations>
     <eAnnotations source="positions.31" references="/0/generateProcessesPage/%.1/%.25/%/%.1">
-      <details key="start" value="4569"/>
-      <details key="end" value="4581"/>
+      <details key="start" value="4586"/>
+      <details key="end" value="4598"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.32" references="/0/generateProcessesPage/%.1/%.25/%/%.1/process">
-      <details key="start" value="4569"/>
-      <details key="end" value="4576"/>
+      <details key="start" value="4586"/>
+      <details key="end" value="4593"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.33" references="/0/generateProcessesPage/%.1/%.25/%/%.2">
-      <details key="start" value="4583"/>
-      <details key="end" value="4586"/>
+      <details key="start" value="4600"/>
+      <details key="end" value="4603"/>
       <details key="line" value="138"/>
     </eAnnotations>
     <eAnnotations source="positions.34" references="/0/generateProcessesPage/%.1/%.25/%/%.3">
-      <details key="start" value="4512"/>
-      <details key="end" value="4560"/>
+      <details key="start" value="4529"/>
+      <details key="end" value="4577"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.35" references="/0/generateProcessesPage/%.1/%.25/%/%.3/process">
-      <details key="start" value="4513"/>
-      <details key="end" value="4520"/>
+      <details key="start" value="4530"/>
+      <details key="end" value="4537"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.36" references="/0/generateProcessesPage/%.1/%.25/%/%.3/%">
-      <details key="start" value="4533"/>
-      <details key="end" value="4558"/>
+      <details key="start" value="4550"/>
+      <details key="end" value="4575"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.37" references="/0/generateProcessesPage/%.1/%.25/process">
-      <details key="start" value="4471"/>
-      <details key="end" value="4488"/>
+      <details key="start" value="4488"/>
+      <details key="end" value="4505"/>
       <details key="line" value="136"/>
     </eAnnotations>
     <eAnnotations source="positions.38" references="/0/generateProcessesPage/%.1/%.25/%.1">
-      <details key="start" value="4491"/>
-      <details key="end" value="4501"/>
+      <details key="start" value="4508"/>
+      <details key="end" value="4518"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.39" references="/0/generateProcessesPage/%.1/%.25/%.1/self">
@@ -458,8 +458,8 @@
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.40" references="/0/generateProcessesPage/%.1/%.26">
-      <details key="start" value="4606"/>
-      <details key="end" value="6441"/>
+      <details key="start" value="4623"/>
+      <details key="end" value="6458"/>
       <details key="line" value="141"/>
     </eAnnotations>
     <eAnnotations source="positions.41" references="/0/generateProcessesPage/%.1/%.27">

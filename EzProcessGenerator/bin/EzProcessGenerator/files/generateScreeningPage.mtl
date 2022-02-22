@@ -111,6 +111,11 @@ function [processName+id/](props) {
 
         return toArray(answersItem).map((element, index) => {
 			let myOption = optionsRating.find(o => o.name === Item).options.find(v => v.optionValue === element).optionRating.find(r => r.isAbout === QId)
+
+			if (myOption === undefined || myOption.length === 0) {
+				return null
+			}
+			else {
             return (
 				<div key={index} style={{margin:0}}>
                 <FormikControl control='textarea' label={QArray+ element} 	name={`${FormikArray}['[${index}]'/]`} required placeholder="Enter text here" />
@@ -131,6 +136,7 @@ function [processName+id/](props) {
 				/>
 				</div>
 	            );
+			}
         })
     }
 
@@ -148,7 +154,7 @@ function [processName+id/](props) {
       {
 
         formik => <Form id="regForm">
-          <h1> [processName/] Overview </h1>
+          <h1> [processName/] </h1>
           <span>
 
             <h3> [page.header/]</h3>

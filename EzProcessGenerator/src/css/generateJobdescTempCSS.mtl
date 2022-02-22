@@ -36,6 +36,7 @@ h1{
   text-align: center;
   border: 3px solid powderblue;
   margin: 10px;
+  font-size: 32px;
 }
 
 h3 {

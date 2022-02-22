@@ -24,6 +24,7 @@
 [import EzProcessGenerator::files::generateIndexJS /]
 [import EzProcessGenerator::files::generateServerApp /]
 [import EzProcessGenerator::files::generateUploadedFilesFolder /]
+[import EzProcessGenerator::files::generateServerIndex /]
 
 [template public generateApp(anApp : App) post(trim())]
 [comment @main/]
@@ -49,7 +50,9 @@
 [generateServerPackageLock(anApp)/]
 [generateIndexJS(anApp)/]
 [generateServerApp(anApp)/]
+[generateServerIndex(anApp)/]
 [generateUploadedFilesFolder(anApp)/]
+
 
 [comment] Create the necessary folders and files for each process in the APP[/comment]
 [for (process : Process | hasProcess)]

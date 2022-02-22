@@ -1,0 +1,18 @@
+[comment encoding = UTF-8 /]
+[module generateServerIndex('http://www.example.org/ezProcess')]
+
+
+[template public generateServerIndex(anApp : App)]
+
+[file ('Server/myapi/routes/index.js', false, 'UTF-8')]
+var express = require('express');
+var router = express.Router();
+
+/* GET home page. */
+router.get('/', function(req, res, next) {
+  res.render('index', { title: 'Express' });
+});
+
+module.exports = router;
+[/file]
+[/template]

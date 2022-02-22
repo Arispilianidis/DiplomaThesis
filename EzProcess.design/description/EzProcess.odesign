@@ -91,9 +91,6 @@
         <ownedRules xsi:type="validation:SemanticValidationRule" name="UniqueQuestionAtOptionRatingAtSameOption" level="ERROR" message="The property isAbout of Option Rating components, at the same Option component, should not refer to the same Question ID." targetClass="ezProcess::OptionRating">
           <audits auditExpression="aql: self.eContainer().eAllContents(ezProcess::OptionRating)->select(o | o.isAbout = self.isAbout)->size()=1"/>
         </ownedRules>
-        <ownedRules xsi:type="validation:SemanticValidationRule" name="OptionRatingSizeEqualsOptionSize" level="ERROR" message="If a Question refers to a Value Field, then each option of the Value Field should contain an Option Rating about that Question." targetClass="ezProcess::Question">
-          <audits auditExpression="aql: self.isAbout.hasOption.hasOptionRating->select(o | o.isAbout.ID=self.ID)->size() = self.isAbout.hasOption->size()"/>
-        </ownedRules>
         <ownedRules xsi:type="validation:SemanticValidationRule" name="FirstPageOfScreeningContainsCandidateInfo" level="ERROR" message="The first page of the Screening process should contain all Candidate Info (First Name, Last Name and Email)" targetClass="ezProcess::Screening">
           <audits auditExpression="aql: self.hasPage->select(p | p.first).hasInitialvalue->select(v | v.oclIsKindOf(ezProcess::CandidateTextField)).candidateField.toString()->includesAll(Sequence{'FIRST_NAME','LAST_NAME')}) and self.hasPage->select(p | p.first).hasInitialvalue->select(v | v.oclIsKindOf(ezProcess::CandidateEmailField))->size()= 1"/>
         </ownedRules>
@@ -113,6 +110,12 @@
         <ownedRules xsi:type="validation:SemanticValidationRule" name="UniqueOnboardingTaskNames" level="ERROR" message="The name property of an OnboardingTask should be unique." targetClass="ezProcess::OnboardingTask">
           <audits auditExpression="aql: self.eContainer(ezProcess::Process).eAllContents()->filter(ezProcess::OnboardingTask)->select(v | v.name = self.name)->size() = 1"/>
         </ownedRules>
+        <ownedRules xsi:type="validation:SemanticValidationRule" name="RatingBooleanFieldNotOnJobDescription" level="ERROR" message="You can only enable Rating when you are working on a Screening Process" targetClass="ezProcess::InitialValue">
+          <audits auditExpression="aql: self.eContainer(ezProcess::Process).oclIsTypeOf(ezProcess::JobDescription) implies self.rating=false"/>
+        </ownedRules>
+        <ownedRules xsi:type="validation:SemanticValidationRule" name="RatingBooleanFieldNotOnOnboarding" level="ERROR" message="You can only enable Rating when you are working on a Screening Process" targetClass="ezProcess::InitialValue">
+          <audits auditExpression="aql: self.eContainer(ezProcess::Process).oclIsTypeOf(ezProcess::Onboarding) implies self.rating=false"/>
+        </ownedRules>
       </validationSet>
       <defaultLayer name="Default">
         <nodeMappings name="EmployeeNode" label="Employee" semanticCandidatesExpression="feature:hasEmployee" domainClass="ezProcess::Employee">
@@ -131,7 +134,7 @@
         </edgeMappings>
         <edgeMappings name="ScreeningHasJobDescdge" sourceMapping="//@ownedViewpoints[name='App']/@ownedRepresentations[name='App%20Diagram']/@defaultLayer/@containerMappings[name='ScreeningContainer']" targetMapping="//@ownedViewpoints[name='App']/@ownedRepresentations[name='App%20Diagram']/@defaultLayer/@containerMappings[name='JobDescriptionContainer']" targetFinderExpression="aql: self.hasJobDescription">
           <style sizeComputationExpression="2">
-            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_orange']"/>
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
             <centerLabelStyleDescription labelSize="12" labelExpression="hasJobDescription">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </centerLabelStyleDescription>
@@ -139,7 +142,7 @@
         </edgeMappings>
         <edgeMappings name="EmployeeHasProcessEdge" sourceMapping="//@ownedViewpoints[name='App']/@ownedRepresentations[name='App%20Diagram']/@defaultLayer/@nodeMappings[name='EmployeeNode']" targetMapping="//@ownedViewpoints[name='App']/@ownedRepresentations[name='App%20Diagram']/@defaultLayer/@containerMappings[name='ScreeningContainer'] //@ownedViewpoints[name='App']/@ownedRepresentations[name='App%20Diagram']/@defaultLayer/@containerMappings[name='OnboardingContainer'] //@ownedViewpoints[name='App']/@ownedRepresentations[name='App%20Diagram']/@defaultLayer/@containerMappings[name='JobDescriptionContainer']" targetFinderExpression="aql: self.assignedProcess">
           <style sizeComputationExpression="2">
-            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
             <centerLabelStyleDescription labelSize="12" labelExpression="Assgined Process">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </centerLabelStyleDescription>
@@ -434,6 +437,15 @@
           </ownedTools>
         </toolSections>
         <toolSections name="Screening">
+          <ownedTools xsi:type="tool_1:ContainerCreationDescription" name="createScreeningProcess" forceRefresh="true" containerMappings="//@ownedViewpoints[name='App']/@ownedRepresentations[name='App%20Diagram']/@defaultLayer/@containerMappings[name='ScreeningContainer']" iconPath="/EzProcess.design/icons/Candidate.png">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="ezProcess::Screening" referenceName="hasProcess"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
           <ownedTools xsi:type="tool_1:NodeCreationDescription" name="createCandidateTextField" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='App']/@ownedRepresentations[name='App%20Diagram']/@defaultLayer/@containerMappings[name='JobDescriptionContainer']/@subContainerMappings[name='PageContainer']/@subNodeMappings[name='TextFieldNode']" iconPath="/EzProcess.design/icons/CandTextField.png">
             <variable name="container"/>
             <viewVariable name="containerView"/>
@@ -478,6 +490,15 @@
           </ownedTools>
         </toolSections>
         <toolSections name="Onboarding" reusedTools="//@ownedViewpoints[name='App']/@ownedRepresentations[name='App%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='createCandidateEmailField'] //@ownedViewpoints[name='App']/@ownedRepresentations[name='App%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='createCandidateTextField']">
+          <ownedTools xsi:type="tool_1:ContainerCreationDescription" name="createOnboardingProcess" forceRefresh="true" containerMappings="//@ownedViewpoints[name='App']/@ownedRepresentations[name='App%20Diagram']/@defaultLayer/@containerMappings[name='OnboardingContainer']" iconPath="/EzProcess.design/icons/Employee.png">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="ezProcess::Onboarding" referenceName="hasProcess"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
           <ownedTools xsi:type="tool_1:NodeCreationDescription" name="createOnboardingSetupTask" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='App']/@ownedRepresentations[name='App%20Diagram']/@defaultLayer/@containerMappings[name='JobDescriptionContainer']/@subContainerMappings[name='PageContainer']/@subNodeMappings[name='ONBSetupNode']" iconPath="/EzProcess.design/icons/SetupTask.jpg">
             <variable name="container"/>
             <viewVariable name="containerView"/>
@@ -502,6 +523,15 @@
           </ownedTools>
         </toolSections>
         <toolSections name="Job Description">
+          <ownedTools xsi:type="tool_1:ContainerCreationDescription" name="createJobDescriptionProcess" forceRefresh="true" containerMappings="//@ownedViewpoints[name='App']/@ownedRepresentations[name='App%20Diagram']/@defaultLayer/@containerMappings[name='JobDescriptionContainer']" iconPath="/EzProcess.design/icons/JobDesc.png">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="ezProcess::JobDescription" referenceName="hasProcess"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
           <ownedTools xsi:type="tool_1:NodeCreationDescription" name="createOptionRating" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='App']/@ownedRepresentations[name='App%20Diagram']/@defaultLayer/@containerMappings[name='JobDescriptionContainer']/@subContainerMappings[name='PageContainer']/@subContainerMappings[name='RadioButtonContainer']/@subContainerMappings[name='OptionContainer']/@subNodeMappings[name='OptionRatingNode']" iconPath="/EzProcess.design/icons/star.jpg">
             <variable name="container"/>
             <viewVariable name="containerView"/>
@@ -519,6 +549,41 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
                 <subModelOperations xsi:type="tool:CreateInstance" typeName="ezProcess::OptionThreshold" referenceName="hasThreshold"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+        <toolSections name="Edges">
+          <ownedTools xsi:type="tool_1:EdgeCreationDescription" name="AssignProcess" label="Assign Process" forceRefresh="true" edgeMappings="//@ownedViewpoints[name='App']/@ownedRepresentations[name='App%20Diagram']/@defaultLayer/@edgeMappings[name='EmployeeHasProcessEdge']" iconPath="/EzProcess.design/icons/AssignProcess.png">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:source">
+                <subModelOperations xsi:type="tool:SetValue" featureName="assignedProcess" valueExpression="var:target"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:EdgeCreationDescription" name="ScreeninghasJob" label="Screening Has JobDescription" forceRefresh="true" edgeMappings="//@ownedViewpoints[name='App']/@ownedRepresentations[name='App%20Diagram']/@defaultLayer/@edgeMappings[name='ScreeningHasJobDescdge']" iconPath="/EzProcess.design/icons/ScreeningHasJOb.png">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:source">
+                <subModelOperations xsi:type="tool:SetValue" featureName="hasJobDescription" valueExpression="var:target"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:EdgeCreationDescription" name="OnboardinghasScreening" label="Onboarding Has Screening" forceRefresh="true" edgeMappings="//@ownedViewpoints[name='App']/@ownedRepresentations[name='App%20Diagram']/@defaultLayer/@edgeMappings[name='OnboardingHasScreeningEdge']" iconPath="/EzProcess.design/icons/OnboardingHasScreening.png">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:source">
+                <subModelOperations xsi:type="tool:SetValue" featureName="hasScreening" valueExpression="var:target"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>

@@ -1,5 +1,5 @@
 # DiplomaThesis
-Automatic digital transformation of business processes to web applications
+Automated digital transformation of HR business processes to web applications
 
 Digital transformation is the process of using digital technologies to create new - or modify 
 existing - business processes to respond to changing market needs. So, the need is obvious, 

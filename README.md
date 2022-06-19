@@ -34,9 +34,9 @@ This software provides tools for creating applications that are
 based on models. Then, when starting Eclipse, the user must
 follow the path Help -> Install new software and select the
 Eclipse version downloaded earlier. Then you have to type
-<<Acceleo>> in the search bar to find the packages you need
+<Acceleo> in the search bar to find the packages you need
 install. Additionally, you must perform the same procedure to download
-Eclipse plugin <<Sirius>>. Installation of  Eclipse Modeling Tools is
+Eclipse plugin <Sirius>. Installation of  Eclipse Modeling Tools is
 now ready.
 For the operation of the EzProcess system the steps to be followed by the
 user are the following:
